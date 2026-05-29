@@ -1,0 +1,66 @@
+{
+  "nav": {
+    "home": "Home",
+    "shop": "Shop",
+    "services": "Services",
+    "trainings": "Trainings",
+    "events": "Fairs",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "admin": "Admin",
+    "cart": "Cart",
+    "profile": "My Profile",
+    "orders": "My Orders"
+  },
+  "hero": {
+    "title": "AFI Collection",
+    "subtitle": "Artisan Elegance",
+    "description": "Discover unique creations, handmade with passion by talented artisans.",
+    "button": "Discover the shop",
+    "trainingButton": "Our trainings",
+    "freeDelivery": "Free delivery",
+    "securePayment": "Secure payment",
+    "support": "Support 7/7"
+  },
+  "footer": {
+    "brandDesc": "Artisan elegance at the service of tradition and innovation.",
+    "quickLinks": "Quick links",
+    "services": "Our services",
+    "contact": "Contact",
+    "followUs": "Follow us",
+    "rights": "All rights reserved"
+  },
+  "products": {
+    "title": "Our Products",
+    "subtitle": "Featured products",
+    "addToCart": "Add to cart",
+    "viewDetails": "View details",
+    "inStock": "In stock",
+    "outOfStock": "Out of stock",
+    "price": "Price",
+    "quantity": "Quantity"
+  },
+  "cart": {
+    "empty": "Your cart is empty",
+    "total": "Total",
+    "checkout": "Proceed to checkout",
+    "remove": "Remove",
+    "update": "Update"
+  },
+  "checkout": {
+    "title": "Checkout",
+    "deliveryInfo": "Delivery information",
+    "paymentMethod": "Payment method",
+    "confirm": "Confirm order"
+  },
+  "contact": {
+    "title": "Contact us",
+    "subtitle": "We are here to help",
+    "name": "Full name",
+    "email": "Email",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send"
+  }
+}
