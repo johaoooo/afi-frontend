@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import HeroCarousel from '../../components/HeroCarousel';
+import AdvantagesSection from '../../components/AdvantagesSection';
 import AboutSection from '../../components/AboutSection';
 import CategoriesSection from '../../components/CategoriesSection';
 import ProductsSection from '../../components/ProductsSection';
@@ -49,30 +50,34 @@ const HomePage = () => {
       <HeroCarousel />
       
       <ScrollReveal direction="up" delay={100}>
+        <AdvantagesSection />
+      </ScrollReveal>
+      
+      <ScrollReveal direction="up" delay={200}>
         <AboutSection />
       </ScrollReveal>
       
-      <ScrollReveal direction="left" delay={200}>
+      <ScrollReveal direction="left" delay={300}>
         <CategoriesSection categories={categories} />
       </ScrollReveal>
       
-      <ScrollReveal direction="up" delay={300}>
+      <ScrollReveal direction="up" delay={400}>
         <ProductsSection products={products} />
       </ScrollReveal>
       
-      <ScrollReveal direction="right" delay={400}>
+      <ScrollReveal direction="right" delay={500}>
         <WhyChooseUsSection />
       </ScrollReveal>
       
-      <ScrollReveal direction="up" delay={500}>
+      <ScrollReveal direction="up" delay={600}>
         <TrainingsSection trainings={trainings} />
       </ScrollReveal>
       
-      <ScrollReveal direction="left" delay={600}>
+      <ScrollReveal direction="left" delay={700}>
         <TestimonialsSection />
       </ScrollReveal>
       
-      <ScrollReveal direction="up" delay={700}>
+      <ScrollReveal direction="up" delay={800}>
         <CTASection />
       </ScrollReveal>
     </div>

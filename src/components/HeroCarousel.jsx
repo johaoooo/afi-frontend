@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ShoppingBag, GraduationCap, Truck, Shield, Headphones, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ShoppingBag, GraduationCap, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const slides = [
   {
@@ -87,29 +87,24 @@ const HeroCarousel = () => {
             style={{ objectPosition: slide.objectPosition }}
           />
           
-          {/* Overlay plus sombre pour meilleure lisibilité du texte */}
           <div className="absolute inset-0 bg-black/50" />
           
           <div className="relative container-custom h-full flex items-center justify-center z-20">
             <div className="max-w-2xl mx-auto text-center px-4">
-              {/* Badge */}
               <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 mb-4 animate-fadeInUp border border-white/30">
                 <Sparkles className="w-3 h-3 text-yellow-400" />
                 <span className="text-white text-xs font-medium tracking-wide">{slide.badge}</span>
               </div>
               
-              {/* Titre */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight animate-slideInLeft drop-shadow-lg">
                 {slide.title}
                 <span className="block text-xl md:text-2xl mt-1 font-light tracking-wide text-yellow-400">{slide.subtitle}</span>
               </h1>
               
-              {/* Description */}
               <p className="text-sm md:text-base text-white mb-6 max-w-lg mx-auto leading-relaxed animate-slideInRight delay-200">
                 {slide.description}
               </p>
               
-              {/* Bouton */}
               <Link 
                 to={slide.buttonLink}
                 className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp delay-300 text-sm"
@@ -117,28 +112,11 @@ const HeroCarousel = () => {
                 <slide.buttonIcon className="w-4 h-4" />
                 <span>{slide.buttonText}</span>
               </Link>
-
-              {/* Avantages - plus compacts */}
-              <div className="flex flex-wrap justify-center gap-3 mt-8 animate-fadeInUp delay-400">
-                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
-                  <Truck className="w-3 h-3 text-yellow-400" />
-                  <span className="text-white text-[11px]">Livraison offerte</span>
-                </div>
-                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
-                  <Shield className="w-3 h-3 text-yellow-400" />
-                  <span className="text-white text-[11px]">Paiement sécurisé</span>
-                </div>
-                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
-                  <Headphones className="w-3 h-3 text-yellow-400" />
-                  <span className="text-white text-[11px]">Support 7j/7</span>
-                </div>
-              </div>
             </div>
           </div>
         </div>
       ))}
 
-      {/* Navigation arrows */}
       <button
         onClick={prevSlide}
         className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 backdrop-blur-md p-2 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 border border-white/20"
@@ -152,7 +130,6 @@ const HeroCarousel = () => {
         <ChevronRight className="w-5 h-5 text-white" />
       </button>
 
-      {/* Dots indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
         {slides.map((_, index) => (
           <button
@@ -167,7 +144,6 @@ const HeroCarousel = () => {
         ))}
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 animate-bounce cursor-pointer">
         <div className="w-4 h-7 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-1.5 bg-white rounded-full mt-1.5 animate-pulse" />
