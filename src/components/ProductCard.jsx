@@ -11,7 +11,6 @@ const ProductCard = ({ product, index }) => {
   const prixFinal = product.estEnPromotion && product.prixPromo ? product.prixPromo : product.prix;
   const reduction = product.estEnPromotion ? Math.round((1 - product.prixPromo / product.prix) * 100) : 0;
 
-  // Images de démonstration (à remplacer par les vraies images du produit)
   const demoImages = [
     'https://images.unsplash.com/photo-1564229504985-403fb448ae0f?w=400',
     'https://images.unsplash.com/photo-1598622025912-9b72e5fe6b8c?w=400',
@@ -22,13 +21,13 @@ const ProductCard = ({ product, index }) => {
 
   return (
     <div 
-      className="relative group"
+      className="relative group h-full"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{ animationDelay: `${index * 0.1}s` }}
     >
-      {/* Carte principale avec bordures TOUJOURS visibles */}
-      <div className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border-2 border-green-400 group-hover:border-yellow-500">
+      {/* Carte avec hauteur fixe */}
+      <div className="relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 border-2 border-green-400 group-hover:border-yellow-500 h-full flex flex-col">
         
         {/* Badges */}
         <div className="absolute top-3 left-3 z-20 flex flex-col gap-2">
@@ -60,72 +59,44 @@ const ProductCard = ({ product, index }) => {
           <Heart className={`w-4 h-4 transition ${isLiked ? 'fill-red-500 text-red-500' : 'text-gray-600'}`} />
         </button>
 
-        {/* Image avec miniatures */}
-        <div className="relative">
-          {/* Image principale */}
-          <div className="relative h-56 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
-            {!imageLoaded && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-8 h-8 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
-              </div>
-            )}
-            <img 
-              src={images[selectedImage]} 
-              alt={product.nom}
-              className={`w-full h-full object-cover transition-all duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${isHovered ? 'scale-110' : 'scale-100'}`}
-              onLoad={() => setImageLoaded(true)}
-            />
-            
-            {/* Overlay avec actions */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center gap-4 transition-all duration-400 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-              <Link 
-                to={`/produit/${product.slug}`}
-                className="bg-white text-green-700 p-3 rounded-full hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg"
-              >
-                <Eye className="w-5 h-5" />
-              </Link>
-              <button className="bg-white text-green-700 p-3 rounded-full hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg">
-                <ShoppingCart className="w-5 h-5" />
-              </button>
+        {/* Image - hauteur fixe */}
+        <div className="relative h-56 flex-shrink-0 overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+          {!imageLoaded && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="w-8 h-8 border-2 border-green-600 border-t-transparent rounded-full animate-spin"></div>
             </div>
+          )}
+          <img 
+            src={images[selectedImage]} 
+            alt={product.nom}
+            className={`w-full h-full object-cover transition-all duration-700 ${imageLoaded ? 'opacity-100' : 'opacity-0'} ${isHovered ? 'scale-110' : 'scale-100'}`}
+            onLoad={() => setImageLoaded(true)}
+          />
+          
+          <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-center justify-center gap-4 transition-all duration-400 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+            <Link 
+              to={`/produit/${product.slug}`}
+              className="bg-white text-green-700 p-3 rounded-full hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg"
+            >
+              <Eye className="w-5 h-5" />
+            </Link>
+            <button className="bg-white text-green-700 p-3 rounded-full hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 transform hover:scale-110 shadow-lg">
+              <ShoppingCart className="w-5 h-5" />
+            </button>
+          </div>
 
-            {/* Indicateur de stock */}
-            {product.stock > 0 && (
-              <div className="absolute bottom-3 left-3 z-20 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1">
-                <div className="flex items-center gap-1">
-                  <Check className="w-3 h-3 text-green-400" />
-                  <span className="text-white text-xs">En stock</span>
-                </div>
+          {product.stock > 0 && (
+            <div className="absolute bottom-3 left-3 z-20 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1">
+              <div className="flex items-center gap-1">
+                <Check className="w-3 h-3 text-green-400" />
+                <span className="text-white text-xs">En stock</span>
               </div>
-            )}
-          </div>
-
-          {/* Miniatures (visible au hover ou toujours) */}
-          <div className={`absolute bottom-3 right-3 flex gap-1 transition-all duration-300 ${isHovered ? 'opacity-100' : 'opacity-80'}`}>
-            {images.slice(0, 3).map((img, idx) => (
-              <button
-                key={idx}
-                onClick={() => setSelectedImage(idx)}
-                onMouseEnter={() => setSelectedImage(idx)}
-                className={`w-8 h-8 rounded-md overflow-hidden border-2 transition-all duration-200 ${
-                  selectedImage === idx 
-                    ? 'border-yellow-500 scale-110 shadow-lg' 
-                    : 'border-white hover:border-green-500'
-                }`}
-              >
-                <img 
-                  src={img} 
-                  alt={`${product.nom} - vue ${idx + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
-        {/* Infos produit */}
-        <div className="p-4">
-          {/* Catégorie avec indicateur coloré */}
+        {/* Infos produit - flex-grow pour occuper l'espace restant */}
+        <div className="p-4 flex flex-col flex-grow">
           {product.categorie && (
             <div className="flex items-center gap-2 mb-2">
               <div className="w-2 h-2 rounded-full bg-green-500"></div>
@@ -135,17 +106,14 @@ const ProductCard = ({ product, index }) => {
             </div>
           )}
           
-          {/* Titre */}
           <h3 className="font-bold text-gray-800 text-lg mb-1 group-hover:text-green-600 transition line-clamp-1">
             {product.nom}
           </h3>
           
-          {/* Description courte */}
-          <p className="text-gray-500 text-sm mb-3 line-clamp-2">
+          <p className="text-gray-500 text-sm mb-3 line-clamp-2 flex-grow">
             {product.descriptionCourte || 'Découvrez ce produit artisanal unique fait main avec passion.'}
           </p>
           
-          {/* Étoiles et avis */}
           <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-1">
               <div className="flex text-yellow-500">
@@ -161,8 +129,7 @@ const ProductCard = ({ product, index }) => {
             </div>
           </div>
           
-          {/* Prix et action */}
-          <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+          <div className="flex items-center justify-between pt-3 border-t border-gray-100 mt-auto">
             <div>
               {product.estEnPromotion ? (
                 <div className="flex flex-col">
@@ -184,8 +151,8 @@ const ProductCard = ({ product, index }) => {
           </div>
         </div>
 
-        {/* Bordure colorée animée en bas TOUJOURS visible */}
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-500 via-yellow-500 to-red-500"></div>
+        {/* Bordure colorée animée en bas */}
+        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
       </div>
     </div>
   );

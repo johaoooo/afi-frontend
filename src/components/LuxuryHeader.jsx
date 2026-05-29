@@ -44,12 +44,11 @@ const LuxuryHeader = () => {
 
   return (
     <>
-      <header className={`sticky top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white shadow-lg py-2' : 'bg-white shadow-md py-3'
+      <header className={`sticky top-0 w-full z-50 transition-all duration-300 rounded-b-2xl ${
+        scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-2' : 'bg-white shadow-md py-3'
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center">
-            {/* Logo plus grand */}
             <Link to="/" className="group">
               <img 
                 src="/images/logo.png" 
@@ -58,7 +57,6 @@ const LuxuryHeader = () => {
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 bg-gray-50 rounded-full p-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -80,9 +78,7 @@ const LuxuryHeader = () => {
               })}
             </nav>
 
-            {/* Actions */}
             <div className="flex items-center gap-3">
-              {/* Language Switcher */}
               <div className="relative">
                 <button
                   onClick={() => setLangDropdown(!langDropdown)}
@@ -193,7 +189,6 @@ const LuxuryHeader = () => {
                 </Link>
               );
             })}
-            {/* Language switcher in mobile menu */}
             <div className="flex items-center gap-2 px-4 py-3 border-t border-gray-100 mt-2 pt-4">
               <Languages className="w-5 h-5 text-gray-600" />
               <span className="text-sm text-gray-600">Langue :</span>

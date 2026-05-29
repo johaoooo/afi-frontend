@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
   Heart, Award, Users, TrendingUp, Verified, Building2, Sparkles, 
-  Target, Eye, Globe, Leaf, HandHeart, Clock, Shield, Star, Zap,
+  Target, Globe, Leaf, Clock, Shield, Star, Zap,
   Truck
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
@@ -54,13 +54,15 @@ const AboutSection = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <img 
-                  src="https://images.unsplash.com/photo-1564229504985-403fb448ae0f?w=800" 
-                  alt="Artisanat africain"
+                  src="/images/form.png"
+                  alt="AFI Collection - Artisanat africain"
                   className="w-full object-cover h-[400px] md:h-[500px] group-hover:scale-105 transition duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-3 animate-bounce-slow">
+              
+              {/* Badge "Notée 4.9/5" - remis à sa place en bas à gauche */}
+              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-3">
                 <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
                   <Star className="w-6 h-6 text-green-600" />
                 </div>
@@ -69,6 +71,8 @@ const AboutSection = () => {
                   <p className="text-xs text-gray-500">par 500+ clients</p>
                 </div>
               </div>
+
+              {/* Badge "Livraison offerte" en haut à droite */}
               <div className="absolute -top-6 -right-6 bg-white rounded-2xl p-4 shadow-xl flex items-center gap-3">
                 <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
                   <Truck className="w-6 h-6 text-yellow-600" />
@@ -168,16 +172,6 @@ const AboutSection = () => {
           </div>
         </ScrollReveal>
       </div>
-
-      <style jsx>{`
-        @keyframes bounce-slow {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-5px); }
-        }
-        .animate-bounce-slow {
-          animation: bounce-slow 2s ease-in-out infinite;
-        }
-      `}</style>
     </section>
   );
 };

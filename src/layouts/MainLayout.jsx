@@ -7,6 +7,11 @@ import {
   Truck, Shield, Award, Heart,
   ChevronRight
 } from 'lucide-react';
+import { 
+  FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaWhatsapp,
+  FaCcVisa, FaCcMastercard, FaPaypal
+} from 'react-icons/fa';
+import { MdPhoneIphone } from 'react-icons/md';
 
 const MainLayout = () => {
   const currentYear = new Date().getFullYear();
@@ -42,13 +47,10 @@ const MainLayout = () => {
         <Outlet />
       </main>
 
-      {/* Footer clair */}
       <footer className="bg-gray-100 text-gray-600 mt-20 border-t border-gray-300">
-        {/* Top Footer */}
         <div className="border-b border-gray-300">
           <div className="container-custom py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-              {/* Brand */}
               <div className="lg:col-span-1">
                 <div className="flex items-center gap-3 mb-4">
                   <img 
@@ -62,21 +64,23 @@ const MainLayout = () => {
                 </p>
                 <div className="flex gap-3">
                   <a href="#" className="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition text-gray-600">
-                    f
+                    <FaFacebook className="w-4 h-4" />
                   </a>
                   <a href="#" className="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition text-gray-600">
-                    i
+                    <FaInstagram className="w-4 h-4" />
                   </a>
                   <a href="#" className="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition text-gray-600">
-                    t
+                    <FaTwitter className="w-4 h-4" />
                   </a>
                   <a href="#" className="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition text-gray-600">
-                    y
+                    <FaYoutube className="w-4 h-4" />
+                  </a>
+                  <a href="#" className="w-9 h-9 bg-gray-300 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition text-gray-600">
+                    <FaWhatsapp className="w-4 h-4" />
                   </a>
                 </div>
               </div>
 
-              {/* Boutique */}
               <div>
                 <h3 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <ShoppingBag className="w-4 h-4 text-green-600" />
@@ -94,7 +98,6 @@ const MainLayout = () => {
                 </ul>
               </div>
 
-              {/* Formations */}
               <div>
                 <h3 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-green-600" />
@@ -112,7 +115,6 @@ const MainLayout = () => {
                 </ul>
               </div>
 
-              {/* Aide */}
               <div>
                 <h3 className="font-semibold text-gray-800 mb-4 flex items-center gap-2">
                   <HelpCircle className="w-4 h-4 text-green-600" />
@@ -130,7 +132,6 @@ const MainLayout = () => {
                 </ul>
               </div>
 
-              {/* Contact */}
               <div>
                 <h3 className="font-semibold text-gray-800 mb-4">Contact</h3>
                 <ul className="space-y-3">
@@ -156,7 +157,6 @@ const MainLayout = () => {
           </div>
         </div>
 
-        {/* Services */}
         <div className="border-b border-gray-300">
           <div className="container-custom py-8">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
@@ -192,7 +192,6 @@ const MainLayout = () => {
           </div>
         </div>
 
-        {/* Copyright */}
         <div className="container-custom py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-400 text-xs">
@@ -201,10 +200,30 @@ const MainLayout = () => {
             <div className="flex items-center gap-4">
               <span className="text-gray-400 text-xs">Paiement sécurisé :</span>
               <div className="flex items-center gap-2">
-                <span className="text-gray-500 text-sm">📱 Wave</span>
-                <span className="text-gray-500 text-sm">📱 MTN</span>
-                <span className="text-gray-500 text-sm">🟠 Orange</span>
-                <span className="text-gray-500 text-sm">💳 Carte</span>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <MdPhoneIphone className="w-3 h-3 text-green-600" />
+                  <span className="text-xs text-gray-600">Wave</span>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <MdPhoneIphone className="w-3 h-3 text-yellow-600" />
+                  <span className="text-xs text-gray-600">MTN</span>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <MdPhoneIphone className="w-3 h-3 text-red-600" />
+                  <span className="text-xs text-gray-600">Orange</span>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <FaCcVisa className="w-4 h-3 text-blue-700" />
+                  <span className="text-xs text-gray-600">Visa</span>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <FaCcMastercard className="w-4 h-3 text-orange-600" />
+                  <span className="text-xs text-gray-600">Mastercard</span>
+                </div>
+                <div className="flex items-center gap-1 bg-gray-200 px-2 py-1 rounded-full">
+                  <FaPaypal className="w-3 h-3 text-blue-600" />
+                  <span className="text-xs text-gray-600">PayPal</span>
+                </div>
               </div>
             </div>
           </div>

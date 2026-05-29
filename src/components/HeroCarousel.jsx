@@ -2,25 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingBag, GraduationCap, Truck, Shield, Headphones, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
-// Vos images sont dans public/images/
 const slides = [
   {
     id: 1,
     title: 'AFI Collection',
     subtitle: 'L\'Élégance Artisanale',
-    description: 'Découvrez des créations uniques, faites main avec passion par des artisans talentueux.',
+    description: 'Des créations uniques faites main avec passion.',
     bgImage: '/images/slide2.png',
-    buttonText: 'Découvrir la boutique',
+    objectPosition: 'center 35%',
+    buttonText: 'Découvrir',
     buttonLink: '/boutique',
     buttonIcon: ShoppingBag,
     badge: 'Collections uniques'
   },
   {
     id: 2,
-    title: 'Formations Artisanales',
-    subtitle: 'Apprenez les techniques traditionnelles',
-    description: 'Formations pratiques avec nos experts artisans. Certificat à la clé.',
+    title: 'Formations',
+    subtitle: 'Apprenez les techniques',
+    description: 'Formations pratiques avec nos experts artisans.',
     bgImage: '/images/slide3.png',
+    objectPosition: 'center',
     buttonText: 'Voir les formations',
     buttonLink: '/formations',
     buttonIcon: GraduationCap,
@@ -30,9 +31,10 @@ const slides = [
     id: 3,
     title: 'Teinture & Macramé',
     subtitle: 'Couleurs et traditions',
-    description: 'Découvrez nos créations uniques faites main avec des matériaux naturels.',
+    description: 'Créations uniques faites main avec des matériaux naturels.',
     bgImage: '/images/slide4.png',
-    buttonText: 'Explorer la boutique',
+    objectPosition: 'center 25%',
+    buttonText: 'Explorer',
     buttonLink: '/boutique',
     buttonIcon: ShoppingBag,
     badge: 'Artisanat authentique'
@@ -70,7 +72,7 @@ const HeroCarousel = () => {
   };
 
   return (
-    <section className="relative h-[75vh] md:h-[70vh] overflow-hidden rounded-b-3xl md:rounded-b-4xl shadow-2xl">
+    <section className="relative h-[80vh] md:h-[75vh] overflow-hidden rounded-b-3xl md:rounded-b-4xl shadow-2xl">
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -78,52 +80,57 @@ const HeroCarousel = () => {
             index === currentSlide ? 'opacity-100 z-10' : 'opacity-0 z-0'
           }`}
         >
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ 
-              backgroundImage: `url(${slide.bgImage})`,
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-            }}
+          <img 
+            src={slide.bgImage}
+            alt={slide.title}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: slide.objectPosition }}
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-green-900/85 via-green-800/80 to-yellow-700/75" />
           
-          <div className="relative container-custom h-full flex items-center z-20">
-            <div className="max-w-3xl mx-auto text-center px-4">
-              <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-6 animate-fadeInUp">
-                <Sparkles className="w-4 h-4 text-yellow-400" />
-                <span className="text-white text-sm font-medium tracking-wide">{slide.badge}</span>
+          {/* Overlay plus sombre pour meilleure lisibilité du texte */}
+          <div className="absolute inset-0 bg-black/50" />
+          
+          <div className="relative container-custom h-full flex items-center justify-center z-20">
+            <div className="max-w-2xl mx-auto text-center px-4">
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 mb-4 animate-fadeInUp border border-white/30">
+                <Sparkles className="w-3 h-3 text-yellow-400" />
+                <span className="text-white text-xs font-medium tracking-wide">{slide.badge}</span>
               </div>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight animate-slideInLeft">
+              {/* Titre */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight animate-slideInLeft drop-shadow-lg">
                 {slide.title}
-                <span className="block text-2xl md:text-3xl mt-2 font-light tracking-wide text-yellow-400">{slide.subtitle}</span>
+                <span className="block text-xl md:text-2xl mt-1 font-light tracking-wide text-yellow-400">{slide.subtitle}</span>
               </h1>
               
-              <p className="text-sm md:text-base text-white/95 mb-8 max-w-2xl mx-auto leading-relaxed animate-slideInRight delay-200">
+              {/* Description */}
+              <p className="text-sm md:text-base text-white mb-6 max-w-lg mx-auto leading-relaxed animate-slideInRight delay-200">
                 {slide.description}
               </p>
               
+              {/* Bouton */}
               <Link 
                 to={slide.buttonLink}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp delay-300"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp delay-300 text-sm"
               >
-                <slide.buttonIcon className="w-5 h-5" />
+                <slide.buttonIcon className="w-4 h-4" />
                 <span>{slide.buttonText}</span>
               </Link>
 
-              <div className="flex flex-wrap justify-center gap-6 mt-10 text-white/80 text-xs md:text-sm animate-fadeInUp delay-400">
-                <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-yellow-400" />
-                  <span>Livraison offerte</span>
+              {/* Avantages - plus compacts */}
+              <div className="flex flex-wrap justify-center gap-3 mt-8 animate-fadeInUp delay-400">
+                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
+                  <Truck className="w-3 h-3 text-yellow-400" />
+                  <span className="text-white text-[11px]">Livraison offerte</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-yellow-400" />
-                  <span>Paiement sécurisé</span>
+                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
+                  <Shield className="w-3 h-3 text-yellow-400" />
+                  <span className="text-white text-[11px]">Paiement sécurisé</span>
                 </div>
-                <div className="flex items-center gap-2">
-                  <Headphones className="w-4 h-4 text-yellow-400" />
-                  <span>Support 7j/7</span>
+                <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md rounded-full px-2.5 py-1 border border-white/20">
+                  <Headphones className="w-3 h-3 text-yellow-400" />
+                  <span className="text-white text-[11px]">Support 7j/7</span>
                 </div>
               </div>
             </div>
@@ -131,19 +138,21 @@ const HeroCarousel = () => {
         </div>
       ))}
 
+      {/* Navigation arrows */}
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 backdrop-blur-md p-2 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 border border-white/20"
       >
-        <ChevronLeft className="w-6 h-6 text-white" />
+        <ChevronLeft className="w-5 h-5 text-white" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-white/20 backdrop-blur-sm p-2 rounded-full hover:bg-white/30 transition-all duration-300 hover:scale-110"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 z-30 bg-black/50 backdrop-blur-md p-2 rounded-full hover:bg-black/70 transition-all duration-300 hover:scale-110 border border-white/20"
       >
-        <ChevronRight className="w-6 h-6 text-white" />
+        <ChevronRight className="w-5 h-5 text-white" />
       </button>
 
+      {/* Dots indicators */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-30 flex gap-2">
         {slides.map((_, index) => (
           <button
@@ -151,15 +160,16 @@ const HeroCarousel = () => {
             onClick={() => goToSlide(index)}
             className={`transition-all duration-300 rounded-full ${
               index === currentSlide
-                ? 'w-8 h-2 bg-yellow-400'
-                : 'w-2 h-2 bg-white/50 hover:bg-white/80'
+                ? 'w-6 h-1.5 bg-yellow-400'
+                : 'w-1.5 h-1.5 bg-white/50 hover:bg-white/80'
             }`}
           />
         ))}
       </div>
 
+      {/* Scroll indicator */}
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-30 animate-bounce cursor-pointer">
-        <div className="w-5 h-8 border-2 border-white rounded-full flex justify-center">
+        <div className="w-4 h-7 border-2 border-white rounded-full flex justify-center">
           <div className="w-1 h-1.5 bg-white rounded-full mt-1.5 animate-pulse" />
         </div>
       </div>
