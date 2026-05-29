@@ -16,11 +16,8 @@ const LoginPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const result = await login(email, password);
+    const result = await login(email, password, navigate);
     setLoading(false);
-    if (result.success) {
-      navigate('/');
-    }
   };
 
   return (
@@ -33,9 +30,7 @@ const LoginPage = () => {
 
       <div className="container-custom py-12">
         <div className="max-w-md mx-auto">
-          {/* Carte de connexion */}
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
-            {/* En-tête décoratif */}
             <div className="bg-gradient-to-r from-green-600 to-yellow-500 px-6 py-4">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
@@ -48,9 +43,7 @@ const LoginPage = () => {
               </div>
             </div>
 
-            {/* Formulaire */}
             <form onSubmit={handleSubmit} className="p-6">
-              {/* Champ Email */}
               <div className="mb-5">
                 <label className="block text-gray-700 font-semibold mb-2">Email</label>
                 <div className="relative">
@@ -66,7 +59,6 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Champ Mot de passe */}
               <div className="mb-3">
                 <label className="block text-gray-700 font-semibold mb-2">Mot de passe</label>
                 <div className="relative">
@@ -89,7 +81,6 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Options supplémentaires */}
               <div className="flex justify-between items-center mb-6">
                 <label className="flex items-center gap-2 cursor-pointer">
                   <input
@@ -105,7 +96,6 @@ const LoginPage = () => {
                 </Link>
               </div>
 
-              {/* Bouton de connexion */}
               <button
                 type="submit"
                 disabled={loading}
@@ -121,7 +111,6 @@ const LoginPage = () => {
                 )}
               </button>
 
-              {/* Séparateur */}
               <div className="relative my-6">
                 <div className="absolute inset-0 flex items-center">
                   <div className="w-full border-t border-gray-200"></div>
@@ -131,7 +120,6 @@ const LoginPage = () => {
                 </div>
               </div>
 
-              {/* Lien d'inscription */}
               <p className="text-center text-gray-600">
                 Pas encore de compte ?{' '}
                 <Link to="/inscription" className="text-green-600 font-semibold hover:text-green-700 hover:underline">
@@ -141,7 +129,6 @@ const LoginPage = () => {
             </form>
           </div>
 
-          {/* Informations de sécurité */}
           <div className="mt-6 flex justify-center gap-6 text-xs text-gray-400">
             <div className="flex items-center gap-1">
               <Shield className="w-3 h-3" />

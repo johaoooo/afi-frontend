@@ -1,6 +1,7 @@
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -39,7 +40,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const login = async (email, motDePasse) => {
+  const login = async (email, motDePasse, navigate) => {
     try {
       const response = await axios.post('/auth/connexion', { email, motDePasse });
       const { token, utilisateur } = response.data;
@@ -48,6 +49,13 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(utilisateur);
       toast.success('Connexion réussie !');
+      
+      // Rediriger selon le rôle
+      if (utilisateur.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
       return { success: true };
     } catch (error) {
       toast.error(error.response?.data?.message || 'Erreur de connexion');
@@ -55,7 +63,7 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (userData) => {
+  const register = async (userData, navigate) => {
     try {
       const response = await axios.post('/auth/inscription', userData);
       const { token, utilisateur } = response.data;
@@ -64,6 +72,7 @@ export const AuthProvider = ({ children }) => {
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
       setUser(utilisateur);
       toast.success('Inscription réussie !');
+      navigate('/');
       return { success: true };
     } catch (error) {
       toast.error(error.response?.data?.message || 'Erreur d\'inscription');
@@ -71,12 +80,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = (navigate) => {
     localStorage.removeItem('token');
     setToken(null);
     setUser(null);
     delete axios.defaults.headers.common['Authorization'];
     toast.success('Déconnexion réussie');
+    navigate('/');
   };
 
   return (
