@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { 
   Home, ShoppingBag, BookOpen, Calendar, Mail, 
   User, LogIn, LogOut, Menu, X, ChevronDown, ChevronRight,
-  Languages
+  Languages, LayoutDashboard
 } from 'lucide-react';
 
 const LuxuryHeader = () => {
@@ -49,6 +49,7 @@ const LuxuryHeader = () => {
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center">
+            {/* Logo */}
             <Link to="/" className="group">
               <img 
                 src="/images/logo.png" 
@@ -57,6 +58,7 @@ const LuxuryHeader = () => {
               />
             </Link>
 
+            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 bg-gray-50 rounded-full p-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -78,7 +80,9 @@ const LuxuryHeader = () => {
               })}
             </nav>
 
+            {/* Actions */}
             <div className="flex items-center gap-3">
+              {/* Language Switcher */}
               <div className="relative">
                 <button
                   onClick={() => setLangDropdown(!langDropdown)}
@@ -108,6 +112,7 @@ const LuxuryHeader = () => {
                 )}
               </div>
 
+              {/* Panier */}
               <Link to="/panier" className="relative">
                 <div className="p-2 rounded-full hover:bg-gray-100 transition">
                   <ShoppingBag className="w-5 h-5 text-gray-700" />
@@ -119,6 +124,7 @@ const LuxuryHeader = () => {
                 </div>
               </Link>
 
+              {/* Menu utilisateur */}
               {user ? (
                 <div className="relative">
                   <button
@@ -139,9 +145,25 @@ const LuxuryHeader = () => {
                         <p className="text-sm text-gray-500">{user.email}</p>
                       </div>
                       <div className="p-2">
-                        <button onClick={logout} className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 transition text-red-600">
+                        {/* Option Mon compte / Dashboard */}
+                        <Link
+                          to={isAdmin ? "/admin" : "/mon-compte"}
+                          onClick={() => setActiveDropdown(false)}
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-green-50 transition text-green-600 mb-1"
+                        >
+                          <LayoutDashboard className="w-4 h-4" />
+                          <span className="text-sm">Mon compte</span>
+                        </Link>
+                        {/* Option Déconnexion */}
+                        <button 
+                          onClick={() => {
+                            setActiveDropdown(false);
+                            logout();
+                          }} 
+                          className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 transition text-red-600"
+                        >
                           <LogOut className="w-4 h-4" />
-                          <span className="text-sm">{t('nav.logout')}</span>
+                          <span className="text-sm">Déconnexion</span>
                         </button>
                       </div>
                     </div>
@@ -156,6 +178,7 @@ const LuxuryHeader = () => {
                 </Link>
               )}
 
+              {/* Mobile menu button */}
               <button className="lg:hidden" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
                 {mobileMenuOpen ? (
                   <X className="w-6 h-6 text-gray-700" />
@@ -168,6 +191,7 @@ const LuxuryHeader = () => {
         </div>
       </header>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 bg-white z-40 pt-20 px-6">
           <nav className="flex flex-col space-y-2">
@@ -189,32 +213,45 @@ const LuxuryHeader = () => {
                 </Link>
               );
             })}
-            <div className="flex items-center gap-2 px-4 py-3 border-t border-gray-100 mt-2 pt-4">
-              <Languages className="w-5 h-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Langue :</span>
-              <button
-                onClick={() => changeLanguage('fr')}
-                className={`px-3 py-1 rounded-full text-sm ${currentLang === 'fr' ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-              >
-                FR
-              </button>
-              <button
-                onClick={() => changeLanguage('en')}
-                className={`px-3 py-1 rounded-full text-sm ${currentLang === 'en' ? 'bg-green-600 text-white' : 'bg-gray-200 text-gray-700'}`}
-              >
-                EN
-              </button>
+            
+            {/* Espace membre dans menu mobile */}
+            <div className="border-t border-gray-100 pt-4 mt-2">
+              {user ? (
+                <>
+                  <div className="px-4 py-2 mb-2">
+                    <p className="font-semibold text-gray-800">{user.nom}</p>
+                    <p className="text-xs text-gray-500">{user.email}</p>
+                  </div>
+                  <Link
+                    to={isAdmin ? "/admin" : "/mon-compte"}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex items-center gap-3 px-4 py-3 rounded-xl text-green-600 hover:bg-green-50 transition"
+                  >
+                    <LayoutDashboard className="w-5 h-5" />
+                    <span className="font-medium">Mon compte</span>
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setMobileMenuOpen(false);
+                      logout();
+                    }}
+                    className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-600 hover:bg-red-50 transition text-left"
+                  >
+                    <LogOut className="w-5 h-5" />
+                    <span className="font-medium">Déconnexion</span>
+                  </button>
+                </>
+              ) : (
+                <Link
+                  to="/connexion"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 text-white"
+                >
+                  <LogIn className="w-5 h-5" />
+                  <span className="font-medium">Se connecter</span>
+                </Link>
+              )}
             </div>
-            {isAdmin && (
-              <Link
-                to="/admin"
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-4 py-3 rounded-xl bg-green-100 text-green-700 font-semibold"
-              >
-                <User className="w-5 h-5" />
-                <span>{t('nav.admin')}</span>
-              </Link>
-            )}
           </nav>
         </div>
       )}

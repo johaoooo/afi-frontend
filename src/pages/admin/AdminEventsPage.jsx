@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../../context/AuthContext';
-import { PencilIcon, TrashIcon, PlusIcon } from '@heroicons/react/24/outline';
+import { PencilIcon, TrashIcon, PlusIcon, XIcon, ImageIcon, VideoIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 const AdminEventsPage = () => {
@@ -12,12 +12,16 @@ const AdminEventsPage = () => {
   const [editingEvent, setEditingEvent] = useState(null);
   const [formData, setFormData] = useState({
     titre: '',
+    descriptionCourte: '',
     lieu: '',
     ville: '',
+    pays: 'Bénin',
     dateDebut: '',
     dateFin: '',
-    descriptionCourte: '',
-    stand: ''
+    horaires: '',
+    stand: '',
+    imageUrl: '',
+    videoUrl: ''
   });
 
   useEffect(() => {
@@ -53,7 +57,7 @@ const AdminEventsPage = () => {
       }
       setShowModal(false);
       setEditingEvent(null);
-      setFormData({ titre: '', lieu: '', ville: '', dateDebut: '', dateFin: '', descriptionCourte: '', stand: '' });
+      setFormData({ titre: '', descriptionCourte: '', lieu: '', ville: '', pays: 'Bénin', dateDebut: '', dateFin: '', horaires: '', stand: '', imageUrl: '', videoUrl: '' });
       fetchEvents();
     } catch (error) {
       toast.error('Erreur lors de l\'enregistrement');
@@ -74,10 +78,33 @@ const AdminEventsPage = () => {
     }
   };
 
+  const openModal = (event = null) => {
+    if (event) {
+      setEditingEvent(event);
+      setFormData({
+        titre: event.titre,
+        descriptionCourte: event.descriptionCourte || '',
+        lieu: event.lieu,
+        ville: event.ville,
+        pays: event.pays || 'Bénin',
+        dateDebut: event.dateDebut ? event.dateDebut.slice(0, 16) : '',
+        dateFin: event.dateFin ? event.dateFin.slice(0, 16) : '',
+        horaires: event.horaires || '',
+        stand: event.stand || '',
+        imageUrl: event.imagePrincipale || '',
+        videoUrl: event.videoUrl || ''
+      });
+    } else {
+      setEditingEvent(null);
+      setFormData({ titre: '', descriptionCourte: '', lieu: '', ville: '', pays: 'Bénin', dateDebut: '', dateFin: '', horaires: '', stand: '', imageUrl: '', videoUrl: '' });
+    }
+    setShowModal(true);
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-96">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-terracotta"></div>
+        <div className="w-12 h-12 border-4 border-green-600 border-t-transparent rounded-full animate-spin"></div>
       </div>
     );
   }
@@ -86,8 +113,8 @@ const AdminEventsPage = () => {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Gestion des Événements</h1>
-        <button onClick={() => setShowModal(true)} className="btn-primary flex items-center space-x-2">
-          <PlusIcon className="w-5 h-5" />
+        <button onClick={() => openModal()} className="btn-primary flex items-center space-x-2 text-sm py-2 px-4">
+          <PlusIcon className="w-4 h-4" />
           <span>Ajouter</span>
         </button>
       </div>
@@ -95,36 +122,32 @@ const AdminEventsPage = () => {
       <div className="bg-white rounded-lg shadow-md overflow-hidden">
         <table className="w-full">
           <thead className="bg-gray-50">
-            <tr>
-              <th className="px-4 py-3 text-left">ID</th>
-              <th className="px-4 py-3 text-left">Titre</th>
-              <th className="px-4 py-3 text-left">Lieu</th>
-              <th className="px-4 py-3 text-left">Dates</th>
-              <th className="px-4 py-3 text-left">Stand</th>
+            <tr className="text-left text-sm">
+              <th className="px-4 py-3">ID</th>
+              <th className="px-4 py-3">Titre</th>
+              <th className="px-4 py-3">Lieu</th>
+              <th className="px-4 py-3">Dates</th>
+              <th className="px-4 py-3">Stand</th>
               <th className="px-4 py-3 text-center">Actions</th>
             </tr>
           </thead>
           <tbody>
             {events.map((event) => (
-              <tr key={event.id} className="border-t">
+              <tr key={event.id} className="border-t text-sm">
                 <td className="px-4 py-3">{event.id}</td>
                 <td className="px-4 py-3">{event.titre}</td>
                 <td className="px-4 py-3">{event.lieu}, {event.ville}</td>
-                <td className="px-4 py-3">
+                <td className="px-4 py-3 text-xs">
                   {new Date(event.dateDebut).toLocaleDateString('fr-FR')}<br/>
-                  <span className="text-xs">au {new Date(event.dateFin).toLocaleDateString('fr-FR')}</span>
+                  <span className="text-gray-400">au {new Date(event.dateFin).toLocaleDateString('fr-FR')}</span>
                 </td>
                 <td className="px-4 py-3">{event.stand || '-'}</td>
                 <td className="px-4 py-3 text-center">
-                  <button onClick={() => {
-                    setEditingEvent(event);
-                    setFormData(event);
-                    setShowModal(true);
-                  }} className="text-blue-600 hover:text-blue-800 mr-3">
-                    <PencilIcon className="w-5 h-5" />
+                  <button onClick={() => openModal(event)} className="text-blue-600 hover:text-blue-800 mr-3">
+                    <PencilIcon className="w-4 h-4" />
                   </button>
                   <button onClick={() => handleDelete(event.id)} className="text-red-600 hover:text-red-800">
-                    <TrashIcon className="w-5 h-5" />
+                    <TrashIcon className="w-4 h-4" />
                   </button>
                 </td>
               </tr>
@@ -132,6 +155,90 @@ const AdminEventsPage = () => {
           </tbody>
         </table>
       </div>
+
+      {/* Modal compact */}
+      {showModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-xl p-5 w-full max-w-md max-h-[90vh] overflow-y-auto">
+            <div className="flex justify-between items-center mb-4">
+              <h2 className="text-lg font-bold">{editingEvent ? 'Modifier' : 'Ajouter'} un événement</h2>
+              <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600">
+                <XIcon className="w-5 h-5" />
+              </button>
+            </div>
+            
+            <form onSubmit={handleSubmit} className="space-y-3">
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1">Titre</label>
+                <input type="text" value={formData.titre} onChange={(e) => setFormData({ ...formData, titre: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">Lieu</label>
+                  <input type="text" value={formData.lieu} onChange={(e) => setFormData({ ...formData, lieu: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                </div>
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">Ville</label>
+                  <input type="text" value={formData.ville} onChange={(e) => setFormData({ ...formData, ville: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1">Pays</label>
+                <input type="text" value={formData.pays} onChange={(e) => setFormData({ ...formData, pays: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" />
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">Date début</label>
+                  <input type="datetime-local" value={formData.dateDebut} onChange={(e) => setFormData({ ...formData, dateDebut: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                </div>
+                <div>
+                  <label className="block text-gray-700 text-sm font-medium mb-1">Date fin</label>
+                  <input type="datetime-local" value={formData.dateFin} onChange={(e) => setFormData({ ...formData, dateFin: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1">Horaires</label>
+                <input type="text" value={formData.horaires} onChange={(e) => setFormData({ ...formData, horaires: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="9h-18h" />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1">Stand</label>
+                <input type="text" value={formData.stand} onChange={(e) => setFormData({ ...formData, stand: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="Stand A12" />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1">Description courte</label>
+                <textarea value={formData.descriptionCourte} onChange={(e) => setFormData({ ...formData, descriptionCourte: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" rows="2"></textarea>
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1 flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4" />
+                  URL de l'image
+                </label>
+                <input type="text" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
+              </div>
+              
+              <div>
+                <label className="block text-gray-700 text-sm font-medium mb-1 flex items-center gap-2">
+                  <VideoIcon className="w-4 h-4" />
+                  URL vidéo (YouTube)
+                </label>
+                <input type="text" value={formData.videoUrl} onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://youtube.com/..." />
+              </div>
+              
+              <div className="flex justify-end gap-2 pt-3">
+                <button type="button" onClick={() => setShowModal(false)} className="px-4 py-2 border rounded-lg text-sm">Annuler</button>
+                <button type="submit" className="btn-primary px-4 py-2 text-sm">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
