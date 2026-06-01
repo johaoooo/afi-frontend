@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { useCart } from '../context/CartContext';
@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { 
   Home, ShoppingBag, BookOpen, Calendar, Mail, 
   User, LogIn, LogOut, Menu, X, ChevronDown, ChevronRight,
-  Languages, LayoutDashboard, Moon, Sun
+  Languages, LayoutDashboard, Moon, Sun, Info, Award, Users
 } from 'lucide-react';
 
 const LuxuryHeader = () => {
@@ -19,13 +19,30 @@ const LuxuryHeader = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [langDropdown, setLangDropdown] = useState(false);
+  const [servicesDropdown, setServicesDropdown] = useState(false);
   const location = useLocation();
+  
+  const servicesTimeoutRef = useRef(null);
+  const servicesRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  const handleServicesMouseEnter = () => {
+    if (servicesTimeoutRef.current) {
+      clearTimeout(servicesTimeoutRef.current);
+    }
+    setServicesDropdown(true);
+  };
+
+  const handleServicesMouseLeave = () => {
+    servicesTimeoutRef.current = setTimeout(() => {
+      setServicesDropdown(false);
+    }, 200);
+  };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -35,14 +52,18 @@ const LuxuryHeader = () => {
   const navLinks = [
     { name: t('nav.home'), href: '/', icon: Home },
     { name: t('nav.shop'), href: '/boutique', icon: ShoppingBag },
-    { name: t('nav.services'), href: '/services', icon: BookOpen },
-    { name: t('nav.trainings'), href: '/formations', icon: Calendar },
-    { name: t('nav.events'), href: '/foires', icon: Calendar },
+    { name: 'À propos', href: '/a-propos', icon: Info },
     { name: t('nav.contact'), href: '/contact', icon: Mail },
   ];
 
   const cartCount = cart.length;
   const currentLang = i18n.language;
+
+  const servicesSubMenu = [
+    { name: 'Nos Services', href: '/services', icon: BookOpen },
+    { name: 'Formations', href: '/formations', icon: Calendar },
+    { name: 'Foires & Événements', href: '/foires', icon: Calendar },
+  ];
 
   return (
     <>
@@ -59,6 +80,7 @@ const LuxuryHeader = () => {
               />
             </Link>
 
+            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 bg-gray-50 dark:bg-gray-800 rounded-full p-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -78,10 +100,56 @@ const LuxuryHeader = () => {
                   </Link>
                 );
               })}
+              
+              {/* Services Dropdown - avec délai pour éviter disparition */}
+              <div 
+                ref={servicesRef}
+                className="relative"
+                onMouseEnter={handleServicesMouseEnter}
+                onMouseLeave={handleServicesMouseLeave}
+              >
+                <button
+                  className={`px-5 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                    location.pathname === '/services' || location.pathname === '/formations' || location.pathname === '/foires'
+                      ? 'bg-gradient-to-r from-green-600 to-yellow-500 text-white shadow-md'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span className="font-medium text-sm">Services</span>
+                  <ChevronDown className="w-3 h-3" />
+                </button>
+                
+                {servicesDropdown && (
+                  <div 
+                    className="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-50 border border-gray-100 dark:border-gray-700"
+                    onMouseEnter={handleServicesMouseEnter}
+                    onMouseLeave={handleServicesMouseLeave}
+                  >
+                    {servicesSubMenu.map((item) => {
+                      const Icon = item.icon;
+                      const isActive = location.pathname === item.href;
+                      return (
+                        <Link
+                          key={item.href}
+                          to={item.href}
+                          className={`flex items-center gap-3 px-4 py-3 text-sm transition ${
+                            isActive 
+                              ? 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400 font-semibold'
+                              : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                          }`}
+                        >
+                          <Icon className="w-4 h-4" />
+                          <span>{item.name}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </nav>
 
             <div className="flex items-center gap-3">
-              {/* Theme Toggle Button */}
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition"
@@ -94,7 +162,6 @@ const LuxuryHeader = () => {
                 )}
               </button>
 
-              {/* Language Switcher */}
               <div className="relative">
                 <button
                   onClick={() => setLangDropdown(!langDropdown)}
@@ -110,13 +177,13 @@ const LuxuryHeader = () => {
                   <div className="absolute right-0 mt-2 w-32 bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden z-50 border border-gray-100 dark:border-gray-700">
                     <button
                       onClick={() => changeLanguage('fr')}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-green-50 dark:hover:bg-gray-700 transition flex items-center gap-2 ${currentLang === 'fr' ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-green-50 dark:hover:bg-gray-700 transition flex items-center gap-2 ${currentLang === 'fr' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
                     >
                       <span>🇫🇷</span> Français
                     </button>
                     <button
                       onClick={() => changeLanguage('en')}
-                      className={`w-full text-left px-4 py-2 text-sm hover:bg-green-50 dark:hover:bg-gray-700 transition flex items-center gap-2 ${currentLang === 'en' ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
+                      className={`w-full text-left px-4 py-2 text-sm hover:bg-green-50 dark:hover:bg-gray-700 transition flex items-center gap-2 ${currentLang === 'en' ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 font-semibold' : 'text-gray-700 dark:text-gray-300'}`}
                     >
                       <span>🇬🇧</span> English
                     </button>
@@ -219,6 +286,30 @@ const LuxuryHeader = () => {
                 </Link>
               );
             })}
+            
+            <div className="mt-2">
+              <div className="px-4 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                Services
+              </div>
+              {servicesSubMenu.map((item) => {
+                const Icon = item.icon;
+                const isActive = location.pathname === item.href;
+                return (
+                  <Link
+                    key={item.href}
+                    to={item.href}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className={`flex items-center gap-3 px-4 py-3 rounded-xl transition ml-2 ${
+                      isActive ? 'bg-gradient-to-r from-green-600 to-yellow-500 text-white' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
+                    }`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span className="font-medium">{item.name}</span>
+                    {!isActive && <ChevronRight className="w-4 h-4 ml-auto text-gray-400" />}
+                  </Link>
+                );
+              })}
+            </div>
             
             <div className="border-t border-gray-100 dark:border-gray-800 pt-4 mt-2">
               {user ? (

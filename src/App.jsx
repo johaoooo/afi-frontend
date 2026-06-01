@@ -11,6 +11,7 @@ import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/public/HomePage';
 import ShopPage from './pages/public/ShopPage';
 import ServicesPage from './pages/public/ServicesPage';
+import AboutUsPage from './pages/public/AboutUsPage';
 import ProductDetailPage from './pages/public/ProductDetailPage';
 import TrainingsPage from './pages/public/TrainingsPage';
 import TrainingDetailPage from './pages/public/TrainingDetailPage';
@@ -70,6 +71,7 @@ function App() {
                 <Route index element={<HomePage />} />
                 <Route path="boutique" element={<ShopPage />} />
                 <Route path="services" element={<ServicesPage />} />
+                <Route path="a-propos" element={<AboutUsPage />} />
                 <Route path="produit/:slug" element={<ProductDetailPage />} />
                 <Route path="formations" element={<TrainingsPage />} />
                 <Route path="formation/:slug" element={<TrainingDetailPage />} />
