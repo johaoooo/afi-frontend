@@ -3,7 +3,7 @@ import { Mail, Bell, Sparkles, Send } from 'lucide-react';
 
 const CTASection = () => {
   return (
-    <section className="py-16 bg-gradient-to-r from-green-700 via-green-600 to-yellow-600">
+    <section className="py-16 bg-gradient-to-r from-green-700 via-green-600 to-yellow-600 dark:from-green-900 dark:via-green-800 dark:to-yellow-800 transition-colors duration-300">
       <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           <div className="text-white">
@@ -29,19 +29,19 @@ const CTASection = () => {
             </div>
           </div>
           
-          <div className="bg-white rounded-2xl p-6 shadow-xl">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-xl">
             <form className="flex flex-col sm:flex-row gap-3">
               <input 
                 type="email" 
                 placeholder="Votre adresse email" 
-                className="flex-1 px-5 py-3 rounded-full border border-gray-200 focus:outline-none focus:border-green-500 transition"
+                className="flex-1 px-5 py-3 rounded-full border border-gray-200 dark:border-gray-700 dark:bg-gray-700 dark:text-white focus:outline-none focus:border-green-500 transition"
               />
               <button type="submit" className="bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-3 rounded-full font-semibold hover:shadow-lg transition flex items-center gap-2 justify-center whitespace-nowrap">
                 <Send className="w-4 h-4" />
                 <span>S'abonner</span>
               </button>
             </form>
-            <p className="text-xs text-gray-400 mt-3 text-center">
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-3 text-center">
               Pas de spam, vous pouvez vous désinscrire à tout moment
             </p>
           </div>

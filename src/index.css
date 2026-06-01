@@ -30,123 +30,233 @@
   }
 }
 
-/* Classes de base pour le mode sombre */
+/* Mode sombre - Conservation des couleurs AFI Collection (version sobre) */
 .dark {
   color-scheme: dark;
 }
 
+/* Fonds */
 .dark .bg-white { background-color: #1e1e1e !important; }
 .dark .bg-gray-50 { background-color: #1a1a1a !important; }
 .dark .bg-gray-100 { background-color: #252525 !important; }
 .dark .bg-gray-200 { background-color: #2a2a2a !important; }
-.dark .bg-gray-50\/50 { background-color: #1a1a1a !important; }
-.dark .bg-gradient-to-br { background-image: none !important; background-color: #1a1a1a !important; }
 
+/* Textes */
 .dark .text-gray-500 { color: #9ca3af !important; }
 .dark .text-gray-600 { color: #a0a0a0 !important; }
 .dark .text-gray-700 { color: #d1d5db !important; }
 .dark .text-gray-800 { color: #e5e5e5 !important; }
 .dark .text-gray-900 { color: #f3f4f6 !important; }
 
+/* Bordures */
 .dark .border-gray-100 { border-color: #2d2d2d !important; }
 .dark .border-gray-200 { border-color: #333333 !important; }
 .dark .border-gray-300 { border-color: #404040 !important; }
 
+/* Ombres */
 .dark .shadow-md { box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3); }
 .dark .shadow-lg { box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4); }
 .dark .shadow-xl { box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5); }
 
-.dark .bg-gradient-to-r { background-image: none !important; }
-.dark .bg-gradient-to-br { background-image: none !important; }
-.dark .bg-gradient-to-t { background-image: none !important; }
-.dark .from-green-50 { background-color: #0a2a1a !important; }
-.dark .to-yellow-50 { background-color: #2a2a0a !important; }
-.dark .from-green-700 { background: #1a3d22 !important; }
-.dark .to-yellow-600 { background: #8a5a0a !important; }
+/* ============================================
+   COULEURS AFI COLLECTION - VERSION SOBRE
+   ============================================ */
 
-.dark .ring-offset-white { --tw-ring-offset-color: #1e1e1e; }
-.dark .divide-gray-100 > :not([hidden]) ~ :not([hidden]) { border-color: #2d2d2d !important; }
+/* Vert AFI Collection - conservé avec parcimonie */
+.dark .text-green-600 { color: #4CAF50 !important; }
+.dark .text-green-700 { color: #66BB6A !important; }
+.dark .text-green-500 { color: #4CAF50 !important; }
+.dark .bg-green-100 { background-color: rgba(76, 175, 80, 0.12) !important; }
+.dark .bg-green-50 { background-color: rgba(76, 175, 80, 0.08) !important; }
+.dark .border-green-200 { border-color: rgba(76, 175, 80, 0.25) !important; }
+.dark .border-green-500 { border-color: #4CAF50 !important; }
 
-@layer components {
-  .btn-primary {
-    background: linear-gradient(135deg, #2E7D32 0%, #F9A825 100%);
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-  }
-  .btn-primary:hover {
-    transform: scale(1.05);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-  }
+/* Jaune AFI Collection - utilisé uniquement pour les accents (boutons, étoiles) */
+.dark .text-yellow-500 { color: #FFB74D !important; }
+.dark .text-yellow-600 { color: #FFA726 !important; }
+.dark .bg-yellow-100 { background-color: rgba(255, 183, 77, 0.1) !important; }
+.dark .bg-yellow-50 { background-color: rgba(255, 183, 77, 0.05) !important; }
+.dark .border-yellow-500 { border-color: #FFB74D !important; }
 
-  .btn-secondary {
-    border: 2px solid #2E7D32;
-    color: #2E7D32;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    background: transparent;
-  }
-  .dark .btn-secondary {
-    border-color: #52B788;
-    color: #52B788;
-  }
-  .btn-secondary:hover {
-    background-color: #2E7D32;
-    color: white;
-  }
+/* Rouge AFI Collection (promotions) - conservé */
+.dark .text-red-500 { color: #EF5350 !important; }
+.dark .text-red-600 { color: #E57373 !important; }
+.dark .bg-red-100 { background-color: rgba(239, 83, 80, 0.12) !important; }
+.dark .bg-red-50 { background-color: rgba(239, 83, 80, 0.08) !important; }
 
-  .container-custom {
-    max-width: 80rem;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
+/* Bouton principal - garde ses couleurs (vert dominant, jaune en accent) */
+.dark .btn-primary {
+  background: linear-gradient(135deg, #2E7D32 0%, #2E7D32 80%, #F9A825 100%) !important;
+  color: white !important;
 }
 
-@media (min-width: 640px) {
-  .container-custom {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
+/* Bordures des cartes produits - vert sobre */
+.dark .card {
+  border-color: #3a5a3e !important;
+}
+.dark .card:hover {
+  border-color: #66BB6A !important;
 }
 
-@media (min-width: 1024px) {
-  .container-custom {
-    padding-left: 2rem;
-    padding-right: 2rem;
-  }
+/* Badge promotion - rouge */
+.dark .badge-promo {
+  background: #C62828 !important;
+  color: white !important;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideInLeft {
-  from { opacity: 0; transform: translateX(-50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes slideInRight {
-  from { opacity: 0; transform: translateX(50px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-@keyframes bounce {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(10px); }
+/* Badge nouveau - vert */
+.dark .badge-new {
+  background: #2E7D32 !important;
+  color: white !important;
 }
 
-.animate-fadeInUp { animation: fadeInUp 0.6s ease-out forwards; }
-.animate-slideInLeft { animation: slideInLeft 0.6s ease-out forwards; }
-.animate-slideInRight { animation: slideInRight 0.6s ease-out forwards; }
-.animate-bounce { animation: bounce 2s infinite; }
+/* Prix */
+.dark .price {
+  color: #66BB6A !important;
+}
 
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-.delay-500 { animation-delay: 0.5s; }
+/* Icônes vertes - conservées avec parcimonie */
+.dark svg.text-green-600 {
+  color: #4CAF50 !important;
+}
+
+/* Liens au survol - vert plus clair */
+.dark a:hover .text-green-600 {
+  color: #81C784 !important;
+}
+
+/* Sélection de catégorie active */
+.dark .cat-btn.selected {
+  background: #2E7D32 !important;
+  color: white !important;
+}
+
+/* Chips catégorie au survol - vert uniquement (plus de jaune) */
+.dark .chip:hover {
+  border-color: #66BB6A !important;
+  color: #66BB6A !important;
+}
+
+/* Cartes de service */
+.dark .service-card {
+  border-color: #3a5a3e !important;
+}
+.dark .service-card:hover {
+  border-color: #66BB6A !important;
+}
+
+/* Bouton "Voir" */
+.dark .card-cta {
+  color: #66BB6A !important;
+}
+
+/* Étoiles - jaune doux */
+.dark .star-icon {
+  color: #FFB74D !important;
+  fill: #FFB74D !important;
+}
+
+/* Flèches de navigation - vert */
+.dark .card-cta svg {
+  color: #66BB6A !important;
+}
+
+/* Bouton "Ajouter" */
+.dark .list-add-btn {
+  background: #2E7D32 !important;
+  color: white !important;
+}
+.dark .list-add-btn:hover {
+  background: #1B5E20 !important;
+}
+
+/* Pagination active */
+.dark .page-num.active {
+  background: #2E7D32 !important;
+  border-color: #2E7D32 !important;
+  color: white !important;
+}
+
+/* Bannière promo - vert uniquement */
+.dark .promo-banner {
+  background: #1a3d22 !important;
+}
+
+.dark .promo-cta {
+  background: #2E7D32 !important;
+  color: white !important;
+}
+.dark .promo-cta:hover {
+  background: #1B5E20 !important;
+}
+
+/* Avantages section */
+.dark .advantages-card {
+  background: #1e1e1e !important;
+  border-color: #3a5a3e !important;
+}
+.dark .advantages-card:hover {
+  border-color: #66BB6A !important;
+}
+
+/* Footer */
+.dark footer {
+  background-color: #1a1a1a !important;
+  border-top-color: #3a5a3e !important;
+}
+
+.dark footer .border-gray-800 {
+  border-color: #2d2d2d !important;
+}
+
+.dark footer .bg-gray-800 {
+  background-color: #252525 !important;
+}
+.dark footer .bg-gray-800:hover {
+  background-color: #2E7D32 !important;
+}
+
+.dark footer .text-gray-400 {
+  color: #9ca3af !important;
+}
+.dark footer .text-gray-400:hover {
+  color: #66BB6A !important;
+}
+
+/* Formulaires */
+.dark input, .dark textarea, .dark select {
+  background-color: #2a2a2a !important;
+  border-color: #404040 !important;
+  color: #e5e5e5 !important;
+}
+.dark input:focus, .dark textarea:focus, .dark select:focus {
+  border-color: #66BB6A !important;
+  outline: none !important;
+}
+
+/* Séparateurs */
+.dark .border-t {
+  border-top-color: #333333 !important;
+}
+.dark .border-b {
+  border-bottom-color: #333333 !important;
+}
+.dark .border-l {
+  border-left-color: #333333 !important;
+}
+.dark .border-r {
+  border-right-color: #333333 !important;
+}
+
+/* Lien de réinitialisation - vert uniquement */
+.dark .reset-link {
+  color: #66BB6A !important;
+}
+.dark .reset-link:hover {
+  color: #81C784 !important;
+}
+
+/* Titres de section avec vert uniquement */
+.dark .text-green-600 {
+  color: #4CAF50 !important;
+}

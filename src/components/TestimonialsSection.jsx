@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Star, ChevronLeft, ChevronRight, Users, Sparkles, Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import { Star, ChevronLeft, ChevronRight, Quote, Users, Sparkles, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 
 const testimonials = [
   {
@@ -104,23 +104,22 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
+    <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container-custom">
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 bg-green-100 text-green-700 px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-full mb-4">
             <Users className="w-4 h-4" />
             <span className="text-sm font-semibold">Ils nous font confiance</span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mt-2">
-            Témoignages <span className="text-green-600">vidéo</span>
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mt-2">
+            Témoignages <span className="text-green-600 dark:text-green-400">vidéo</span>
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 mx-auto mt-4 rounded-full"></div>
-          <p className="text-gray-500 max-w-2xl mx-auto mt-4">
+          <p className="text-gray-500 dark:text-gray-400 max-w-2xl mx-auto mt-4">
             Découvrez les retours authentiques de nos clients en vidéo
           </p>
         </div>
 
-        {/* Vidéo principale - taille réduite */}
         <div className="max-w-3xl mx-auto mb-8">
           <div className="relative rounded-2xl overflow-hidden shadow-2xl">
             <video
@@ -168,16 +167,15 @@ const TestimonialsSection = () => {
             </div>
           </div>
 
-          {/* Infos du témoin - plus compactes */}
-          <div className="bg-gradient-to-br from-green-50 to-yellow-50 rounded-xl p-3 mt-3 shadow-md border border-green-200">
+          <div className="bg-gradient-to-br from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-xl p-3 mt-3 shadow-md border border-green-200 dark:border-green-800">
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex items-center gap-2">
                 <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-600 to-yellow-500 flex items-center justify-center text-white font-bold text-sm">
                   {selectedTestimonial.name.charAt(0)}
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-800 text-sm">{selectedTestimonial.name}</h3>
-                  <p className="text-[10px] text-gray-500">{selectedTestimonial.role}</p>
+                  <h3 className="font-semibold text-gray-800 dark:text-white text-sm">{selectedTestimonial.name}</h3>
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{selectedTestimonial.role}</p>
                 </div>
               </div>
               <div className="flex items-center gap-0.5">
@@ -189,11 +187,10 @@ const TestimonialsSection = () => {
           </div>
         </div>
 
-        {/* Carrousel horizontal des miniatures vidéo */}
         <div className="relative max-w-5xl mx-auto mt-8">
           <button
             onClick={() => scrollCarousel('left')}
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 -translate-x-4"
+            className="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 -translate-x-4"
           >
             <ChevronLeft className="w-5 h-5" />
           </button>
@@ -226,14 +223,14 @@ const TestimonialsSection = () => {
                     <span className="text-white text-[9px]">{testimonial.duration}</span>
                   </div>
                 </div>
-                <div className="p-2 bg-white">
+                <div className="p-2 bg-white dark:bg-gray-800">
                   <div className="flex items-center gap-0.5 mb-0.5">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="w-2.5 h-2.5 fill-yellow-500 text-yellow-500" />
                     ))}
                   </div>
-                  <p className="font-semibold text-gray-800 text-xs truncate">{testimonial.name}</p>
-                  <p className="text-gray-500 text-[10px] truncate">{testimonial.product}</p>
+                  <p className="font-semibold text-gray-800 dark:text-white text-xs truncate">{testimonial.name}</p>
+                  <p className="text-gray-500 dark:text-gray-400 text-[10px] truncate">{testimonial.product}</p>
                 </div>
               </button>
             ))}
@@ -241,42 +238,40 @@ const TestimonialsSection = () => {
 
           <button
             onClick={() => scrollCarousel('right')}
-            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white shadow-lg rounded-full p-2 hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 translate-x-4"
+            className="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white dark:bg-gray-800 shadow-lg rounded-full p-2 hover:bg-gradient-to-r hover:from-green-600 hover:to-yellow-500 hover:text-white transition-all duration-300 translate-x-4"
           >
             <ChevronRight className="w-5 h-5" />
           </button>
         </div>
 
-        {/* Indicateurs de progression */}
         <div className="flex justify-center gap-1 mt-4">
           {testimonials.map((_, idx) => (
             <button
               key={idx}
               onClick={() => selectTestimonial(testimonials[idx])}
               className={`h-1 rounded-full transition-all duration-300 ${
-                selectedTestimonial.id === testimonials[idx].id ? 'w-6 bg-green-600' : 'w-3 bg-gray-300'
+                selectedTestimonial.id === testimonials[idx].id ? 'w-6 bg-green-600' : 'w-3 bg-gray-300 dark:bg-gray-600'
               }`}
             />
           ))}
         </div>
 
-        {/* Statistiques de satisfaction */}
         <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
-            <div className="text-xl font-bold text-green-600">500+</div>
-            <div className="text-[10px] text-gray-500">Clients satisfaits</div>
+            <div className="text-xl font-bold text-green-600 dark:text-green-400">500+</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-400">Clients satisfaits</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold text-green-600">98%</div>
-            <div className="text-[10px] text-gray-500">Taux de satisfaction</div>
+            <div className="text-xl font-bold text-green-600 dark:text-green-400">98%</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-400">Taux de satisfaction</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold text-green-600">4.9/5</div>
-            <div className="text-[10px] text-gray-500">Note moyenne</div>
+            <div className="text-xl font-bold text-green-600 dark:text-green-400">4.9/5</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-400">Note moyenne</div>
           </div>
           <div className="text-center">
-            <div className="text-xl font-bold text-green-600">50+</div>
-            <div className="text-[10px] text-gray-500">Témoignages</div>
+            <div className="text-xl font-bold text-green-600 dark:text-green-400">50+</div>
+            <div className="text-[10px] text-gray-500 dark:text-gray-400">Témoignages</div>
           </div>
         </div>
       </div>
