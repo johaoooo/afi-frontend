@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   Truck, Lock, Headphones, Leaf, 
-  Globe, Hand, Gem, Clock, 
-  ThumbsUp, Sparkles
+  Globe, Gem, Clock, 
+  ThumbsUp, Sparkles, Hand
 } from 'lucide-react';
 
 const WhyChooseUsSection = () => {
