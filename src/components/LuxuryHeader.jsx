@@ -7,7 +7,7 @@ import { useTranslation } from 'react-i18next';
 import { 
   Home, ShoppingBag, BookOpen, Calendar, Mail, 
   User, LogIn, LogOut, Menu, X, ChevronDown, ChevronRight,
-  Languages, LayoutDashboard, Moon, Sun, Info, Award, Users
+  Languages, LayoutDashboard, Moon, Sun, Info
 } from 'lucide-react';
 
 const LuxuryHeader = () => {
@@ -23,7 +23,6 @@ const LuxuryHeader = () => {
   const location = useLocation();
   
   const servicesTimeoutRef = useRef(null);
-  const servicesRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -47,12 +46,15 @@ const LuxuryHeader = () => {
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setLangDropdown(false);
+    setTimeout(() => {
+      window.location.reload();
+    }, 100);
   };
 
   const navLinks = [
     { name: t('nav.home'), href: '/', icon: Home },
     { name: t('nav.shop'), href: '/boutique', icon: ShoppingBag },
-    { name: 'À propos', href: '/a-propos', icon: Info },
+    { name: t('nav.about'), href: '/a-propos', icon: Info },
     { name: t('nav.contact'), href: '/contact', icon: Mail },
   ];
 
@@ -60,9 +62,9 @@ const LuxuryHeader = () => {
   const currentLang = i18n.language;
 
   const servicesSubMenu = [
-    { name: 'Nos Services', href: '/services', icon: BookOpen },
-    { name: 'Formations', href: '/formations', icon: Calendar },
-    { name: 'Foires & Événements', href: '/foires', icon: Calendar },
+    { name: t('nav.services'), href: '/services', icon: BookOpen },
+    { name: t('nav.trainings'), href: '/formations', icon: Calendar },
+    { name: t('nav.events'), href: '/foires', icon: Calendar },
   ];
 
   return (
@@ -80,7 +82,6 @@ const LuxuryHeader = () => {
               />
             </Link>
 
-            {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-1 bg-gray-50 dark:bg-gray-800 rounded-full p-1">
               {navLinks.map((link) => {
                 const Icon = link.icon;
@@ -101,9 +102,7 @@ const LuxuryHeader = () => {
                 );
               })}
               
-              {/* Services Dropdown - avec délai pour éviter disparition */}
               <div 
-                ref={servicesRef}
                 className="relative"
                 onMouseEnter={handleServicesMouseEnter}
                 onMouseLeave={handleServicesMouseLeave}
@@ -116,7 +115,7 @@ const LuxuryHeader = () => {
                   }`}
                 >
                   <BookOpen className="w-4 h-4" />
-                  <span className="font-medium text-sm">Services</span>
+                  <span className="font-medium text-sm">{t('nav.services')}</span>
                   <ChevronDown className="w-3 h-3" />
                 </button>
                 
@@ -228,7 +227,7 @@ const LuxuryHeader = () => {
                           className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-green-50 dark:hover:bg-gray-700 transition text-green-600 dark:text-green-400"
                         >
                           <LayoutDashboard className="w-4 h-4" />
-                          <span className="text-sm">Mon compte</span>
+                          <span className="text-sm">{t('nav.profile')}</span>
                         </Link>
                         <button 
                           onClick={() => {
@@ -238,7 +237,7 @@ const LuxuryHeader = () => {
                           className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 transition text-red-600 dark:text-red-400"
                         >
                           <LogOut className="w-4 h-4" />
-                          <span className="text-sm">Déconnexion</span>
+                          <span className="text-sm">{t('nav.logout')}</span>
                         </button>
                       </div>
                     </div>
@@ -289,7 +288,7 @@ const LuxuryHeader = () => {
             
             <div className="mt-2">
               <div className="px-4 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-                Services
+                {t('nav.services')}
               </div>
               {servicesSubMenu.map((item) => {
                 const Icon = item.icon;
@@ -324,7 +323,7 @@ const LuxuryHeader = () => {
                     className="flex items-center gap-3 px-4 py-3 rounded-xl text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800 transition"
                   >
                     <LayoutDashboard className="w-5 h-5" />
-                    <span className="font-medium">Mon compte</span>
+                    <span className="font-medium">{t('nav.profile')}</span>
                   </Link>
                   <button
                     onClick={() => {
@@ -334,7 +333,7 @@ const LuxuryHeader = () => {
                     className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition text-left"
                   >
                     <LogOut className="w-5 h-5" />
-                    <span className="font-medium">Déconnexion</span>
+                    <span className="font-medium">{t('nav.logout')}</span>
                   </button>
                 </>
               ) : (
@@ -344,7 +343,7 @@ const LuxuryHeader = () => {
                   className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 text-white"
                 >
                   <LogIn className="w-5 h-5" />
-                  <span className="font-medium">Se connecter</span>
+                  <span className="font-medium">{t('nav.login')}</span>
                 </Link>
               )}
             </div>

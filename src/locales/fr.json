@@ -11,17 +11,19 @@
     "admin": "Admin",
     "cart": "Panier",
     "profile": "Mon profil",
-    "orders": "Mes commandes"
+    "orders": "Mes commandes",
+    "about": "À propos"
   },
   "hero": {
     "title": "AFI Collection",
     "subtitle": "L'Élégance Artisanale",
-    "description": "Découvrez des créations uniques, faites main avec passion par des artisans talentueux.",
+    "description": "Des créations uniques faites main avec passion par des artisans talentueux.",
     "button": "Découvrir la boutique",
     "trainingButton": "Nos formations",
     "freeDelivery": "Livraison offerte",
     "securePayment": "Paiement sécurisé",
-    "support": "Support 7j/7"
+    "support": "Support 7j/7",
+    "badge": "Collections uniques"
   },
   "footer": {
     "brandDesc": "L'élégance artisanale au service de la tradition et de l'innovation.",
@@ -29,7 +31,10 @@
     "services": "Nos services",
     "contact": "Contact",
     "followUs": "Suivez-nous",
-    "rights": "Tous droits réservés"
+    "rights": "Tous droits réservés",
+    "shop": "Boutique",
+    "trainings": "Formations",
+    "help": "Aide"
   },
   "products": {
     "title": "Nos Produits",
@@ -39,20 +44,32 @@
     "inStock": "En stock",
     "outOfStock": "Rupture",
     "price": "Prix",
-    "quantity": "Quantité"
+    "quantity": "Quantité",
+    "seeAll": "Voir tous les produits",
+    "featured": "Produits phares",
+    "new": "Nouveau",
+    "promo": "Promotion",
+    "save": "Économisez"
   },
   "cart": {
     "empty": "Votre panier est vide",
     "total": "Total",
     "checkout": "Procéder au paiement",
     "remove": "Retirer",
-    "update": "Mettre à jour"
+    "update": "Mettre à jour",
+    "continue": "Continuer mes achats"
   },
   "checkout": {
     "title": "Finaliser ma commande",
     "deliveryInfo": "Informations de livraison",
     "paymentMethod": "Mode de paiement",
-    "confirm": "Confirmer la commande"
+    "confirm": "Confirmer la commande",
+    "name": "Nom complet",
+    "email": "Email",
+    "address": "Adresse",
+    "city": "Ville",
+    "country": "Pays",
+    "phone": "Téléphone"
   },
   "contact": {
     "title": "Contactez-nous",
@@ -61,6 +78,42 @@
     "email": "Email",
     "subject": "Sujet",
     "message": "Message",
-    "send": "Envoyer"
+    "send": "Envoyer",
+    "success": "Message envoyé !",
+    "info": "Nous vous répondrons dans les meilleurs délais"
+  },
+  "about": {
+    "title": "À propos de nous",
+    "subtitle": "Découvrez notre histoire",
+    "ourStory": "Notre histoire",
+    "mission": "Notre mission",
+    "values": "Nos valeurs",
+    "founder": "Notre fondatrice"
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Découvrez nos prestations artisanales",
+    "search": "Rechercher un service...",
+    "categories": "Catégories de services",
+    "expertise": "Nos domaines d'expertise"
+  },
+  "trainings": {
+    "title": "Nos Formations",
+    "subtitle": "Apprenez l'artisanat africain",
+    "duration": "Durée",
+    "location": "Lieu",
+    "online": "En ligne",
+    "places": "places disponibles",
+    "certified": "Certifié",
+    "signup": "S'inscrire",
+    "details": "Voir les détails"
+  },
+  "events": {
+    "title": "Foires & Événements",
+    "subtitle": "Retrouvez-nous dans les salons",
+    "upcoming": "À venir",
+    "past": "Passés",
+    "stand": "Stand",
+    "joinUs": "Pourquoi nous rejoindre ?"
   }
 }

@@ -11,14 +11,24 @@
     "admin": "Admin",
     "cart": "Cart",
     "profile": "My Profile",
-    "orders": "My Orders"
+    "orders": "My Orders",
+    "about": "About"
   },
   "hero": {
     "title": "AFI Collection",
     "subtitle": "Artisan Elegance",
     "description": "Discover unique creations, handmade with passion by talented artisans.",
     "button": "Discover the shop",
-    "trainingButton": "Our trainings",
+    "trainingTitle": "Trainings",
+    "trainingSubtitle": "Learn the techniques",
+    "trainingDescription": "Practical training with our expert artisans.",
+    "trainingButton": "View trainings",
+    "trainingBadge": "Practical learning",
+    "craftTitle": "Dyeing & Macrame",
+    "craftSubtitle": "Colors and traditions",
+    "craftDescription": "Unique handmade creations with natural materials.",
+    "craftBadge": "Authentic craftsmanship",
+    "badge": "Unique collections",
     "freeDelivery": "Free delivery",
     "securePayment": "Secure payment",
     "support": "Support 7/7"
@@ -29,7 +39,10 @@
     "services": "Our services",
     "contact": "Contact",
     "followUs": "Follow us",
-    "rights": "All rights reserved"
+    "rights": "All rights reserved",
+    "shop": "Shop",
+    "trainings": "Trainings",
+    "help": "Help"
   },
   "products": {
     "title": "Our Products",
@@ -39,20 +52,32 @@
     "inStock": "In stock",
     "outOfStock": "Out of stock",
     "price": "Price",
-    "quantity": "Quantity"
+    "quantity": "Quantity",
+    "seeAll": "See all products",
+    "featured": "Featured products",
+    "new": "New",
+    "promo": "Promotion",
+    "save": "Save"
   },
   "cart": {
     "empty": "Your cart is empty",
     "total": "Total",
     "checkout": "Proceed to checkout",
     "remove": "Remove",
-    "update": "Update"
+    "update": "Update",
+    "continue": "Continue shopping"
   },
   "checkout": {
     "title": "Checkout",
     "deliveryInfo": "Delivery information",
     "paymentMethod": "Payment method",
-    "confirm": "Confirm order"
+    "confirm": "Confirm order",
+    "name": "Full name",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "phone": "Phone"
   },
   "contact": {
     "title": "Contact us",
@@ -61,6 +86,42 @@
     "email": "Email",
     "subject": "Subject",
     "message": "Message",
-    "send": "Send"
+    "send": "Send",
+    "success": "Message sent!",
+    "info": "We will reply as soon as possible"
+  },
+  "about": {
+    "title": "About us",
+    "subtitle": "Discover our story",
+    "ourStory": "Our story",
+    "mission": "Our mission",
+    "values": "Our values",
+    "founder": "Our founder"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Discover our artisanal services",
+    "search": "Search for a service...",
+    "categories": "Service categories",
+    "expertise": "Our areas of expertise"
+  },
+  "trainings": {
+    "title": "Our Trainings",
+    "subtitle": "Learn African craftsmanship",
+    "duration": "Duration",
+    "location": "Location",
+    "online": "Online",
+    "places": "places available",
+    "certified": "Certified",
+    "signup": "Sign up",
+    "details": "View details"
+  },
+  "events": {
+    "title": "Fairs & Events",
+    "subtitle": "Find us at trade shows",
+    "upcoming": "Upcoming",
+    "past": "Past",
+    "stand": "Stand",
+    "joinUs": "Why join us?"
   }
 }

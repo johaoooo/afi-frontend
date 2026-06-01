@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 import HeroCarousel from '../../components/HeroCarousel';
 import AdvantagesSection from '../../components/AdvantagesSection';
@@ -12,6 +13,7 @@ import CTASection from '../../components/CTASection';
 import ScrollReveal from '../../components/ScrollReveal';
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [trainings, setTrainings] = useState([]);

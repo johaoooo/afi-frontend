@@ -1,49 +1,51 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ShoppingBag, GraduationCap, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const slides = [
-  {
-    id: 1,
-    title: 'AFI Collection',
-    subtitle: 'Tisser l\'avenir, valoriser le local',
-    description: 'Des créations uniques faites main avec passion par des artisans talentueux.',
-    bgImage: '/images/slide2.png',
-    objectPosition: 'center 35%',
-    buttonText: 'Découvrir',
-    buttonLink: '/boutique',
-    buttonIcon: ShoppingBag,
-    badge: 'Collections uniques'
-  },
-  {
-    id: 2,
-    title: 'Formations',
-    subtitle: 'Transmettre le savoir-faire',
-    description: 'Formations pratiques avec nos experts artisans pour perpétuer la tradition.',
-    bgImage: '/images/slide3.png',
-    objectPosition: 'center',
-    buttonText: 'Voir les formations',
-    buttonLink: '/formations',
-    buttonIcon: GraduationCap,
-    badge: 'Apprentissage pratique'
-  },
-  {
-    id: 3,
-    title: 'Teinture & Macramé',
-    subtitle: 'Couleurs et traditions',
-    description: 'Créations uniques faites main avec des matériaux naturels pour valoriser le local.',
-    bgImage: '/images/slide4.png',
-    objectPosition: 'center 25%',
-    buttonText: 'Explorer',
-    buttonLink: '/boutique',
-    buttonIcon: ShoppingBag,
-    badge: 'Artisanat authentique'
-  }
-];
-
 const HeroCarousel = () => {
+  const { t } = useTranslation();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  const slides = [
+    {
+      id: 1,
+      title: t('hero.title', 'AFI Collection'),
+      subtitle: t('hero.subtitle', "L'Élégance Artisanale"),
+      description: t('hero.description', 'Des créations uniques faites main avec passion.'),
+      bgImage: '/images/slide2.png',
+      objectPosition: 'center 35%',
+      buttonText: t('hero.button', 'Découvrir'),
+      buttonLink: '/boutique',
+      buttonIcon: ShoppingBag,
+      badge: t('hero.badge', 'Collections uniques')
+    },
+    {
+      id: 2,
+      title: t('hero.trainingTitle', 'Formations'),
+      subtitle: t('hero.trainingSubtitle', 'Apprenez les techniques'),
+      description: t('hero.trainingDescription', 'Formations pratiques avec nos experts artisans.'),
+      bgImage: '/images/slide3.png',
+      objectPosition: 'center',
+      buttonText: t('hero.trainingButton', 'Voir les formations'),
+      buttonLink: '/formations',
+      buttonIcon: GraduationCap,
+      badge: t('hero.trainingBadge', 'Apprentissage pratique')
+    },
+    {
+      id: 3,
+      title: t('hero.craftTitle', 'Teinture & Macramé'),
+      subtitle: t('hero.craftSubtitle', 'Couleurs et traditions'),
+      description: t('hero.craftDescription', 'Créations uniques faites main avec des matériaux naturels.'),
+      bgImage: '/images/slide4.png',
+      objectPosition: 'center 25%',
+      buttonText: t('hero.button', 'Explorer'),
+      buttonLink: '/boutique',
+      buttonIcon: ShoppingBag,
+      badge: t('hero.craftBadge', 'Artisanat authentique')
+    }
+  ];
 
   useEffect(() => {
     if (!isAutoPlaying) return;
@@ -93,21 +95,21 @@ const HeroCarousel = () => {
             <div className="max-w-2xl mx-auto text-center px-4">
               <div className="inline-flex items-center gap-2 bg-black/50 backdrop-blur-md rounded-full px-3 py-1 mb-4 animate-fadeInUp border border-white/30">
                 <Sparkles className="w-3 h-3 text-yellow-400" />
-                <span className="text-white text-xs font-medium tracking-wide">{slide.badge}</span>
+                <span className="text-white text-xs font-bold tracking-wide">{slide.badge}</span>
               </div>
               
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 leading-tight animate-slideInLeft drop-shadow-lg">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-black text-white mb-2 leading-tight animate-slideInLeft drop-shadow-lg">
                 {slide.title}
-                <span className="block text-xl md:text-2xl mt-1 font-light tracking-wide text-yellow-400">{slide.subtitle}</span>
+                <span className="block text-xl md:text-2xl mt-1 font-bold tracking-wide text-yellow-400">{slide.subtitle}</span>
               </h1>
               
-              <p className="text-sm md:text-base text-white mb-6 max-w-lg mx-auto leading-relaxed animate-slideInRight delay-200">
+              <p className="text-sm md:text-base text-white mb-6 max-w-lg mx-auto leading-relaxed animate-slideInRight delay-200 font-semibold">
                 {slide.description}
               </p>
               
               <Link 
                 to={slide.buttonLink}
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp delay-300 text-sm"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-2 rounded-full font-bold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 animate-fadeInUp delay-300 text-sm"
               >
                 <slide.buttonIcon className="w-4 h-4" />
                 <span>{slide.buttonText}</span>
