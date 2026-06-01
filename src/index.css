@@ -1,86 +1,71 @@
+/* Import de la police Clash Display via Fontshare */
+@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700,800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Police Calibri - style professionnel pour TOUT le site */
-* {
-  font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
+@layer base {
+  /* Application sur TOUS les éléments du site */
+  * {
+    font-family: 'Clash Display', 'Inter', 'Poppins', sans-serif !important;
+  }
+
+  html, body {
+    font-family: 'Clash Display', 'Inter', 'Poppins', sans-serif !important;
+    color: #1a1a1a;
+    background-color: #ffffff;
+    line-height: 1.5;
+  }
+
+  /* Titres encore plus marqués */
+  h1, h2, h3, h4, h5, h6, .section-title, .hero-title {
+    font-family: 'Clash Display', 'Inter', sans-serif !important;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  /* Tout le texte normal */
+  p, span, a, li, div, button, input, textarea, label, select, option {
+    font-family: 'Clash Display', 'Inter', sans-serif !important;
+  }
 }
 
-/* Playfair Display uniquement pour les titres principaux décoratifs (optionnel) */
-h1, h2, h3, .playfair-title {
-  font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
-  font-weight: 700;
-}
+@layer components {
+  .btn-primary {
+    background: linear-gradient(135deg, #2E7D32 0%, #F9A825 100%);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
+  }
 
-/* Pour les titres de sections, on garde Calibri en bold */
-.section-title {
-  font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
-  font-weight: 800;
-  letter-spacing: -0.02em;
-}
+  .btn-secondary {
+    border: 2px solid #2E7D32;
+    color: #2E7D32;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background-color: #2E7D32;
+    color: white;
+  }
 
-/* Reset et styles de base */
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Calibri', 'Segoe UI', 'Arial', sans-serif;
-  color: #212121;
-  background-color: #ffffff;
-  line-height: 1.5;
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background-color: #f1f1f1;
-  border-radius: 4px;
-}
-::-webkit-scrollbar-thumb {
-  background-color: #2E7D32;
-  border-radius: 4px;
-}
-
-/* Boutons */
-.btn-primary {
-  background: linear-gradient(135deg, #2E7D32 0%, #F9A825 100%);
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  font-family: 'Calibri', sans-serif;
-}
-.btn-primary:hover {
-  transform: scale(1.05);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15);
-}
-
-.btn-secondary {
-  border: 2px solid #2E7D32;
-  color: #2E7D32;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  background: transparent;
-  font-family: 'Calibri', sans-serif;
-}
-.btn-secondary:hover {
-  background-color: #2E7D32;
-  color: white;
-}
-
-.container-custom {
-  max-width: 80rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  .container-custom {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 }
 
 @media (min-width: 640px) {
@@ -125,114 +110,3 @@ body {
 .delay-300 { animation-delay: 0.3s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
-
-/* Animations supplémentaires */
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes zoomIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.5;
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    background-position: -1000px 0;
-  }
-  100% {
-    background-position: 1000px 0;
-  }
-}
-
-@keyframes spin-slow {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.animate-fadeInDown {
-  animation: fadeInDown 0.6s ease-out forwards;
-}
-
-.animate-zoomIn {
-  animation: zoomIn 0.5s ease-out forwards;
-}
-
-.animate-pulse-slow {
-  animation: pulse 2s ease-in-out infinite;
-}
-
-.animate-spin-slow {
-  animation: spin-slow 8s linear infinite;
-}
-
-.shimmer {
-  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-  background-size: 1000px 100%;
-  animation: shimmer 2s infinite;
-}
-
-/* Effet de survol sur les cartes */
-.hover-lift {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.15);
-}
-
-/* Effet de brillance */
-.glow-effect {
-  position: relative;
-  overflow: hidden;
-}
-
-.glow-effect::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    115deg,
-    rgba(255, 255, 255, 0) 10%,
-    rgba(255, 255, 255, 0.3) 50%,
-    rgba(255, 255, 255, 0) 90%
-  );
-  transform: rotate(45deg);
-  animation: shimmer 3s infinite;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.glow-effect:hover::after {
-  opacity: 1;
-}
