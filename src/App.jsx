@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
+import { ThemeProvider } from './context/ThemeContext';
 import Loader from './components/Loader';
 import MainLayout from './layouts/MainLayout';
 
@@ -44,53 +45,54 @@ function App() {
 
   return (
     <Router>
-      <AuthProvider>
-        <CartProvider>
-          <Toaster 
-            position="top-right"
-            toastOptions={{
-              duration: 4000,
-              style: {
-                background: '#363636',
-                color: '#fff',
-                borderRadius: '12px',
-              },
-              success: {
-                iconTheme: {
-                  primary: '#2E7D32',
-                  secondary: '#fff',
+      <ThemeProvider>
+        <AuthProvider>
+          <CartProvider>
+            <Toaster 
+              position="top-right"
+              toastOptions={{
+                duration: 4000,
+                style: {
+                  background: '#363636',
+                  color: '#fff',
+                  borderRadius: '12px',
                 },
-              },
-            }}
-          />
-          <Routes>
-            <Route path="/" element={<MainLayout />}>
-              <Route index element={<HomePage />} />
-              <Route path="boutique" element={<ShopPage />} />
-              <Route path="services" element={<ServicesPage />} />
-              <Route path="produit/:slug" element={<ProductDetailPage />} />
-              <Route path="formations" element={<TrainingsPage />} />
-              <Route path="formation/:slug" element={<TrainingDetailPage />} />
-              <Route path="foires" element={<EventsPage />} />
-              <Route path="evenements" element={<EventsPage />} />
-              <Route path="panier" element={<CartPage />} />
-              <Route path="checkout" element={<CheckoutPage />} />
-              <Route path="connexion" element={<LoginPage />} />
-              <Route path="inscription" element={<RegisterPage />} />
-              <Route path="contact" element={<ContactPage />} />
-            </Route>
-            
-            {/* Admin Routes */}
-            <Route path="/admin" element={<AdminLayout />}>
-              <Route index element={<DashboardPage />} />
-              <Route path="produits" element={<AdminProductsPage />} />
-              <Route path="formations" element={<AdminTrainingsPage />} />
-              <Route path="evenements" element={<AdminEventsPage />} />
-              <Route path="utilisateurs" element={<AdminUsersPage />} />
-            </Route>
-          </Routes>
-        </CartProvider>
-      </AuthProvider>
+                success: {
+                  iconTheme: {
+                    primary: '#2E7D32',
+                    secondary: '#fff',
+                  },
+                },
+              }}
+            />
+            <Routes>
+              <Route path="/" element={<MainLayout />}>
+                <Route index element={<HomePage />} />
+                <Route path="boutique" element={<ShopPage />} />
+                <Route path="services" element={<ServicesPage />} />
+                <Route path="produit/:slug" element={<ProductDetailPage />} />
+                <Route path="formations" element={<TrainingsPage />} />
+                <Route path="formation/:slug" element={<TrainingDetailPage />} />
+                <Route path="foires" element={<EventsPage />} />
+                <Route path="panier" element={<CartPage />} />
+                <Route path="checkout" element={<CheckoutPage />} />
+                <Route path="connexion" element={<LoginPage />} />
+                <Route path="inscription" element={<RegisterPage />} />
+                <Route path="contact" element={<ContactPage />} />
+              </Route>
+              
+              {/* Admin Routes */}
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<DashboardPage />} />
+                <Route path="produits" element={<AdminProductsPage />} />
+                <Route path="formations" element={<AdminTrainingsPage />} />
+                <Route path="evenements" element={<AdminEventsPage />} />
+                <Route path="utilisateurs" element={<AdminUsersPage />} />
+              </Route>
+            </Routes>
+          </CartProvider>
+        </AuthProvider>
+      </ThemeProvider>
     </Router>
   );
 }

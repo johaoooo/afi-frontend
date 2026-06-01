@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
@@ -7,21 +8,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        green: {
-          500: '#2E7D32',
-          600: '#1B5E20',
-          700: '#2E7D32',
-          DEFAULT: '#2E7D32',
-        },
-        yellow: {
-          500: '#F9A825',
-          600: '#F57F17',
-          DEFAULT: '#F9A825',
-        },
-        red: {
-          500: '#D32F2F',
-          DEFAULT: '#D32F2F',
-        },
         primary: {
           DEFAULT: '#2E7D32',
           50: '#E8F5E9',
@@ -48,13 +34,17 @@ export default {
         accent: {
           DEFAULT: '#D32F2F',
         },
-        dark: '#212121',
+        forest: '#2E7D32',
+        gold: '#F9A825',
+        red: '#D32F2F',
+        cream: '#F5F6F5',
         white: '#FFFFFF',
-        gray: '#757575',
+        dark: '#212529',
+        gray: '#6C757D',
       },
       fontFamily: {
+        'playfair': ['Playfair Display', 'serif'],
         'calibri': ['Calibri', 'Segoe UI', 'Arial', 'sans-serif'],
-        'playfair': ['Playfair Display', 'Calibri', 'serif'],
       },
       borderRadius: {
         '4xl': '2rem',
