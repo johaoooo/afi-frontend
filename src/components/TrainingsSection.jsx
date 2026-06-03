@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { Clock, MapPin, Laptop, Users, ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
 
 const TrainingsSection = ({ trainings }) => {
-  // Fonction pour obtenir l'image selon le titre de la formation
   const getTrainingImage = (titre) => {
     if (titre?.toLowerCase().includes('macramé') || titre?.toLowerCase().includes('macrame')) {
       return '/images/slide2.png';
@@ -37,6 +36,7 @@ const TrainingsSection = ({ trainings }) => {
           </p>
         </div>
 
+        {/* 1 colonne sur mobile, 2 sur tablette, 3 sur desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {trainings.slice(0, 3).map((training, idx) => (
             <Link 
@@ -56,7 +56,7 @@ const TrainingsSection = ({ trainings }) => {
                 />
               </div>
               <div className="p-5">
-                <h3 className="text-xl font-bold text-gray-800 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition line-clamp-1">
+                <h3 className="text-lg sm:text-xl font-bold text-gray-800 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition line-clamp-1">
                   {training.titre}
                 </h3>
                 <p className="text-gray-500 dark:text-gray-400 text-sm mt-2 line-clamp-2">
@@ -80,11 +80,11 @@ const TrainingsSection = ({ trainings }) => {
                   <div>
                     {training.estEnPromotion && training.prixPromo ? (
                       <>
-                        <span className="text-green-700 dark:text-green-400 font-bold text-lg">{training.prixPromo} FCFA</span>
+                        <span className="text-green-700 dark:text-green-400 font-bold text-base sm:text-lg">{training.prixPromo} FCFA</span>
                         <span className="text-gray-400 line-through text-sm ml-2">{training.prix} FCFA</span>
                       </>
                     ) : (
-                      <span className="text-green-700 dark:text-green-400 font-bold text-lg">{training.prix} FCFA</span>
+                      <span className="text-green-700 dark:text-green-400 font-bold text-base sm:text-lg">{training.prix} FCFA</span>
                     )}
                   </div>
                   <ArrowRight className="w-5 h-5 text-green-600 dark:text-green-400 group-hover:translate-x-1 transition" />
@@ -95,7 +95,7 @@ const TrainingsSection = ({ trainings }) => {
         </div>
 
         <div className="text-center mt-10">
-          <Link to="/formations" className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+          <Link to="/formations" className="inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
             <span>Voir toutes les formations</span>
             <ArrowRight className="w-5 h-5" />
           </Link>

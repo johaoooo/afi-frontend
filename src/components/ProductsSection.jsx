@@ -46,13 +46,9 @@ const ProductsSection = ({ products }) => {
 
         {/* Produit vedette */}
         {bestSeller && (
-          <div className="mb-12 bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl p-6 border-2 border-green-200 dark:border-green-800 hover:border-yellow-400 dark:hover:border-yellow-600 transition-all duration-300">
-            <div className="flex items-center gap-2 mb-3">
-              <TrendingUp className="w-5 h-5 text-green-600 dark:text-green-400" />
-              <span className="text-green-600 dark:text-green-400 font-semibold text-sm">⭐ Produit vedette</span>
-            </div>
-            <div className="flex flex-col md:flex-row items-center gap-6">
-              <div className="w-24 h-24 rounded-xl overflow-hidden shadow-md border-2 border-green-200 dark:border-green-800">
+          <div className="mb-12 bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl p-4 sm:p-6 border-2 border-green-200 dark:border-green-800 hover:border-yellow-400 dark:hover:border-yellow-600 transition-all duration-300">
+            <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-xl overflow-hidden shadow-md border-2 border-green-200 dark:border-green-800 flex-shrink-0">
                 <img 
                   src={bestSeller.imagePrincipale || '/images/logo.png'} 
                   alt={bestSeller.nom}
@@ -60,11 +56,15 @@ const ProductsSection = ({ products }) => {
                   onError={(e) => { e.target.src = '/images/logo.png'; }}
                 />
               </div>
-              <div className="flex-1 text-center md:text-left">
-                <h3 className="font-bold text-lg text-gray-800 dark:text-white">{bestSeller.nom}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-sm">Notre produit le plus populaire</p>
+              <div className="flex-1 text-center sm:text-left">
+                <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
+                  <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <span className="text-green-600 dark:text-green-400 font-semibold text-xs sm:text-sm">⭐ Produit vedette</span>
+                </div>
+                <h3 className="font-bold text-base sm:text-lg text-gray-800 dark:text-white">{bestSeller.nom}</h3>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">Notre produit le plus populaire</p>
               </div>
-              <Link to={`/produit/${bestSeller.slug}`} className="bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 flex items-center gap-2">
+              <Link to={`/produit/${bestSeller.slug}`} className="bg-gradient-to-r from-green-600 to-yellow-500 text-white px-4 sm:px-6 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 flex items-center gap-2 text-sm">
                 <ShoppingBag className="w-4 h-4" />
                 <span>Découvrir</span>
               </Link>
@@ -72,17 +72,17 @@ const ProductsSection = ({ products }) => {
           </div>
         )}
 
-        {/* Grille des produits phares */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Grille des produits phares - 2 colonnes sur mobile, 4 sur desktop */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {featuredProducts.map((product, idx) => (
             <ProductCard key={product.id} product={product} index={idx} />
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <Link to="/boutique" className="group inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-8 py-3 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105">
+          <Link to="/boutique" className="group inline-flex items-center gap-2 bg-gradient-to-r from-green-600 to-yellow-500 text-white px-6 sm:px-8 py-2 sm:py-3 rounded-full font-semibold hover:shadow-2xl transition-all duration-300 transform hover:scale-105 text-sm sm:text-base">
             <span>Voir tous les produits</span>
-            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition duration-300" />
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition duration-300" />
           </Link>
           <p className="text-gray-400 dark:text-gray-500 text-xs mt-3">+{products.length - 4} autres produits disponibles</p>
         </div>
