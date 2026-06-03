@@ -1,8 +1,8 @@
 import React from 'react';
 import { 
   Truck, Lock, Headphones, Leaf, 
-  Globe, Gem, Clock, 
-  ThumbsUp, Sparkles, Hand
+  Globe, Hand, Gem, Clock, 
+  ThumbsUp, Sparkles
 } from 'lucide-react';
 
 const WhyChooseUsSection = () => {
@@ -34,6 +34,7 @@ const WhyChooseUsSection = () => {
           </p>
         </div>
 
+        {/* Grid responsive: 1 sur mobile, 2 sur tablette, 4 sur desktop */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, idx) => (
             <div key={idx} className="group bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">

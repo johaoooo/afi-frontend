@@ -260,3 +260,36 @@
 .dark .text-green-600 {
   color: #4CAF50 !important;
 }
+
+/* ============================================
+   STYLES RESPONSIFS GLOBAUX
+   ============================================ */
+
+/* Ajustements pour mobile */
+@media (max-width: 640px) {
+  .container-custom {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  h1 {
+    font-size: 1.75rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .btn-primary, .btn-secondary {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Ajustements pour tablette */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container-custom {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}

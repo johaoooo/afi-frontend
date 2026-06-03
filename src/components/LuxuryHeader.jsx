@@ -74,12 +74,12 @@ const LuxuryHeader = () => {
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center">
-            {/* Logo plus grand */}
+            {/* Logo responsive - plus grand sur mobile */}
             <Link to="/" className="group">
               <img 
                 src="/images/logo.png" 
                 alt="AFI Collection Logo" 
-                className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </Link>
 
@@ -149,7 +149,7 @@ const LuxuryHeader = () => {
               </div>
             </nav>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 sm:gap-3">
               <button
                 onClick={toggleTheme}
                 className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition"
@@ -164,7 +164,7 @@ const LuxuryHeader = () => {
                   className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-1"
                 >
                   <Languages className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hidden md:inline">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300 hidden sm:inline">
                     {currentLang === 'fr' ? 'FR' : 'EN'}
                   </span>
                 </button>
@@ -188,7 +188,7 @@ const LuxuryHeader = () => {
                 <div className="relative">
                   <button onClick={() => setActiveDropdown(!activeDropdown)} className="flex items-center gap-2 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                     <User className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                    <span className="hidden md:inline text-sm text-gray-700 dark:text-gray-300">{user.nom?.split(' ')[0]}</span>
+                    <span className="hidden sm:inline text-sm text-gray-700 dark:text-gray-300">{user.nom?.split(' ')[0]}</span>
                     <ChevronDown className={`w-3 h-3 text-gray-700 dark:text-gray-300 transition-transform duration-300 ${activeDropdown ? 'rotate-180' : ''}`} />
                   </button>
                   
@@ -211,8 +211,8 @@ const LuxuryHeader = () => {
                 </div>
               ) : (
                 <Link to="/connexion">
-                  <button className="px-4 py-2 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-green-600 to-yellow-500 text-white hover:shadow-lg flex items-center gap-2">
-                    <LogIn className="w-4 h-4" /><span>{t('nav.login')}</span>
+                  <button className="px-3 sm:px-4 py-2 rounded-full font-medium transition-all duration-300 bg-gradient-to-r from-green-600 to-yellow-500 text-white hover:shadow-lg flex items-center gap-2 text-sm sm:text-base">
+                    <LogIn className="w-4 h-4" /><span className="hidden sm:inline">{t('nav.login')}</span>
                   </button>
                 </Link>
               )}
@@ -226,7 +226,7 @@ const LuxuryHeader = () => {
       </header>
 
       {mobileMenuOpen && (
-        <div className="fixed inset-0 bg-white dark:bg-dark z-40 pt-20 px-6">
+        <div className="fixed inset-0 bg-white dark:bg-dark z-40 pt-20 px-6 overflow-y-auto">
           <nav className="flex flex-col space-y-2">
             {navLinks.map((link) => {
               const Icon = link.icon;

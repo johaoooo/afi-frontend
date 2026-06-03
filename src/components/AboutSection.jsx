@@ -52,7 +52,6 @@ const AboutSection = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                {/* Image avec object-contain pour la voir en entier */}
                 <div className="w-full h-[400px] md:h-[500px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
                   <img 
                     src="/images/sli1.jpeg"
@@ -104,7 +103,7 @@ const AboutSection = () => {
                 et en préservant les techniques traditionnelles.
               </p>
 
-              <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {stats.map((stat, idx) => (
                   <div key={idx} className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 dark:bg-gray-800 hover:shadow-md transition group hover:-translate-y-1 duration-300">
                     <div className={`${stat.bg} p-2 rounded-full group-hover:scale-110 transition`}>
@@ -123,7 +122,7 @@ const AboutSection = () => {
                   <Heart className="w-4 h-4 text-green-600 dark:text-green-400" />
                   Nos valeurs
                 </h4>
-                <div className="grid grid-cols-2 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                   {values.map((value, idx) => (
                     <div key={idx} className="flex items-center gap-2 p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition hover:-translate-y-1 duration-300">
                       <div className={`${value.color} p-1.5 rounded-full`}>
@@ -149,21 +148,22 @@ const AboutSection = () => {
           </ScrollReveal>
         </div>
 
+        {/* Notre parcours - 4 icônes sur une ligne responsive */}
         <ScrollReveal direction="up" delay={400}>
           <div className="mt-20">
             <div className="text-center mb-10">
               <h3 className="text-2xl font-bold text-gray-800 dark:text-white">Notre parcours</h3>
               <div className="w-16 h-0.5 bg-green-600 dark:bg-green-400 mx-auto mt-2 rounded-full"></div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
               {milestones.map((milestone, idx) => (
                 <div key={idx} className="text-center group hover:-translate-y-2 transition duration-300">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-800/50 dark:to-yellow-800/50 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition duration-300 shadow-md">
+                  <div className="w-16 h-16 mx-auto bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-800/50 dark:to-yellow-800/50 rounded-2xl flex items-center justify-center mb-3 group-hover:scale-110 transition duration-300 shadow-md">
                     <milestone.icon className="w-8 h-8 text-green-600 dark:text-green-400" />
                   </div>
                   <div className="text-green-600 dark:text-green-400 font-bold text-lg">{milestone.year}</div>
                   <h4 className="font-semibold text-gray-800 dark:text-white text-sm mt-1">{milestone.title}</h4>
-                  <p className="text-gray-400 dark:text-gray-500 text-xs mt-1">{milestone.description}</p>
+                  <p className="text-gray-400 dark:text-gray-500 text-xs mt-1 hidden sm:block">{milestone.description}</p>
                 </div>
               ))}
             </div>
