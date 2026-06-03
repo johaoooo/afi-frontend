@@ -12,18 +12,18 @@ const ShopHero = ({ onSearch, searchTerm }) => {
 
   return (
     <section className="relative h-48 md:h-56 lg:h-64 flex items-center justify-center overflow-hidden rounded-b-2xl shadow-lg">
-      {/* Background image */}
+      {/* Background image avec la deuxième sandale */}
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200)',
+          backgroundImage: 'url(/images/products/sandals/sandal2.jpg)',
           backgroundSize: 'cover',
-          backgroundPosition: 'center 30%'
+          backgroundPosition: 'center 40%'
         }}
       />
       
       {/* Overlay plus sombre pour meilleure lisibilité */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/40" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/50 to-black/40" />
       
       {/* Contenu */}
       <div className="relative container-custom text-center z-10 px-4">
@@ -34,7 +34,7 @@ const ShopHero = ({ onSearch, searchTerm }) => {
             <span className="text-white text-xs font-medium tracking-wide drop-shadow-md">Collection artisanale</span>
           </div>
           
-          {/* Titre avec ombre pour meilleure lisibilité */}
+          {/* Titre avec ombre */}
           <h1 className="text-2xl md:text-3xl font-bold text-white mb-2 drop-shadow-lg">
             Boutique <span className="text-yellow-400">AFI Collection</span>
           </h1>

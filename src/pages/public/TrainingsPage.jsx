@@ -23,6 +23,23 @@ const TrainingsPage = () => {
     fetchTrainings();
   }, []);
 
+  // Fonction pour obtenir l'image selon le titre de la formation
+  const getTrainingImage = (titre) => {
+    if (titre?.toLowerCase().includes('macramé') || titre?.toLowerCase().includes('macrame')) {
+      return '/images/slide2.png';
+    }
+    if (titre?.toLowerCase().includes('teinture')) {
+      return '/images/pagne.png';
+    }
+    if (titre?.toLowerCase().includes('tricotage')) {
+      return '/images/slide3.png';
+    }
+    if (titre?.toLowerCase().includes('décoration') || titre?.toLowerCase().includes('deco')) {
+      return '/images/slide4.png';
+    }
+    return '/images/slide3.png';
+  };
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-64">
@@ -80,7 +97,7 @@ const TrainingsPage = () => {
                 )}
                 <div className="h-48 overflow-hidden bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-900/50 dark:to-yellow-900/50">
                   <img 
-                    src={training.imagePrincipale || 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500'}
+                    src={getTrainingImage(training.titre)}
                     alt={training.titre}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500'; }}

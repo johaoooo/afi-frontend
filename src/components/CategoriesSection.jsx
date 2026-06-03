@@ -11,6 +11,15 @@ const CategoriesSection = ({ categories }) => {
     'Agroalimentaire': Apple,
   };
 
+  // Images d'arrière-plan pour chaque catégorie
+  const categoryBgImages = {
+    'Macramé': '/images/products/sa/sa1.jpg',
+    'Teinture de Pagne': '/images/pagne.png',
+    'Mode et Accessoires': '/images/products/chem/chem1.jpg',
+    'Décoration': '/images/slide4.png',
+    'Agroalimentaire': '/images/slide3.png',
+  };
+
   return (
     <section className="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="container-custom">
@@ -31,19 +40,21 @@ const CategoriesSection = ({ categories }) => {
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {categories.map((cat, idx) => {
             const Icon = categoryIcons[cat.nom] || Feather;
+            const bgImage = categoryBgImages[cat.nom] || '/images/slide2.png';
             return (
               <Link 
                 key={cat.id} 
                 to={`/boutique?categorie=${cat.id}`}
-                className="group relative bg-white dark:bg-gray-800 rounded-2xl p-5 text-center shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                className="group relative bg-cover bg-center rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                style={{ backgroundImage: `url(${bgImage})`, backgroundSize: 'cover' }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl opacity-0 group-hover:opacity-100 transition duration-300"></div>
-                <div className="relative z-10">
-                  <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-800/50 dark:to-yellow-800/50 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition duration-300">
-                    <Icon className="w-8 h-8 text-green-600 dark:text-green-400" />
+                <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition duration-300"></div>
+                <div className="relative z-10 p-5 text-center min-h-[160px] flex flex-col items-center justify-center">
+                  <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition duration-300">
+                    <Icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-green-600 dark:group-hover:text-green-400 transition text-sm md:text-base">{cat.nom}</h3>
-                  <p className="text-gray-400 dark:text-gray-500 text-xs mt-1">Découvrir →</p>
+                  <h3 className="font-semibold text-white text-sm md:text-base">{cat.nom}</h3>
+                  <p className="text-white/70 text-xs mt-1">Découvrir →</p>
                 </div>
               </Link>
             );

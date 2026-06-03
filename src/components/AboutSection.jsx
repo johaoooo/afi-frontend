@@ -52,11 +52,14 @@ const AboutSection = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img 
-                  src="/images/form.png"
-                  alt="AFI Collection - Artisanat africain"
-                  className="w-full object-cover h-[400px] md:h-[500px] group-hover:scale-105 transition duration-700"
-                />
+                {/* Image avec object-contain pour la voir en entier */}
+                <div className="w-full h-[400px] md:h-[500px] bg-gray-100 dark:bg-gray-800 flex items-center justify-center overflow-hidden">
+                  <img 
+                    src="/images/sli1.jpeg"
+                    alt="AFI Collection - Artisanat africain"
+                    className="w-full h-full object-contain group-hover:scale-105 transition duration-700"
+                  />
+                </div>
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
               
@@ -135,7 +138,6 @@ const AboutSection = () => {
                 </div>
               </div>
 
-              {/* Carte 100% produits artisanaux - correction mode sombre */}
               <div className="flex items-center gap-3 p-4 bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-xl border border-green-200 dark:border-green-800 hover:shadow-md transition duration-300">
                 <Verified className="w-8 h-8 text-green-600 dark:text-green-400" />
                 <div>

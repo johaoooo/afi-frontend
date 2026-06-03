@@ -3,6 +3,23 @@ import { Link } from 'react-router-dom';
 import { Clock, MapPin, Laptop, Users, ArrowRight, GraduationCap, Sparkles } from 'lucide-react';
 
 const TrainingsSection = ({ trainings }) => {
+  // Fonction pour obtenir l'image selon le titre de la formation
+  const getTrainingImage = (titre) => {
+    if (titre?.toLowerCase().includes('macramé') || titre?.toLowerCase().includes('macrame')) {
+      return '/images/slide2.png';
+    }
+    if (titre?.toLowerCase().includes('teinture')) {
+      return '/images/pagne.png';
+    }
+    if (titre?.toLowerCase().includes('tricotage') || titre?.toLowerCase().includes('tricot')) {
+      return '/images/form.png';
+    }
+    if (titre?.toLowerCase().includes('décoration') || titre?.toLowerCase().includes('deco')) {
+      return '/images/slide4.png';
+    }
+    return '/images/slide3.png';
+  };
+
   return (
     <section className="py-16 bg-gradient-to-br from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 transition-colors duration-300">
       <div className="container-custom">
@@ -27,15 +44,15 @@ const TrainingsSection = ({ trainings }) => {
               to={`/formation/${training.slug}`}
               className="group bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-900/50 dark:to-yellow-900/50">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
                 <div className="absolute bottom-4 left-4 z-20">
                   <span className="bg-gradient-to-r from-green-600 to-yellow-500 text-white text-xs px-3 py-1 rounded-full">{training.categorie}</span>
                 </div>
                 <img 
-                  src={training.imagePrincipale || 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500'} 
+                  src={getTrainingImage(training.titre)}
                   alt={training.titre}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-5">

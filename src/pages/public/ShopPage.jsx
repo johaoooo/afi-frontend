@@ -45,7 +45,6 @@ const CSS = `
     min-height: 100vh; 
   }
 
-  /* Toolbar */
   .toolbar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; padding: 20px 0 16px; }
   .toolbar-left, .toolbar-right { display: flex; align-items: center; gap: 10px; }
 
@@ -64,7 +63,6 @@ const CSS = `
     font-weight: 700; display: flex; align-items: center; justify-content: center;
   }
 
-  /* Sort Dropdown */
   .sort-wrapper { position: relative; }
   .sort-menu {
     position: absolute; top: calc(100% + 8px); right: 0; z-index: 40;
@@ -83,14 +81,12 @@ const CSS = `
   .sort-item:hover { background: var(--cream); }
   .sort-item.selected { color: var(--forest); font-weight: 600; background: rgba(46,125,50,0.1); }
 
-  /* View Toggle */
   .view-toggle { display: flex; gap: 2px; background: var(--warm); border-radius: 10px; padding: 3px; }
   .view-btn { padding: 6px 8px; border-radius: 8px; border: none; background: none; cursor: pointer; color: #9aaa9e; transition: all .15s; }
   .view-btn.active { background: var(--paper); color: var(--forest); box-shadow: var(--shadow); }
   .count-label { font-size: 13px; color: #6b8070; }
   .count-label strong { color: var(--ink); font-weight: 600; }
 
-  /* Filter Panel */
   .filter-panel {
     background: var(--paper); border: 1.5px solid var(--border);
     border-radius: 20px; padding: 24px 28px; margin-bottom: 24px;
@@ -126,7 +122,6 @@ const CSS = `
   }
   .reset-link:hover { opacity: .7; }
 
-  /* Category Chips */
   .chips-section { margin-bottom: 32px; }
   .chips-title { font-size: 22px; font-weight: 600; color: var(--ink); margin: 0 0 14px; }
   .chips-row { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -138,16 +133,13 @@ const CSS = `
   }
   .chip:hover { border-color: var(--leaf); color: var(--leaf); transform: translateY(-1px); }
 
-  /* Section Heading */
   .section-heading { margin-bottom: 24px; }
   .section-heading h2 { font-size: 28px; font-weight: 600; color: var(--ink); margin: 0 0 4px; }
   .section-heading p { font-size: 13px; color: #6b8070; margin: 0; }
 
-  /* Product Grid */
   .products-grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
   .products-list { display: flex; flex-direction: column; gap: 14px; }
 
-  /* Product Card */
   .card {
     background: var(--paper); border-radius: 20px; overflow: hidden;
     border: 2px solid var(--forest); transition: all .28s cubic-bezier(.4,0,.2,1);
@@ -206,7 +198,6 @@ const CSS = `
   .price-save { font-size: 11px; color: #D32F2F; font-weight: 600; margin-top: 1px; }
   .card-cta { display: flex; align-items: center; gap: 4px; font-size: 12px; font-weight: 600; color: var(--leaf); }
 
-  /* List Card */
   .list-card {
     display: block; text-decoration: none;
     background: var(--paper); border-radius: 18px; overflow: hidden;
@@ -227,7 +218,6 @@ const CSS = `
   }
   .list-add-btn:hover { background: var(--leaf); transform: scale(1.04); }
 
-  /* Empty State */
   .empty-state { text-align: center; padding: 80px 20px; }
   .empty-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--warm); display: inline-flex; align-items: center; justify-content: center; margin-bottom: 20px; }
   .empty-title { font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 8px; }
@@ -240,7 +230,6 @@ const CSS = `
   }
   .btn-cta:hover { background: var(--leaf); transform: scale(1.03); }
 
-  /* Pagination */
   .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; margin-top: 48px; }
   .page-arrow {
     width: 38px; height: 38px; border-radius: 10px; display: flex; align-items: center; justify-content: center;
@@ -257,7 +246,6 @@ const CSS = `
   .page-num:hover { border-color: var(--leaf); color: var(--leaf); }
   .page-num.active { background: var(--forest); border-color: var(--forest); color: #fff; font-weight: 700; }
 
-  /* Promo Banner */
   .promo-banner {
     margin-top: 48px;
     background: linear-gradient(135deg, #2E7D32 0%, #F9A825 100%);
@@ -283,7 +271,6 @@ const CSS = `
   .dark .promo-cta { color: #1a3d22; }
   .promo-cta:hover { background: var(--cream); transform: scale(1.04); }
 
-  /* Loading */
   .loading-wrap { display: flex; justify-content: center; align-items: center; min-height: 320px; }
   .spinner {
     width: 44px; height: 44px; border-radius: 50%;
@@ -331,7 +318,7 @@ const ShopPage = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [showSort, setShowSort] = useState(false);
   const [viewMode, setViewMode] = useState('grid');
-  const productsPerPage = 12;
+  const productsPerPage = 8;
   const sortRef = useRef(null);
 
   useEffect(() => {
@@ -529,49 +516,55 @@ const ShopPage = () => {
           <>
             {viewMode === 'grid' ? (
               <div className="products-grid">
-                {currentProducts.map(product => (
-                  <Link key={product.id} to={`/produit/${product.slug}`} className="card">
-                    <div className="card-img-wrap">
-                      <img className="card-img" src={product.imagePrincipale || 'https://placehold.co/400x300/2E7D32/white?text=AFI+Product'} alt={product.nom} loading="lazy" />
-                      {product.estEnPromotion && <span className="badge-promo">–{Math.round((1 - product.prixPromo / product.prix) * 100)}%</span>}
-                      {product.estNouveaute && <span className="badge-new">✦ Nouveau</span>}
-                      <div className="card-overlay"><div className="overlay-btn"><Eye className="w-4 h-4" /> Voir détails</div></div>
-                    </div>
-                    <div className="card-body">
-                      {product.categorie && (<div className="card-cat"><span className="card-cat-dot"></span>{product.categorie.nom}</div>)}
-                      <div className="card-name">{product.nom}</div>
-                      <p className="card-desc">{product.descriptionCourte || 'Produit artisanal fait main avec passion.'}</p>
-                      <Stars />
-                      <div className="card-footer"><Price product={product} /><div className="card-cta">Voir <ArrowRight className="w-4 h-4" /></div></div>
-                    </div>
-                    <div className="card-accent"></div>
-                  </Link>
-                ))}
+                {currentProducts.map(product => {
+                  const uniqueKey = `${product.id}-${product.imagePrincipale || 'default'}`;
+                  return (
+                    <Link key={uniqueKey} to={`/produit/${product.slug}`} className="card">
+                      <div className="card-img-wrap">
+                        <img className="card-img" src={product.imagePrincipale || 'https://placehold.co/400x300/2E7D32/white?text=AFI+Product'} alt={product.nom} loading="lazy" />
+                        {product.estEnPromotion && <span className="badge-promo">–{Math.round((1 - product.prixPromo / product.prix) * 100)}%</span>}
+                        {product.estNouveaute && <span className="badge-new">✦ Nouveau</span>}
+                        <div className="card-overlay"><div className="overlay-btn"><Eye className="w-4 h-4" /> Voir détails</div></div>
+                      </div>
+                      <div className="card-body">
+                        {product.categorie && (<div className="card-cat"><span className="card-cat-dot"></span>{product.categorie.nom}</div>)}
+                        <div className="card-name">{product.nom}</div>
+                        <p className="card-desc">{product.descriptionCourte || 'Produit artisanal fait main avec passion.'}</p>
+                        <Stars />
+                        <div className="card-footer"><Price product={product} /><div className="card-cta">Voir <ArrowRight className="w-4 h-4" /></div></div>
+                      </div>
+                      <div className="card-accent"></div>
+                    </Link>
+                  );
+                })}
               </div>
             ) : (
               <div className="products-list">
-                {currentProducts.map(product => (
-                  <Link key={product.id} to={`/produit/${product.slug}`} className="list-card">
-                    <div className="list-inner">
-                      <div className="list-img-wrap">
-                        <img className="list-img" src={product.imagePrincipale || 'https://placehold.co/400x300/2E7D32/white?text=AFI+Product'} alt={product.nom} loading="lazy" />
-                        {product.estEnPromotion && <span className="badge-promo" style={{ position:'absolute', top:10, left:10 }}>–{Math.round((1 - product.prixPromo / product.prix) * 100)}%</span>}
-                      </div>
-                      <div className="list-body">
-                        <div style={{ flex:1 }}>
-                          {product.categorie && <div className="card-cat" style={{ marginBottom:5 }}><span className="card-cat-dot"></span>{product.categorie.nom}</div>}
-                          <div className="card-name" style={{ fontSize:18, WebkitLineClamp:2 }}>{product.nom}</div>
-                          <p className="card-desc" style={{ marginTop:6 }}>{product.descriptionCourte || 'Produit artisanal fait main avec passion.'}</p>
-                          <Stars />
+                {currentProducts.map(product => {
+                  const uniqueKey = `${product.id}-${product.imagePrincipale || 'default'}`;
+                  return (
+                    <Link key={uniqueKey} to={`/produit/${product.slug}`} className="list-card">
+                      <div className="list-inner">
+                        <div className="list-img-wrap">
+                          <img className="list-img" src={product.imagePrincipale || 'https://placehold.co/400x300/2E7D32/white?text=AFI+Product'} alt={product.nom} loading="lazy" />
+                          {product.estEnPromotion && <span className="badge-promo" style={{ position:'absolute', top:10, left:10 }}>–{Math.round((1 - product.prixPromo / product.prix) * 100)}%</span>}
                         </div>
-                        <div className="list-right">
-                          <Price product={product} />
-                          <button className="list-add-btn"><ShoppingBag className="w-3.5 h-3.5" /> Ajouter</button>
+                        <div className="list-body">
+                          <div style={{ flex:1 }}>
+                            {product.categorie && <div className="card-cat" style={{ marginBottom:5 }}><span className="card-cat-dot"></span>{product.categorie.nom}</div>}
+                            <div className="card-name" style={{ fontSize:18, WebkitLineClamp:2 }}>{product.nom}</div>
+                            <p className="card-desc" style={{ marginTop:6 }}>{product.descriptionCourte || 'Produit artisanal fait main avec passion.'}</p>
+                            <Stars />
+                          </div>
+                          <div className="list-right">
+                            <Price product={product} />
+                            <button className="list-add-btn"><ShoppingBag className="w-3.5 h-3.5" /> Ajouter</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </Link>
-                ))}
+                    </Link>
+                  );
+                })}
               </div>
             )}
 
