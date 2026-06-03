@@ -14,7 +14,7 @@ const ProductDetailPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/produits/${slug}`);
+        const response = await axios.get(`https://afi-backend-rneb.onrender.com/api/produits/${slug}`);
         setProduct(response.data.produit);
       } catch (error) {
         console.error('Erreur:', error);

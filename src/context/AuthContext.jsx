@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://afi-backend-rneb.onrender.com/api';
 
 export const useAuth = () => useContext(AuthContext);
 

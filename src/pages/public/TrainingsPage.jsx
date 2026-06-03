@@ -12,7 +12,7 @@ const TrainingsPage = () => {
   useEffect(() => {
     const fetchTrainings = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/formations');
+        const response = await axios.get('https://afi-backend-rneb.onrender.com/api/formations');
         setTrainings(response.data.formations || []);
       } catch (error) {
         console.error('Erreur:', error);

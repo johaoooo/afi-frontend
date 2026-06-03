@@ -23,9 +23,9 @@ const HomePage = () => {
     const fetchData = async () => {
       try {
         const [categoriesRes, productsRes, trainingsRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/categories'),
-          axios.get('http://localhost:5000/api/produits'),
-          axios.get('http://localhost:5000/api/formations')
+          axios.get('https://afi-backend-rneb.onrender.com/api/categories'),
+          axios.get('https://afi-backend-rneb.onrender.com/api/produits'),
+          axios.get('https://afi-backend-rneb.onrender.com/api/formations')
         ]);
         setCategories(categoriesRes.data.categories || []);
         setProducts(productsRes.data.produits || []);

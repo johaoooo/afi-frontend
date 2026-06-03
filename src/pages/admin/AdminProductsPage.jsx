@@ -28,10 +28,10 @@ const AdminProductsPage = () => {
   const fetchData = async () => {
     try {
       const [productsRes, categoriesRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/admin/produits', {
+        axios.get('https://afi-backend-rneb.onrender.com/api/admin/produits', {
           headers: { Authorization: `Bearer ${token}` }
         }),
-        axios.get('http://localhost:5000/api/categories')
+        axios.get('https://afi-backend-rneb.onrender.com/api/categories')
       ]);
       setProducts(productsRes.data.produits || []);
       setCategories(categoriesRes.data.categories || []);
@@ -46,12 +46,12 @@ const AdminProductsPage = () => {
     e.preventDefault();
     try {
       if (editingProduct) {
-        await axios.put(`http://localhost:5000/api/admin/produits/${editingProduct.id}`, formData, {
+        await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/produits/${editingProduct.id}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Produit modifié');
       } else {
-        await axios.post('http://localhost:5000/api/admin/produits', formData, {
+        await axios.post('https://afi-backend-rneb.onrender.com/api/admin/produits', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Produit créé');
@@ -68,7 +68,7 @@ const AdminProductsPage = () => {
   const handleDelete = async (id) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/produits/${id}`, {
+        await axios.delete(`https://afi-backend-rneb.onrender.com/api/admin/produits/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Produit supprimé');

@@ -21,7 +21,7 @@ const DashboardPage = () => {
     const fetchStats = async () => {
       try {
         // Récupérer les statistiques
-        const response = await axios.get('http://localhost:5000/api/admin/stats', {
+        const response = await axios.get('https://afi-backend-rneb.onrender.com/api/admin/stats', {
           headers: { Authorization: `Bearer ${token}` }
         });
         setStats(response.data.stats);

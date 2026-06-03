@@ -30,7 +30,7 @@ const AdminEventsPage = () => {
 
   const fetchEvents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/evenements', {
+      const response = await axios.get('https://afi-backend-rneb.onrender.com/api/admin/evenements', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setEvents(response.data.events || []);
@@ -45,12 +45,12 @@ const AdminEventsPage = () => {
     e.preventDefault();
     try {
       if (editingEvent) {
-        await axios.put(`http://localhost:5000/api/admin/evenements/${editingEvent.id}`, formData, {
+        await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/evenements/${editingEvent.id}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Événement modifié');
       } else {
-        await axios.post('http://localhost:5000/api/admin/evenements', formData, {
+        await axios.post('https://afi-backend-rneb.onrender.com/api/admin/evenements', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Événement créé');
@@ -67,7 +67,7 @@ const AdminEventsPage = () => {
   const handleDelete = async (id) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/evenements/${id}`, {
+        await axios.delete(`https://afi-backend-rneb.onrender.com/api/admin/evenements/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Événement supprimé');

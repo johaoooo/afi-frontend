@@ -331,8 +331,8 @@ const ShopPage = () => {
     const fetchData = async () => {
       try {
         const [productsRes, categoriesRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/produits'),
-          axios.get('http://localhost:5000/api/categories')
+          axios.get('https://afi-backend-rneb.onrender.com/api/produits'),
+          axios.get('https://afi-backend-rneb.onrender.com/api/categories')
         ]);
         setProducts(productsRes.data.produits || []);
         setFilteredProducts(productsRes.data.produits || []);

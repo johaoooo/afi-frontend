@@ -13,7 +13,7 @@ const EventsPage = () => {
   useEffect(() => {
     const fetchEvents = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/evenements?type=${filter}`);
+        const response = await axios.get(`https://afi-backend-rneb.onrender.com/api/evenements?type=${filter}`);
         setEvents(response.data.events || []);
       } catch (error) {
         console.error('Erreur:', error);

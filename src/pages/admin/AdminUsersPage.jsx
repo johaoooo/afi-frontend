@@ -15,7 +15,7 @@ const AdminUsersPage = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/utilisateurs', {
+      const response = await axios.get('https://afi-backend-rneb.onrender.com/api/admin/utilisateurs', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setUsers(response.data.users || []);
@@ -29,7 +29,7 @@ const AdminUsersPage = () => {
   const toggleRole = async (user) => {
     const newRole = user.role === 'admin' ? 'user' : 'admin';
     try {
-      await axios.put(`http://localhost:5000/api/admin/utilisateurs/${user.id}`, { role: newRole }, {
+      await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/utilisateurs/${user.id}`, { role: newRole }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success(`Rôle modifié : ${newRole}`);
@@ -41,7 +41,7 @@ const AdminUsersPage = () => {
 
   const toggleStatus = async (user) => {
     try {
-      await axios.put(`http://localhost:5000/api/admin/utilisateurs/${user.id}`, { estActif: !user.estActif }, {
+      await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/utilisateurs/${user.id}`, { estActif: !user.estActif }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       toast.success(user.estActif ? 'Compte désactivé' : 'Compte activé');
@@ -54,7 +54,7 @@ const AdminUsersPage = () => {
   const handleDelete = async (id) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/utilisateurs/${id}`, {
+        await axios.delete(`https://afi-backend-rneb.onrender.com/api/admin/utilisateurs/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Utilisateur supprimé');

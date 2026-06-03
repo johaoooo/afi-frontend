@@ -22,8 +22,8 @@ const ServicesPage = () => {
     const fetchData = async () => {
       try {
         const [productsRes, trainingsRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/produits'),
-          axios.get('http://localhost:5000/api/formations')
+          axios.get('https://afi-backend-rneb.onrender.com/api/produits'),
+          axios.get('https://afi-backend-rneb.onrender.com/api/formations')
         ]);
         setProducts(productsRes.data.produits || []);
         setTrainings(trainingsRes.data.formations || []);

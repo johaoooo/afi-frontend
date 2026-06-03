@@ -28,7 +28,7 @@ const AdminTrainingsPage = () => {
 
   const fetchTrainings = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/admin/formations', {
+      const response = await axios.get('https://afi-backend-rneb.onrender.com/api/admin/formations', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTrainings(response.data.formations || []);
@@ -43,12 +43,12 @@ const AdminTrainingsPage = () => {
     e.preventDefault();
     try {
       if (editingTraining) {
-        await axios.put(`http://localhost:5000/api/admin/formations/${editingTraining.id}`, formData, {
+        await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/formations/${editingTraining.id}`, formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Formation modifiée');
       } else {
-        await axios.post('http://localhost:5000/api/admin/formations', formData, {
+        await axios.post('https://afi-backend-rneb.onrender.com/api/admin/formations', formData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Formation créée');
@@ -65,7 +65,7 @@ const AdminTrainingsPage = () => {
   const handleDelete = async (id) => {
     if (confirm('Êtes-vous sûr de vouloir supprimer cette formation ?')) {
       try {
-        await axios.delete(`http://localhost:5000/api/admin/formations/${id}`, {
+        await axios.delete(`https://afi-backend-rneb.onrender.com/api/admin/formations/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Formation supprimée');
