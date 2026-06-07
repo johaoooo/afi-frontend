@@ -25,7 +25,7 @@ const ProductsSection = ({ products }) => {
   }
   
   // Produit vedette (le premier produit)
-  const bestSeller = featuredProducts[0] || products[0];
+  const bestSeller = products.find(p => p.id === 1) || products[0];
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">

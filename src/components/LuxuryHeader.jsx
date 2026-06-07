@@ -74,7 +74,6 @@ const LuxuryHeader = () => {
       }`}>
         <div className="container-custom">
           <div className="flex justify-between items-center">
-            {/* Logo responsive - plus grand sur mobile */}
             <Link to="/" className="group">
               <img 
                 src="/images/logo.png" 
@@ -103,6 +102,7 @@ const LuxuryHeader = () => {
                 );
               })}
               
+              {/* Services Dropdown */}
               <div 
                 className="relative"
                 onMouseEnter={handleServicesMouseEnter}
@@ -147,6 +147,21 @@ const LuxuryHeader = () => {
                   </div>
                 )}
               </div>
+
+              {/* Lien ADMIN pour les utilisateurs admin */}
+              {isAdmin && (
+                <Link
+                  to="/admin"
+                  className={`px-5 py-2 rounded-full transition-all duration-300 flex items-center gap-2 ${
+                    location.pathname === '/admin'
+                      ? 'bg-gradient-to-r from-green-600 to-yellow-500 text-white shadow-md'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-700'
+                  }`}
+                >
+                  <LayoutDashboard className="w-4 h-4" />
+                  <span className="font-medium text-sm">Admin</span>
+                </Link>
+              )}
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
@@ -200,10 +215,10 @@ const LuxuryHeader = () => {
                       </div>
                       <div className="p-2">
                         <Link to={isAdmin ? "/admin" : "/mon-compte"} onClick={() => setActiveDropdown(false)} className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-green-50 dark:hover:bg-gray-700 transition text-green-600 dark:text-green-400">
-                          <LayoutDashboard className="w-4 h-4" /><span className="text-sm">{t('nav.profile')}</span>
+                          <LayoutDashboard className="w-4 h-4" /><span className="text-sm">Mon compte</span>
                         </Link>
                         <button onClick={() => { setActiveDropdown(false); logout(); }} className="w-full flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/30 transition text-red-600 dark:text-red-400">
-                          <LogOut className="w-4 h-4" /><span className="text-sm">{t('nav.logout')}</span>
+                          <LogOut className="w-4 h-4" /><span className="text-sm">Déconnexion</span>
                         </button>
                       </div>
                     </div>
@@ -238,6 +253,14 @@ const LuxuryHeader = () => {
               );
             })}
             
+            {/* Lien Admin dans le menu mobile */}
+            {isAdmin && (
+              <Link to="/admin" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 text-white">
+                <LayoutDashboard className="w-5 h-5" />
+                <span className="font-medium">Dashboard Admin</span>
+              </Link>
+            )}
+            
             <div className="mt-2">
               <div className="px-4 py-2 text-sm font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider">{t('nav.services')}</div>
               {servicesSubMenu.map((item) => {
@@ -256,15 +279,15 @@ const LuxuryHeader = () => {
                 <>
                   <div className="px-4 py-2 mb-2"><p className="font-semibold text-gray-800 dark:text-white">{user.nom}</p><p className="text-xs text-gray-500 dark:text-gray-400">{user.email}</p></div>
                   <Link to={isAdmin ? "/admin" : "/mon-compte"} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-xl text-green-600 dark:text-green-400 hover:bg-green-50 dark:hover:bg-gray-800 transition">
-                    <LayoutDashboard className="w-5 h-5" /><span className="font-medium">{t('nav.profile')}</span>
+                    <LayoutDashboard className="w-5 h-5" /><span className="font-medium">Mon compte</span>
                   </Link>
                   <button onClick={() => { setMobileMenuOpen(false); logout(); }} className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 transition text-left">
-                    <LogOut className="w-5 h-5" /><span className="font-medium">{t('nav.logout')}</span>
+                    <LogOut className="w-5 h-5" /><span className="font-medium">Déconnexion</span>
                   </button>
                 </>
               ) : (
                 <Link to="/connexion" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-gradient-to-r from-green-600 to-yellow-500 text-white">
-                  <LogIn className="w-5 h-5" /><span className="font-medium">{t('nav.login')}</span>
+                  <LogIn className="w-5 h-5" /><span className="font-medium">Se connecter</span>
                 </Link>
               )}
             </div>
