@@ -20,7 +20,7 @@ const AdminEventsPage = () => {
     dateFin: '',
     horaires: '',
     stand: '',
-    imageUrl: '',
+    imagePrincipale: '',      // ← Changé: imageUrl → imagePrincipale
     videoUrl: ''
   });
 
@@ -44,23 +44,39 @@ const AdminEventsPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      // Préparer les données avec le bon nom de champ
+      const eventData = {
+        titre: formData.titre,
+        descriptionCourte: formData.descriptionCourte,
+        lieu: formData.lieu,
+        ville: formData.ville,
+        pays: formData.pays,
+        dateDebut: formData.dateDebut,
+        dateFin: formData.dateFin,
+        horaires: formData.horaires,
+        stand: formData.stand,
+        imagePrincipale: formData.imagePrincipale,  // ← Envoi avec le bon nom
+        videoUrl: formData.videoUrl
+      };
+
       if (editingEvent) {
-        await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/evenements/${editingEvent.id}`, formData, {
+        await axios.put(`https://afi-backend-rneb.onrender.com/api/admin/evenements/${editingEvent.id}`, eventData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Événement modifié');
       } else {
-        await axios.post('https://afi-backend-rneb.onrender.com/api/admin/evenements', formData, {
+        await axios.post('https://afi-backend-rneb.onrender.com/api/admin/evenements', eventData, {
           headers: { Authorization: `Bearer ${token}` }
         });
         toast.success('Événement créé');
       }
       setShowModal(false);
       setEditingEvent(null);
-      setFormData({ titre: '', descriptionCourte: '', lieu: '', ville: '', pays: 'Bénin', dateDebut: '', dateFin: '', horaires: '', stand: '', imageUrl: '', videoUrl: '' });
+      resetForm();
       fetchEvents();
     } catch (error) {
-      toast.error('Erreur lors de l\'enregistrement');
+      console.error('Erreur:', error);
+      toast.error(error.response?.data?.message || 'Erreur lors de l\'enregistrement');
     }
   };
 
@@ -78,6 +94,22 @@ const AdminEventsPage = () => {
     }
   };
 
+  const resetForm = () => {
+    setFormData({
+      titre: '',
+      descriptionCourte: '',
+      lieu: '',
+      ville: '',
+      pays: 'Bénin',
+      dateDebut: '',
+      dateFin: '',
+      horaires: '',
+      stand: '',
+      imagePrincipale: '',
+      videoUrl: ''
+    });
+  };
+
   const openModal = (event = null) => {
     if (event) {
       setEditingEvent(event);
@@ -91,12 +123,12 @@ const AdminEventsPage = () => {
         dateFin: event.dateFin ? event.dateFin.slice(0, 16) : '',
         horaires: event.horaires || '',
         stand: event.stand || '',
-        imageUrl: event.imagePrincipale || '',
+        imagePrincipale: event.imagePrincipale || '',  // ← Changé: imageUrl → imagePrincipale
         videoUrl: event.videoUrl || ''
       });
     } else {
       setEditingEvent(null);
-      setFormData({ titre: '', descriptionCourte: '', lieu: '', ville: '', pays: 'Bénin', dateDebut: '', dateFin: '', horaires: '', stand: '', imageUrl: '', videoUrl: '' });
+      resetForm();
     }
     setShowModal(true);
   };
@@ -113,17 +145,18 @@ const AdminEventsPage = () => {
     <div>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-2xl font-bold">Gestion des Événements</h1>
-        <button onClick={() => openModal()} className="btn-primary flex items-center space-x-2 text-sm py-2 px-4">
+        <button onClick={() => openModal()} className="bg-green-600 hover:bg-green-700 text-white flex items-center space-x-2 text-sm py-2 px-4 rounded-lg transition">
           <PlusIcon className="w-4 h-4" />
           <span>Ajouter</span>
         </button>
       </div>
 
-      <div className="bg-white rounded-lg shadow-md overflow-hidden">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden">
         <table className="w-full">
-          <thead className="bg-gray-50">
+          <thead className="bg-gray-50 dark:bg-gray-700">
             <tr className="text-left text-sm">
               <th className="px-4 py-3">ID</th>
+              <th className="px-4 py-3">Image</th>
               <th className="px-4 py-3">Titre</th>
               <th className="px-4 py-3">Lieu</th>
               <th className="px-4 py-3">Dates</th>
@@ -133,8 +166,15 @@ const AdminEventsPage = () => {
           </thead>
           <tbody>
             {events.map((event) => (
-              <tr key={event.id} className="border-t text-sm">
+              <tr key={event.id} className="border-t dark:border-gray-700 text-sm">
                 <td className="px-4 py-3">{event.id}</td>
+                <td className="px-4 py-3">
+                  {event.imagePrincipale ? (
+                    <img src={event.imagePrincipale} alt={event.titre} className="w-10 h-10 object-cover rounded" />
+                  ) : (
+                    <div className="w-10 h-10 bg-gray-200 rounded flex items-center justify-center">📷</div>
+                  )}
+                </td>
                 <td className="px-4 py-3">{event.titre}</td>
                 <td className="px-4 py-3">{event.lieu}, {event.ville}</td>
                 <td className="px-4 py-3 text-xs">
@@ -159,7 +199,7 @@ const AdminEventsPage = () => {
       {/* Modal compact */}
       {showModal && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-xl p-5 w-full max-w-md max-h-[90vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-5 w-full max-w-md max-h-[90vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
               <h2 className="text-lg font-bold">{editingEvent ? 'Modifier' : 'Ajouter'} un événement</h2>
               <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600">
@@ -169,71 +209,83 @@ const AdminEventsPage = () => {
             
             <form onSubmit={handleSubmit} className="space-y-3">
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1">Titre</label>
-                <input type="text" value={formData.titre} onChange={(e) => setFormData({ ...formData, titre: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Titre</label>
+                <input type="text" value={formData.titre} onChange={(e) => setFormData({ ...formData, titre: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" required />
               </div>
               
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-1">Lieu</label>
-                  <input type="text" value={formData.lieu} onChange={(e) => setFormData({ ...formData, lieu: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Lieu</label>
+                  <input type="text" value={formData.lieu} onChange={(e) => setFormData({ ...formData, lieu: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" required />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-1">Ville</label>
-                  <input type="text" value={formData.ville} onChange={(e) => setFormData({ ...formData, ville: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Ville</label>
+                  <input type="text" value={formData.ville} onChange={(e) => setFormData({ ...formData, ville: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" required />
                 </div>
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1">Pays</label>
-                <input type="text" value={formData.pays} onChange={(e) => setFormData({ ...formData, pays: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" />
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Pays</label>
+                <input type="text" value={formData.pays} onChange={(e) => setFormData({ ...formData, pays: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" />
               </div>
               
               <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-1">Date début</label>
-                  <input type="datetime-local" value={formData.dateDebut} onChange={(e) => setFormData({ ...formData, dateDebut: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Date début</label>
+                  <input type="datetime-local" value={formData.dateDebut} onChange={(e) => setFormData({ ...formData, dateDebut: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" required />
                 </div>
                 <div>
-                  <label className="block text-gray-700 text-sm font-medium mb-1">Date fin</label>
-                  <input type="datetime-local" value={formData.dateFin} onChange={(e) => setFormData({ ...formData, dateFin: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                  <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Date fin</label>
+                  <input type="datetime-local" value={formData.dateFin} onChange={(e) => setFormData({ ...formData, dateFin: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" required />
                 </div>
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1">Horaires</label>
-                <input type="text" value={formData.horaires} onChange={(e) => setFormData({ ...formData, horaires: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="9h-18h" />
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Horaires</label>
+                <input type="text" value={formData.horaires} onChange={(e) => setFormData({ ...formData, horaires: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="9h-18h" />
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1">Stand</label>
-                <input type="text" value={formData.stand} onChange={(e) => setFormData({ ...formData, stand: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="Stand A12" />
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Stand</label>
+                <input type="text" value={formData.stand} onChange={(e) => setFormData({ ...formData, stand: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="Stand A12" />
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1">Description courte</label>
-                <textarea value={formData.descriptionCourte} onChange={(e) => setFormData({ ...formData, descriptionCourte: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" rows="2"></textarea>
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1">Description courte</label>
+                <textarea value={formData.descriptionCourte} onChange={(e) => setFormData({ ...formData, descriptionCourte: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" rows="2"></textarea>
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1 flex items-center gap-2">
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1 flex items-center gap-2">
                   <ImageIcon className="w-4 h-4" />
-                  URL de l'image
+                  URL de l'image (Cloudinary)
                 </label>
-                <input type="text" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
+                <input 
+                  type="text" 
+                  value={formData.imagePrincipale} 
+                  onChange={(e) => setFormData({ ...formData, imagePrincipale: e.target.value })} 
+                  className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" 
+                  placeholder="https://res.cloudinary.com/..."
+                />
+                {formData.imagePrincipale && (
+                  <div className="mt-2">
+                    <img src={formData.imagePrincipale} alt="Aperçu" className="w-20 h-20 object-cover rounded border" />
+                    <p className="text-xs text-gray-500 mt-1">Aperçu de l'image</p>
+                  </div>
+                )}
               </div>
               
               <div>
-                <label className="block text-gray-700 text-sm font-medium mb-1 flex items-center gap-2">
+                <label className="block text-gray-700 dark:text-gray-300 text-sm font-medium mb-1 flex items-center gap-2">
                   <VideoIcon className="w-4 h-4" />
                   URL vidéo (YouTube)
                 </label>
-                <input type="text" value={formData.videoUrl} onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://youtube.com/..." />
+                <input type="text" value={formData.videoUrl} onChange={(e) => setFormData({ ...formData, videoUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm dark:bg-gray-700 dark:border-gray-600" placeholder="https://youtube.com/..." />
               </div>
               
               <div className="flex justify-end gap-2 pt-3">
                 <button type="button" onClick={() => setShowModal(false)} className="px-4 py-2 border rounded-lg text-sm">Annuler</button>
-                <button type="submit" className="btn-primary px-4 py-2 text-sm">Enregistrer</button>
+                <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg text-sm">Enregistrer</button>
               </div>
             </form>
           </div>
