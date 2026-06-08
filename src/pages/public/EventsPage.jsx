@@ -116,7 +116,7 @@ const EventsPage = () => {
                     <img 
                       src={event.imagePrincipale || 'https://images.unsplash.com/photo-1566737236501-e88e7b6ccecf?w=600'}
                       alt={event.titre}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="w-full h-full object-cover object-[center_35%] transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
                   <div className="p-6">
