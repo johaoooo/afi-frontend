@@ -3,7 +3,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const AuthContext = createContext();
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'https://afi-backend-rneb.onrender.com/api';
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -45,7 +45,6 @@ export const AuthProvider = ({ children }) => {
       setUser(utilisateur);
       toast.success('Connexion réussie !');
       
-      // Rediriger selon le rôle
       if (utilisateur.role === 'admin') {
         navigate('/admin');
       } else {
