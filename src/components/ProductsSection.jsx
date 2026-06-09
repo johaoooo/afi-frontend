@@ -1,31 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sparkles, TrendingUp, ShoppingBag } from 'lucide-react';
+import { ArrowRight, Sparkles, TrendingUp, ShoppingBag, Award } from 'lucide-react';
 import ProductCard from './ProductCard';
 
 const ProductsSection = ({ products }) => {
-  // Sélectionner des produits spécifiques par ID
-  const sac = products.find(p => p.id === 24); // Sac Artisanal Élégant
-  const sandale = products.find(p => p.id === 36); // Sandale Artisanale
-  const chemise = products.find(p => p.id === 31); // Chemise Tissée Main
-  const autre = products.find(p => p.id === 30); // Sac de Soirée
+  // ID des produits à afficher (adaptez selon vos besoins)
+  // Pour la grille des produits phares
+  const featuredIds = [1, 3, 4, 5]; // Sac Macramé, Sandales, Chemise, Sac de Soirée
+  
+  // Produit vedette (le premier en évidence)
+  const bestSeller = products.find(p => p.id === 9); // valise macramé
   
   // Construire la liste des produits phares
   const featuredProducts = [];
-  
-  if (sac) featuredProducts.push(sac);
-  if (sandale) featuredProducts.push(sandale);
-  if (chemise) featuredProducts.push(chemise);
-  if (autre) featuredProducts.push(autre);
-  
-  // Si certains produits manquent, compléter avec d'autres
-  if (featuredProducts.length < 4) {
-    const otherProducts = products.filter(p => !featuredProducts.includes(p)).slice(0, 4 - featuredProducts.length);
-    featuredProducts.push(...otherProducts);
+  for (const id of featuredIds) {
+    const product = products.find(p => p.id === id);
+    if (product) featuredProducts.push(product);
   }
   
-  // Produit vedette (le premier produit)
-  const bestSeller = products.find(p => p.id === 1) || products[0];
+  // Compléter avec d'autres produits si besoin
+  if (featuredProducts.length < 4) {
+    const otherProducts = products.filter(p => !featuredProducts.includes(p) && p.id !== 9).slice(0, 4 - featuredProducts.length);
+    featuredProducts.push(...otherProducts);
+  }
 
   return (
     <section className="py-20 bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-300">
@@ -44,7 +41,7 @@ const ProductsSection = ({ products }) => {
           </p>
         </div>
 
-        {/* Produit vedette */}
+        {/* Produit vedette - valise macramé */}
         {bestSeller && (
           <div className="mb-12 bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl p-4 sm:p-6 border-2 border-green-200 dark:border-green-800 hover:border-yellow-400 dark:hover:border-yellow-600 transition-all duration-300">
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
@@ -58,11 +55,11 @@ const ProductsSection = ({ products }) => {
               </div>
               <div className="flex-1 text-center sm:text-left">
                 <div className="flex items-center justify-center sm:justify-start gap-2 mb-2">
-                  <TrendingUp className="w-4 h-4 text-green-600 dark:text-green-400" />
+                  <Award className="w-4 h-4 text-green-600 dark:text-green-400" />
                   <span className="text-green-600 dark:text-green-400 font-semibold text-xs sm:text-sm">⭐ Produit vedette</span>
                 </div>
                 <h3 className="font-bold text-base sm:text-lg text-gray-800 dark:text-white">{bestSeller.nom}</h3>
-                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">Notre produit le plus populaire</p>
+                <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm">Idéal pour vos voyages</p>
               </div>
               <Link to={`/produit/${bestSeller.slug}`} className="bg-gradient-to-r from-green-600 to-yellow-500 text-white px-4 sm:px-6 py-2 rounded-full font-semibold hover:shadow-lg transition transform hover:scale-105 flex items-center gap-2 text-sm">
                 <ShoppingBag className="w-4 h-4" />
@@ -72,7 +69,7 @@ const ProductsSection = ({ products }) => {
           </div>
         )}
 
-        {/* Grille des produits phares - 2 colonnes sur mobile, 4 sur desktop */}
+        {/* Grille des produits phares */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
           {featuredProducts.map((product, idx) => (
             <ProductCard key={product.id} product={product} index={idx} />
