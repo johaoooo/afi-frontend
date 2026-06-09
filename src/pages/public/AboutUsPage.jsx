@@ -4,11 +4,11 @@ import ScrollReveal from '../../components/ScrollReveal';
 import { 
   Award, Heart, Users, TrendingUp, Verified, Building2, Sparkles, 
   Target, Globe, Leaf, Clock, Shield, Star, Zap, Crown, Medal, Trophy, Quote,
-  GraduationCap, Briefcase, MapPin, Phone, Mail, Calendar, BookOpen
+  GraduationCap, Briefcase, MapPin, Phone, Mail, Calendar, BookOpen,
+  Handshake, Lightbulb, TreePine, ShoppingBag
 } from 'lucide-react';
 
 const AboutUsPage = () => {
-  // Contenu identique à avant, juste avec PageHero
   const stats = [
     { icon: Heart, value: '500+', label: 'Clients satisfaits', color: 'text-pink-500', bg: 'bg-pink-100 dark:bg-pink-900/30' },
     { icon: Award, value: '10+', label: "Années d'expérience", color: 'text-yellow-500', bg: 'bg-yellow-100 dark:bg-yellow-900/30' },
@@ -25,6 +25,20 @@ const AboutUsPage = () => {
     email: 'afiavitossa@gmail.com',
   };
 
+  const valeurs = [
+    { icon: Handshake, title: 'Authenticité', description: 'Des produits 100% faits main, authentiques et uniques' },
+    { icon: Lightbulb, title: 'Innovation', description: 'Allier tradition et modernité pour des créations originales' },
+    { icon: TreePine, title: 'Durabilité', description: 'Respect de l\'environnement et des matières naturelles' },
+    { icon: Globe, title: 'Rayonnement', description: 'Promouvoir l\'artisanat africain à l\'international' }
+  ];
+
+  const engagements = [
+    { icon: ShoppingBag, title: 'Qualité', desc: 'Sélection rigoureuse des artisans et des matériaux' },
+    { icon: Users, title: 'Équité', desc: 'Rémunération juste des artisans partenaires' },
+    { icon: Shield, title: 'Traçabilité', desc: 'Transparence sur l\'origine des produits' },
+    { icon: GraduationCap, title: 'Formation', desc: 'Transmission des savoir-faire aux jeunes générations' }
+  ];
+
   return (
     <div>
       <PageHero 
@@ -34,7 +48,6 @@ const AboutUsPage = () => {
       />
 
       <div className="container-custom py-12">
-        {/* Le reste du contenu de la page À propos reste identique */}
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 px-4 py-2 rounded-full mb-4">
             <Building2 className="w-4 h-4" />
@@ -63,6 +76,9 @@ const AboutUsPage = () => {
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
                 Notre mission est de promouvoir l'artisanat africain authentique tout en créant des emplois durables et en préservant les techniques traditionnelles.
               </p>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-4">
+                Aujourd'hui, AFI Collection collabore avec plus de 50 artisans à travers le Bénin et exporte ses créations vers l'Europe, l'Afrique et l'Amérique.
+              </p>
               <div className="mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
                 <div className="flex flex-wrap gap-4 text-sm">
                   <div className="flex items-center gap-2 text-gray-600 dark:text-gray-400"><MapPin className="w-4 h-4" /><span>{presidentInfo.location}</span></div>
@@ -73,6 +89,26 @@ const AboutUsPage = () => {
             </div>
           </ScrollReveal>
         </div>
+
+        <ScrollReveal direction="up" delay={350}>
+          <div className="mb-20">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Nos valeurs</h2>
+              <div className="w-24 h-0.5 bg-green-500 mx-auto mt-2"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {valeurs.map((v, idx) => (
+                <div key={idx} className="bg-white dark:bg-gray-800 rounded-2xl p-6 text-center shadow-md hover:shadow-xl transition">
+                  <div className="w-14 h-14 bg-green-100 dark:bg-green-900/50 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <v.icon className="w-7 h-7 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 dark:text-white mb-2">{v.title}</h3>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{v.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
 
         <ScrollReveal direction="up" delay={400}>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
@@ -88,12 +124,32 @@ const AboutUsPage = () => {
           </div>
         </ScrollReveal>
 
+        <ScrollReveal direction="up" delay={450}>
+          <div className="bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-3xl p-8 mb-20">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl font-bold text-gray-800 dark:text-white">Nos engagements</h2>
+              <div className="w-24 h-0.5 bg-green-500 mx-auto mt-2"></div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {engagements.map((e, idx) => (
+                <div key={idx} className="text-center">
+                  <div className="w-12 h-12 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3 shadow-md">
+                    <e.icon className="w-6 h-6 text-green-600" />
+                  </div>
+                  <h3 className="font-semibold text-gray-800 dark:text-white">{e.title}</h3>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{e.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </ScrollReveal>
+
         <ScrollReveal direction="up" delay={500}>
-          <div className="bg-gradient-to-r from-green-50 to-yellow-50 dark:from-green-900/20 dark:to-yellow-900/20 rounded-3xl p-8 text-center">
-            <Quote className="w-12 h-12 text-green-600 dark:text-green-400 mx-auto mb-4" />
-            <p className="text-xl italic text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">{presidentInfo.quote}</p>
-            <p className="font-semibold text-gray-800 dark:text-white mt-4">{presidentInfo.name}</p>
-            <p className="text-sm text-gray-500 dark:text-gray-400">{presidentInfo.title}</p>
+          <div className="bg-gradient-to-r from-green-600 to-yellow-500 rounded-3xl p-8 text-center text-white">
+            <Quote className="w-12 h-12 text-white/50 mx-auto mb-4" />
+            <p className="text-xl italic max-w-2xl mx-auto">{presidentInfo.quote}</p>
+            <p className="font-semibold mt-4">{presidentInfo.name}</p>
+            <p className="text-sm text-white/80">{presidentInfo.title}</p>
           </div>
         </ScrollReveal>
       </div>

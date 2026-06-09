@@ -138,15 +138,15 @@ const MainLayout = () => {
                 <ul className="space-y-3">
                   <li className="flex items-start gap-3 text-gray-500 dark:text-gray-400 text-sm">
                     <MapPin className="w-4 h-4 mt-0.5 flex-shrink-0 text-green-600 dark:text-green-400" />
-                    <span>Cotonou, Bénin</span>
+                    <span>Cotonou, Bénin - Quartier XYZ</span>
                   </li>
                   <li className="flex items-center gap-3 text-gray-500 dark:text-gray-400 text-sm">
                     <Phone className="w-4 h-4 text-green-600 dark:text-green-400" />
-                    <a href="tel:+22999999999" className="hover:text-green-600">+229 99 99 99 99</a>
+                    <a href="tel:+22999999999" className="hover:text-green-600">+229 01 96 06 22 87</a>
                   </li>
                   <li className="flex items-center gap-3 text-gray-500 dark:text-gray-400 text-sm">
                     <Mail className="w-4 h-4 text-green-600 dark:text-green-400" />
-                    <a href="mailto:contact@aficollection.com" className="hover:text-green-600">contact@aficollection.com</a>
+                    <a href="mailto:afiavitossa@gmail.com" className="hover:text-green-600">afiavitossa@gmail.com</a>
                   </li>
                   <li className="flex items-center gap-3 text-gray-500 dark:text-gray-400 text-sm">
                     <Clock className="w-4 h-4 text-green-600 dark:text-green-400" />
