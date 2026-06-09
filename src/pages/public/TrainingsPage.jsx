@@ -53,7 +53,7 @@ const TrainingsPage = () => {
       <PageHero 
         title="Nos Formations" 
         subtitle="Apprenez l'artisanat africain avec nos experts. Des formations pratiques et certifiantes."
-        backgroundImage="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600"
+        backgroundImage="https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441634/WhatsApp_Image_2026-05-03_at_13.14.33_hqblr4.jpg"
       />
       
       <div className="container-custom py-12">

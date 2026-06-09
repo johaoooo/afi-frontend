@@ -24,7 +24,7 @@ const ServicesHero = ({ onSearch, searchTerm, onFilterClick }) => {
       <div 
         className="absolute inset-0 bg-cover bg-center"
         style={{ 
-          backgroundImage: 'url(https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200)',
+          backgroundImage: 'url(https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441621/WhatsApp_Image_2026-05-03_at_13.03.09_2_cujxnk.jpg)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 30%'
         }}

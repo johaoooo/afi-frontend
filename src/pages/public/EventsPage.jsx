@@ -37,7 +37,7 @@ const EventsPage = () => {
       <PageHero 
         title="Foires & Événements" 
         subtitle="Retrouvez AFI Collection dans les salons et foires artisanales. Venez découvrir nos créations en personne !"
-        backgroundImage="https://images.unsplash.com/photo-1566737236501-e88e7b6ccecf?w=1600"
+        backgroundImage="https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441622/WhatsApp_Image_2026-05-03_at_13.15.30_xf2gpq.jpg"
       />
 
       <div className="container-custom py-12">
