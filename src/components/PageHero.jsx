@@ -37,3 +37,4 @@ const PageHero = ({ title, subtitle, backgroundImage }) => {
 };
 
 export default PageHero;
+// force rebuild mar. 09 juin 2026 14:13:16 WAT
