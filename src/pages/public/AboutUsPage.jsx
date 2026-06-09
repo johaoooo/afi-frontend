@@ -51,7 +51,7 @@ const AboutUsPage = () => {
             <div className="relative group">
               <div className="absolute -inset-1 bg-gradient-to-r from-green-600 via-yellow-500 to-red-600 rounded-3xl blur opacity-30 group-hover:opacity-50 transition duration-500"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1564229504985-403fb448ae0f?w=800" alt="Artisanat africain" className="w-full object-cover h-[400px] md:h-[500px] group-hover:scale-105 transition duration-700" />
+                <img src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1781005605/WhatsApp_Image_2026-06-04_at_09.55.33_1_e5jtjs.jpg" alt="Artisanat africain" className="w-full object-cover h-[400px] md:h-[500px] group-hover:scale-105 transition duration-700" />
               </div>
             </div>
           </ScrollReveal>
