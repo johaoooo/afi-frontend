@@ -293,3 +293,43 @@
     padding-right: 1.5rem;
   }
 }
+
+/* Empêcher le débordement horizontal sur mobile */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+* {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Correction débordement mobile */
+body {
+  overflow-x: hidden;
+  position: relative;
+}
+
+.container-custom {
+  overflow-x: hidden;
+}
+
+/* Éviter que les images ne dépassent */
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Correction pour les carrousels et sliders */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+/* Forcer le contenu à rester dans l'écran */
+#root {
+  overflow-x: hidden;
+  width: 100%;
+}
