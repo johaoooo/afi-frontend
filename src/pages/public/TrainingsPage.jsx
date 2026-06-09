@@ -97,7 +97,7 @@ const TrainingsPage = () => {
                 )}
                 <div className="h-48 overflow-hidden bg-gradient-to-br from-green-100 to-yellow-100 dark:from-green-900/50 dark:to-yellow-900/50">
                   <img 
-                    src={getTrainingImage(training.titre)}
+                    src={training.imagePrincipale || getTrainingImage(training.titre)}
                     alt={training.titre}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                     onError={(e) => { e.target.src = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500'; }}

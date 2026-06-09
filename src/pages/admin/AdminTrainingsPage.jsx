@@ -18,7 +18,7 @@ const AdminTrainingsPage = () => {
     lieu: '',
     enLigne: false,
     placesDisponibles: 10,
-    imageUrl: '',
+    imagePrincipale: '',
     videoUrl: ''
   });
 
@@ -55,7 +55,7 @@ const AdminTrainingsPage = () => {
       }
       setShowModal(false);
       setEditingTraining(null);
-      setFormData({ titre: '', prix: '', duree: '', descriptionCourte: '', lieu: '', enLigne: false, placesDisponibles: 10, imageUrl: '', videoUrl: '' });
+      setFormData({ titre: '', prix: '', duree: '', descriptionCourte: '', lieu: '', enLigne: false, placesDisponibles: 10, imagePrincipale: '', videoUrl: '' });
       fetchTrainings();
     } catch (error) {
       toast.error('Erreur lors de l\'enregistrement');
@@ -87,12 +87,12 @@ const AdminTrainingsPage = () => {
         lieu: training.lieu || '',
         enLigne: training.enLigne || false,
         placesDisponibles: training.placesDisponibles || 10,
-        imageUrl: training.imagePrincipale || '',
+        imagePrincipale: training.imagePrincipale || '',
         videoUrl: training.videoUrl || ''
       });
     } else {
       setEditingTraining(null);
-      setFormData({ titre: '', prix: '', duree: '', descriptionCourte: '', lieu: '', enLigne: false, placesDisponibles: 10, imageUrl: '', videoUrl: '' });
+      setFormData({ titre: '', prix: '', duree: '', descriptionCourte: '', lieu: '', enLigne: false, placesDisponibles: 10, imagePrincipale: '', videoUrl: '' });
     }
     setShowModal(true);
   };
@@ -205,7 +205,7 @@ const AdminTrainingsPage = () => {
                   <ImageIcon className="w-4 h-4" />
                   URL de l'image
                 </label>
-                <input type="text" value={formData.imageUrl} onChange={(e) => setFormData({ ...formData, imageUrl: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
+                <input type="text" value={formData.imagePrincipale} onChange={(e) => setFormData({ ...formData, imagePrincipale: e.target.value })} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="https://..." />
               </div>
               
               <div>
