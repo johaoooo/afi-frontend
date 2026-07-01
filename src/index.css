@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #ffffff;
+  }
+
+  :root {
+    --color-afi-green: #1a6b3c;
+    --color-afi-green-light: #2d7d46;
+    --color-afi-green-dark: #14532d;
+  }
+}
+
+@layer utilities {
+  .text-afi-green {
+    color: #1a6b3c;
+  }
+  .bg-afi-green {
+    background-color: #1a6b3c;
+  }
+  .border-afi-green {
+    border-color: #1a6b3c;
+  }
+  .hover\:bg-afi-green:hover {
+    background-color: #1a6b3c;
+  }
+  .hover\:text-afi-green:hover {
+    color: #1a6b3c;
+  }
+  
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 20px rgba(26, 107, 60, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 40px rgba(26, 107, 60, 0.6);
+    }
+  }
+  
+  .animate-fadeInUp {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+  
+  .animate-fadeIn {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .hover-scale {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+  
+  .gradient-text {
+    background: linear-gradient(135deg, #1a6b3c, #4ade80);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
