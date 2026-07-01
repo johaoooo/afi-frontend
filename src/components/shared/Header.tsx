@@ -4,6 +4,7 @@ import {
   FiShoppingCart, FiMenu, FiX, FiTruck, FiShield, 
   FiSearch, FiChevronDown 
 } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const categories = [
   { to: '/boutique/mode', label: 'Mode & Accessoires' },
@@ -21,14 +22,20 @@ const offers = [
 const cartCount = 0;
 
 export function Header() {
+  const { i18n, t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
   const [isOffersOpen, setIsOffersOpen] = useState(false);
-  const [language, setLanguage] = useState<'fr' | 'en'>('fr');
   const location = useLocation();
   const categoriesRef = useRef<HTMLDivElement>(null);
   const offersRef = useRef<HTMLDivElement>(null);
+
+  const currentLanguage = i18n.language;
+
+  const changeLanguage = (lang: string) => {
+    i18n.changeLanguage(lang);
+  };
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 12);
@@ -57,14 +64,14 @@ export function Header() {
 
   return (
     <>
-      {/* Bandeau supérieur - Centré avec FR|EN à droite */}
+      {/* Bandeau supérieur */}
       <div className="bg-[#1a6b3c] text-white text-xs py-1.5 px-4">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex-1 flex items-center justify-center">
             <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
               <span className="flex items-center gap-1.5">
                 <FiTruck className="w-3.5 h-3.5 text-green-300" />
-                <span className="text-white/90">Livraison 48h</span>
+                <span className="text-white/90">{t('header.delivery')}</span>
               </span>
               <span className="text-white/30">·</span>
               <span className="text-white/90">Dakar</span>
@@ -77,25 +84,24 @@ export function Header() {
               <span className="text-white/30">·</span>
               <span className="flex items-center gap-1.5">
                 <FiShield className="w-3.5 h-3.5 text-green-300" />
-                <span className="text-white/90">Paiement sécurisé</span>
+                <span className="text-white/90">{t('header.payment')}</span>
               </span>
             </div>
           </div>
-
           <div className="flex items-center gap-2 shrink-0 ml-4">
             <button
-              onClick={() => setLanguage('fr')}
+              onClick={() => changeLanguage('fr')}
               className={`text-xs font-medium transition-colors ${
-                language === 'fr' ? 'text-white' : 'text-white/60 hover:text-white'
+                currentLanguage === 'fr' ? 'text-white' : 'text-white/60 hover:text-white'
               }`}
             >
               FR
             </button>
             <span className="text-white/30">|</span>
             <button
-              onClick={() => setLanguage('en')}
+              onClick={() => changeLanguage('en')}
               className={`text-xs font-medium transition-colors ${
-                language === 'en' ? 'text-white' : 'text-white/60 hover:text-white'
+                currentLanguage === 'en' ? 'text-white' : 'text-white/60 hover:text-white'
               }`}
             >
               EN
@@ -111,7 +117,7 @@ export function Header() {
       >
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between gap-4 py-2.5">
-            {/* Logo plus grand */}
+            {/* Logo */}
             <Link to="/" className="shrink-0 focus:outline-none">
               <img
                 src="/images/afiii.png"
@@ -120,20 +126,22 @@ export function Header() {
               />
             </Link>
 
-            <div className="flex-1 max-w-sm mx-4 hidden md:block">
+            {/* Barre de recherche */}
+            <div className="flex-1 max-w-md mx-4 hidden md:block">
               <div className="relative">
                 <input
                   type="text"
-                  placeholder="Rechercher..."
-                  className="w-full px-4 py-1.5 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#1a6b3c] focus:bg-white transition-all duration-200"
+                  placeholder={t('header.search')}
+                  className="w-full px-5 py-2.5 bg-gray-100 border-2 border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:border-[#1a6b3c] focus:bg-white focus:shadow-md transition-all duration-200"
                 />
-                <button className="absolute right-2 top-1/2 -translate-y-1/2 p-1 text-gray-400 hover:text-[#1a6b3c] transition-colors">
+                <button className="absolute right-3 top-1/2 -translate-y-1/2 p-2 text-gray-500 hover:text-[#1a6b3c] transition-colors bg-gray-200/50 rounded-full hover:bg-gray-200">
                   <FiSearch className="w-4 h-4" />
                 </button>
               </div>
             </div>
 
             <div className="flex items-center gap-4">
+              {/* Menu Catégories */}
               <div className="relative hidden md:block" ref={categoriesRef}>
                 <button
                   onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
@@ -141,7 +149,7 @@ export function Header() {
                     isCategoriesOpen ? 'text-[#1a6b3c]' : 'text-gray-600 hover:text-[#1a6b3c]'
                   }`}
                 >
-                  Catégories
+                  {t('header.categories')}
                   <FiChevronDown className={`w-4 h-4 transition-transform duration-300 ${isCategoriesOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -161,6 +169,7 @@ export function Header() {
                 )}
               </div>
 
+              {/* Menu Offres */}
               <div className="relative hidden md:block" ref={offersRef}>
                 <button
                   onClick={() => setIsOffersOpen(!isOffersOpen)}
@@ -168,7 +177,7 @@ export function Header() {
                     isOffersOpen ? 'text-[#1a6b3c]' : 'text-gray-600 hover:text-[#1a6b3c]'
                   }`}
                 >
-                  Offres
+                  {t('header.offers')}
                   <FiChevronDown className={`w-4 h-4 transition-transform duration-300 ${isOffersOpen ? 'rotate-180' : ''}`} />
                 </button>
 
@@ -188,6 +197,7 @@ export function Header() {
                 )}
               </div>
 
+              {/* Panier */}
               <Link
                 to="/panier"
                 className="relative p-2 text-gray-600 hover:text-[#1a6b3c] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c] rounded-full"
@@ -201,21 +211,23 @@ export function Header() {
                 )}
               </Link>
 
+              {/* Auth desktop */}
               <div className="hidden md:flex items-center gap-2">
                 <Link
                   to="/connexion"
                   className="text-sm font-semibold text-gray-600 hover:text-[#1a6b3c] transition-colors px-3 py-1.5"
                 >
-                  Connexion
+                  {t('header.login')}
                 </Link>
                 <Link
                   to="/inscription"
                   className="text-sm font-semibold bg-[#1a6b3c] hover:bg-[#14532d] text-white px-4 py-1.5 rounded-full transition-colors"
                 >
-                  S'inscrire
+                  {t('header.register')}
                 </Link>
               </div>
 
+              {/* Burger mobile */}
               <button
                 className="md:hidden p-2 text-gray-600 hover:text-[#1a6b3c] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c] rounded-full"
                 onClick={() => setIsMenuOpen((v) => !v)}
@@ -227,6 +239,7 @@ export function Header() {
           </div>
         </div>
 
+        {/* Menu mobile */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-400 ease-in-out ${
             isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
@@ -236,16 +249,16 @@ export function Header() {
             <div className="relative mb-4">
               <input
                 type="text"
-                placeholder="Rechercher..."
-                className="w-full px-4 py-2 bg-gray-50 border border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#1a6b3c]"
+                placeholder={t('header.search')}
+                className="w-full px-4 py-2.5 bg-gray-100 border-2 border-gray-200 rounded-full text-sm text-gray-700 placeholder-gray-500 focus:outline-none focus:border-[#1a6b3c]"
               />
-              <button className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400">
+              <button className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-gray-500">
                 <FiSearch className="w-4 h-4" />
               </button>
             </div>
 
             <div className="py-2 border-b border-gray-100">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Catégories</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{t('header.categories')}</p>
               {categories.map(({ to, label }) => (
                 <Link
                   key={to}
@@ -258,7 +271,7 @@ export function Header() {
             </div>
 
             <div className="py-2 border-b border-gray-100">
-              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Offres</p>
+              <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">{t('header.offers')}</p>
               {offers.map(({ to, label }) => (
                 <Link
                   key={to}
@@ -275,13 +288,13 @@ export function Header() {
                 to="/connexion"
                 className="text-center text-sm font-semibold text-[#1a6b3c] border-2 border-[#1a6b3c] py-2.5 rounded-full hover:bg-[#1a6b3c]/5 transition-colors"
               >
-                Connexion
+                {t('header.login')}
               </Link>
               <Link
                 to="/inscription"
                 className="text-center text-sm font-semibold bg-[#1a6b3c] text-white py-2.5 rounded-full hover:bg-[#14532d] transition-colors"
               >
-                S'inscrire
+                {t('header.register')}
               </Link>
             </div>
           </nav>

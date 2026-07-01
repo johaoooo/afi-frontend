@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FaFacebook, FaInstagram, FaWhatsapp, FaYoutube } from 'react-icons/fa';
 import { FiMapPin, FiPhone, FiMail, FiArrowRight, FiHeart } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const navLinks = [
   { to: '/', label: 'Accueil' },
@@ -26,16 +27,16 @@ const socials = [
 ];
 
 export function Footer() {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-gray-900 text-white">
       {/* Bande newsletter */}
       <div className="bg-[#1a6b3c] px-6 py-6">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-bold text-white">
-              Newsletter
-            </h3>
-            <p className="text-green-200 text-sm">Restez informé de nos nouvelles collections.</p>
+            <h3 className="text-lg font-bold text-white">{t('footer.newsletter')}</h3>
+            <p className="text-green-200 text-sm">{t('footer.newsletter_desc')}</p>
           </div>
           <form
             className="flex w-full md:w-auto gap-0 rounded-full overflow-hidden border border-white/30 focus-within:border-white/60 transition-all"
@@ -51,18 +52,15 @@ export function Footer() {
               type="submit"
               className="bg-white text-[#1a6b3c] font-bold text-sm px-4 py-2 hover:bg-gray-100 transition-colors flex items-center gap-1"
             >
-              S'abonner
+              {t('footer.subscribe')}
               <FiArrowRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </form>
         </div>
       </div>
 
-      {/* Corps du footer - réduit */}
       <div className="container mx-auto px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
-
-          {/* Colonne 1 — Marque */}
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-3">
               <img
@@ -72,7 +70,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
-              Vitrine de l'excellence artisanale béninoise. Chaque pièce est faite main avec passion.
+              {t('footer.brand')}
             </p>
             <div className="flex gap-2 mt-3">
               {socials.map(({ href, icon: Icon, label }) => (
@@ -88,10 +86,9 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Colonne 2 — Navigation */}
           <div>
             <h4 className="text-xs font-bold tracking-widest uppercase text-green-400 mb-4">
-              Navigation
+              {t('footer.navigation')}
             </h4>
             <ul className="space-y-2">
               {navLinks.map(({ to, label }) => (
@@ -108,10 +105,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 3 — Services */}
           <div>
             <h4 className="text-xs font-bold tracking-widest uppercase text-green-400 mb-4">
-              Services
+              {t('footer.services')}
             </h4>
             <ul className="space-y-2">
               {serviceLinks.map(({ to, label }) => (
@@ -128,10 +124,9 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Colonne 4 — Contact */}
           <div>
             <h4 className="text-xs font-bold tracking-widest uppercase text-green-400 mb-4">
-              Contact
+              {t('footer.contact')}
             </h4>
             <ul className="space-y-2 text-sm text-gray-400">
               <li className="flex items-center gap-2 hover:text-white transition-colors">
@@ -155,27 +150,26 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Bas de footer - réduit */}
       <div className="border-t border-white/10 px-6 py-4 bg-black/30">
         <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-2 text-xs">
           <p className="text-gray-500">
-            &copy; {new Date().getFullYear()} AFI Collection. Tous droits réservés.
+            &copy; {new Date().getFullYear()} AFI Collection. {t('footer.rights')}
           </p>
           <div className="flex items-center gap-4">
             <Link to="/mentions-legales" className="text-gray-500 hover:text-gray-300 transition-colors">
-              Mentions légales
+              {t('footer.legal')}
             </Link>
             <span className="text-gray-700">|</span>
             <Link to="/politique-confidentialite" className="text-gray-500 hover:text-gray-300 transition-colors">
-              Confidentialité
+              {t('footer.privacy')}
             </Link>
             <span className="text-gray-700">|</span>
             <Link to="/cgv" className="text-gray-500 hover:text-gray-300 transition-colors">
-              CGV
+              {t('footer.terms')}
             </Link>
           </div>
           <p className="text-gray-600 text-[10px] flex items-center gap-1">
-            Fait avec <FiHeart className="w-3 h-3 text-[#1a6b3c]" /> au Bénin
+            {t('footer.made_with')} <FiHeart className="w-3 h-3 text-[#1a6b3c]" /> {t('footer.benin')}
           </p>
         </div>
       </div>

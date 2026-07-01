@@ -1,47 +1,18 @@
 import { Link } from 'react-router-dom';
 import { FiArrowRight, FiStar, FiShoppingBag } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const products = [
-  {
-    id: 1,
-    nom: 'Sac en cuir artisanal',
-    prix: 25000,
-    image: '/images/sac.png',
-    note: '4.8',
-    avis: 24,
-    artisan: 'Atelier Kossou',
-  },
-  {
-    id: 2,
-    nom: 'Pagne traditionnel',
-    prix: 15000,
-    image: '/images/pagne.png',
-    note: '4.9',
-    avis: 18,
-    artisan: 'Maison Dossa',
-  },
-  {
-    id: 3,
-    nom: 'Bijoux en perles de verre',
-    prix: 8500,
-    image: '/images/sa1.jpeg',
-    note: '4.7',
-    avis: 31,
-    artisan: 'Atelier Houénou',
-  },
-  {
-    id: 4,
-    nom: "Sculpture en bois d'ébène",
-    prix: 45000,
-    image: '/images/sa2.jpeg',
-    note: '4.9',
-    avis: 12,
-    artisan: 'Maître Amoussou',
-  },
+  { id: 1, nom: 'Sac en cuir artisanal', prix: 25000, image: '/images/sac.png', note: '4.8', avis: 24, artisan: 'Atelier Kossou' },
+  { id: 2, nom: 'Pagne traditionnel', prix: 15000, image: '/images/pagne.png', note: '4.9', avis: 18, artisan: 'Maison Dossa' },
+  { id: 3, nom: 'Bijoux en perles de verre', prix: 8500, image: '/images/sa1.jpeg', note: '4.7', avis: 31, artisan: 'Atelier Houénou' },
+  { id: 4, nom: "Sculpture en bois d'ébène", prix: 45000, image: '/images/sa2.jpeg', note: '4.9', avis: 12, artisan: 'Maître Amoussou' },
 ];
 
 export function ProductsSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
@@ -53,12 +24,12 @@ export function ProductsSection() {
             transition={{ duration: 0.5 }}
           >
             <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
-              Nos produits
+              {t('products.title')}
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight leading-[1.05] mt-3">
-              Pièces
+              {t('products.heading')}
               <br />
-              <span className="text-[#1a6b3c]">populaires.</span>
+              <span className="text-[#1a6b3c]">{t('products.highlight')}</span>
             </h2>
           </motion.div>
 
@@ -66,7 +37,7 @@ export function ProductsSection() {
             to="/boutique"
             className="inline-flex items-center gap-2 text-[#1a6b3c] font-bold text-sm hover:gap-3 transition-all duration-300 shrink-0"
           >
-            Voir tout <FiArrowRight className="w-4 h-4" aria-hidden="true" />
+            {t('products.view_all')} <FiArrowRight className="w-4 h-4" aria-hidden="true" />
           </Link>
         </div>
 

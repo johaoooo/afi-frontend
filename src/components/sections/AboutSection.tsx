@@ -1,22 +1,25 @@
 import { Link } from 'react-router-dom';
 import { FiAward, FiUsers, FiShield, FiGlobe, FiArrowRight, FiHeart, FiClock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const badges = [
-  { icon: FiAward, label: 'Qualité Premium' },
-  { icon: FiGlobe, label: 'Livraison nationale' },
-  { icon: FiUsers, label: '50+ Artisans' },
-  { icon: FiShield, label: 'Paiement Sécurisé' },
+  { key: 'quality', icon: FiAward },
+  { key: 'delivery', icon: FiGlobe },
+  { key: 'artisans', icon: FiUsers },
+  { key: 'payment', icon: FiShield },
 ];
 
 const stats = [
-  { value: '50+', label: 'Artisans', icon: FiUsers },
-  { value: '500+', label: 'Clients', icon: FiHeart },
-  { value: '150+', label: 'Produits', icon: FiAward },
-  { value: '98%', label: 'Satisfaction', icon: FiClock },
+  { value: '50+', key: 'artisans_count' },
+  { value: '500+', key: 'clients_count' },
+  { value: '150+', key: 'products_count' },
+  { value: '98%', key: 'satisfaction' },
 ];
 
 export function AboutSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
@@ -32,7 +35,7 @@ export function AboutSection() {
             <div className="rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
               <img
                 src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1781005605/WhatsApp_Image_2026-06-04_at_09.55.33_1_e5jtjs.jpg"
-                alt="Artisane béninoise au travail"
+                alt={t('about.title')}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 loading="lazy"
                 onError={(e) => {
@@ -50,7 +53,7 @@ export function AboutSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
             >
               <p className="text-3xl font-black text-[#1a6b3c]">100%</p>
-              <p className="text-sm font-semibold text-gray-700 mt-0.5">Authentique & fait main</p>
+              <p className="text-sm font-semibold text-gray-700 mt-0.5">{t('about.authentic')}</p>
             </motion.div>
 
             <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#1a6b3c] rounded-tl-3xl" />
@@ -64,7 +67,7 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4 }}
             >
-              À propos de nous
+              {t('about.title')}
             </motion.span>
 
             <motion.h2
@@ -74,9 +77,9 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              L'artisanat africain
+              {t('about.heading')}
               <br />
-              <span className="text-[#1a6b3c]">à son meilleur.</span>
+              <span className="text-[#1a6b3c]">{t('about.highlight')}</span>
             </motion.h2>
 
             <motion.p
@@ -86,15 +89,13 @@ export function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              AFI Collection est une vitrine de l'excellence artisanale béninoise — macramé,
-              teinture de pagne, décoration, agroalimentaire. Chaque pièce raconte l'histoire
-              d'un artisan passionné qui perpétue des techniques transmises de génération en génération.
+              {t('about.description')}
             </motion.p>
 
             <div className="grid grid-cols-2 gap-3 pt-2">
               {badges.map((item, i) => (
                 <motion.div
-                  key={item.label}
+                  key={item.key}
                   className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-[#1a6b3c]/5 transition-all duration-300"
                   initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -104,7 +105,9 @@ export function AboutSection() {
                   <div className="w-8 h-8 rounded-lg bg-[#1a6b3c]/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-4 h-4 text-[#1a6b3c]" />
                   </div>
-                  <span className="text-sm font-semibold text-gray-700">{item.label}</span>
+                  <span className="text-sm font-semibold text-gray-700">
+                    {t(`about.badge_${item.key}`)}
+                  </span>
                 </motion.div>
               ))}
             </div>
@@ -113,7 +116,7 @@ export function AboutSection() {
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">
                   <p className="text-2xl font-black text-[#1a6b3c]">{stat.value}</p>
-                  <p className="text-xs text-gray-500">{stat.label}</p>
+                  <p className="text-xs text-gray-500">{t(`about.${stat.key}`)}</p>
                 </div>
               ))}
             </div>
@@ -128,7 +131,7 @@ export function AboutSection() {
                 to="/a-propos"
                 className="inline-flex items-center gap-2 bg-[#1a6b3c] hover:bg-[#14532d] text-white font-bold px-7 py-3.5 rounded-full transition-colors duration-300 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c] focus-visible:ring-offset-2"
               >
-                En savoir plus
+                {t('about.button')}
                 <FiArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
             </motion.div>

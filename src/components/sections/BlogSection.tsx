@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FiCalendar, FiUser, FiArrowRight, FiClock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const articles = [
   {
@@ -36,18 +37,20 @@ const articles = [
 ];
 
 export function BlogSection() {
+  const { t } = useTranslation();
+
   return (
     <section className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
           <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
-            Blog & Actualités
+            {t('blog.title')}
           </span>
           <h2 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight leading-[1.05] mt-3">
-            Dernières <span className="text-[#1a6b3c]">actualités</span>
+            {t('blog.heading')} <span className="text-[#1a6b3c]">{t('blog.highlight')}</span>
           </h2>
           <p className="text-gray-500 max-w-2xl mx-auto mt-2">
-            Restez informé des tendances et de l'actualité de l'artisanat africain
+            {t('blog.subtitle')}
           </p>
         </div>
 

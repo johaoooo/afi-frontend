@@ -1,137 +1,127 @@
 {
-  "nav": {
-    "home": "Accueil",
-    "shop": "Boutique",
-    "about": "À propos",
-    "contact": "Contact",
-    "services": "Services",
-    "trainings": "Formations",
-    "events": "Foires",
-    "login": "Connexion"
+  "header": {
+    "delivery": "Livraison 48h",
+    "payment": "Paiement sécurisé",
+    "search": "Rechercher un produit...",
+    "categories": "Catégories",
+    "offers": "Offres",
+    "login": "Connexion",
+    "register": "S'inscrire"
   },
   "hero": {
-    "title": "AFI Collection",
-    "subtitle": "L'Élégance Artisanale",
-    "description": "Des créations uniques faites main avec passion.",
-    "button": "Découvrir",
-    "badge": "Collections uniques",
-    "trainingTitle": "Formations",
-    "trainingSubtitle": "Apprenez les techniques",
-    "trainingDescription": "Formations pratiques avec nos experts artisans.",
-    "trainingButton": "Voir les formations",
-    "trainingBadge": "Apprentissage pratique",
-    "craftTitle": "Teinture & Macramé",
-    "craftSubtitle": "Couleurs et traditions",
-    "craftDescription": "Créations uniques faites main avec des matériaux naturels.",
-    "craftBadge": "Artisanat authentique"
-  },
-  "footer": {
-    "brandDesc": "L'élégance artisanale au service de la tradition et de l'innovation.",
-    "shop": "Boutique",
-    "trainings": "Formations",
-    "help": "Aide",
-    "contact": "Contact",
-    "rights": "Tous droits réservés"
-  },
-  "contact": {
-    "title": "Contactez-nous",
-    "subtitle": "Une question ? Un projet ? N'hésitez pas à nous écrire"
-  },
-  "trainings": {
-    "title": "Nos Formations",
-    "subtitle": "Apprenez l'artisanat africain avec nos experts. Des formations pratiques et certifiantes."
-  },
-  "events": {
-    "title": "Foires & Événements",
-    "subtitle": "Retrouvez AFI Collection dans les salons et foires artisanales. Venez découvrir nos créations en personne !"
+    "title": "L'artisanat",
+    "highlight": "béninois.",
+    "description": "Des créations uniques, tissées et façonnées à la main par des artisans d'exception.",
+    "button_shop": "Explorer la boutique",
+    "button_training": "Nos formations"
   },
   "about": {
     "title": "À propos de nous",
-    "subtitle": "Découvrez l'histoire, les valeurs et l'engagement d'AFI Collection",
-    "historyEyebrow": "Notre histoire",
-    "historyTitlePrefix": "L'histoire d'",
-    "imageAlt": "Artisane béninoise travaillant sur une création AFI Collection",
-    "history": {
-      "p1": "AFI Collection est née d'une passion profonde pour l'artisanat africain. Fondée par Afiavi G. Honorine TOSSA, notre entreprise perpétue un héritage artisanal débuté dès 1986.",
-      "p2": "Notre mission est de promouvoir l'artisanat africain authentique tout en créant des emplois durables et en préservant les techniques traditionnelles.",
-      "p3": "Aujourd'hui, AFI Collection collabore avec plus de 50 artisans à travers le Bénin et exporte ses créations vers l'Europe, l'Afrique et l'Amérique."
-    },
-    "valuesTitle": "Nos valeurs",
-    "values": {
-      "authenticity": {
-        "title": "Authenticité",
-        "desc": "Des produits 100% faits main, authentiques et uniques"
-      },
-      "innovation": {
-        "title": "Innovation",
-        "desc": "Allier tradition et modernité pour des créations originales"
-      },
-      "sustainability": {
-        "title": "Durabilité",
-        "desc": "Respect de l'environnement et des matières naturelles"
-      },
-      "reach": {
-        "title": "Rayonnement",
-        "desc": "Promouvoir l'artisanat africain à l'international"
-      }
-    },
-    "statsAriaLabel": "Chiffres clés",
-    "stats": {
-      "clients": "Clients satisfaits",
-      "experience": "Années d'expérience",
-      "artisans": "Artisans partenaires",
-      "satisfaction": "Taux de satisfaction"
-    },
-    "commitmentsTitle": "Nos engagements",
-    "commitments": {
-      "quality": {
-        "title": "Qualité",
-        "desc": "Sélection rigoureuse des artisans et des matériaux"
-      },
-      "equity": {
-        "title": "Équité",
-        "desc": "Rémunération juste des artisans partenaires"
-      },
-      "traceability": {
-        "title": "Traçabilité",
-        "desc": "Transparence sur l'origine des produits"
-      },
-      "training": {
-        "title": "Formation",
-        "desc": "Transmission des savoir-faire aux jeunes générations"
-      }
-    },
-    "president": {
-      "title": "Fondatrice & Présidente Directrice Générale",
-      "quote": "L'artisanat est l'âme d'un peuple. Chez AFI Collection, nous tissons l'avenir tout en valorisant le local."
-    }
+    "heading": "L'artisanat africain",
+    "highlight": "à son meilleur.",
+    "description": "AFI Collection est une vitrine de l'excellence artisanale béninoise — macramé, teinture de pagne, décoration, agroalimentaire. Chaque pièce raconte l'histoire d'un artisan passionné qui perpétue des techniques transmises de génération en génération.",
+    "badge_quality": "Qualité Premium",
+    "badge_delivery": "Livraison nationale",
+    "badge_artisans": "50+ Artisans",
+    "badge_payment": "Paiement Sécurisé",
+    "button": "En savoir plus"
   },
-  "shop": {
-    "filters": "Filtres",
-    "reset": "Réinitialiser",
-    "products": "articles",
-    "refine": "Affiner la recherche",
-    "category": "Catégorie",
-    "allProducts": "Tous les produits",
-    "price": "Prix (FCFA)",
-    "min": "Min",
-    "max": "Max",
-    "resetAll": "Tout réinitialiser",
-    "explore": "Explorer par catégorie",
-    "discover": "Découvrez notre sélection de",
-    "noResults": "Aucun résultat trouvé",
-    "tryAgain": "Essayez de modifier vos critères de recherche ou de réinitialiser les filtres.",
-    "resetFilters": "Réinitialiser les filtres",
-    "view": "Voir",
-    "viewDetails": "Voir détails",
-    "soldOut": "Rupture de stock",
-    "defaultDesc": "Produit artisanal fait main avec passion.",
-    "add": "Ajouter",
-    "offer": "Offre exclusive",
-    "freeShipping": "Livraison offerte dès 50 000 FCFA",
-    "freeShippingDesc": "Profitez de la livraison gratuite sur toutes vos commandes qualifiées",
-    "orderNow": "Commander maintenant",
-    "errorTitle": "Une erreur est survenue",
-    "retry": "Réessayer"
+  "services": {
+    "title": "Nos services",
+    "heading": "Des savoir-faire",
+    "highlight": "d'exception.",
+    "macrame": "Macramé & Tricotage",
+    "macrame_desc": "Créations artisanales faites à la main avec finesse et originalité.",
+    "teinture": "Teinture de Pagne",
+    "teinture_desc": "Transformation de tissus en œuvres d'art traditionnelles.",
+    "decoration": "Décoration Artisanale",
+    "decoration_desc": "Une touche unique et authentique pour vos espaces.",
+    "agro": "Agroalimentaire",
+    "agro_desc": "Valorisation des produits naturels locaux du Bénin.",
+    "learn_more": "En savoir plus"
+  },
+  "collections": {
+    "title": "Collections",
+    "heading": "Explorez nos",
+    "highlight": "univers.",
+    "sacs": "Sacs & Accessoires",
+    "tissus": "Tissus & Pagnes",
+    "bijoux": "Bijoux & Ornements",
+    "art": "Art & Sculptures",
+    "view_all": "Tout voir",
+    "discover": "Découvrir"
+  },
+  "products": {
+    "title": "Nos produits",
+    "heading": "Pièces",
+    "highlight": "populaires.",
+    "view_all": "Voir tout"
+  },
+  "why_choose": {
+    "title": "Pourquoi nous",
+    "heading": "Pourquoi choisir",
+    "highlight": "AFI Collection.",
+    "authentic": "Authenticité",
+    "authentic_desc": "Produits 100% artisanaux, faits à la main au Bénin.",
+    "diversity": "Diversité",
+    "diversity_desc": "Une large gamme qui célèbre les savoir-faire locaux.",
+    "quality": "Qualité",
+    "quality_desc": "Matériaux nobles et savoir-faire transmis de génération en génération.",
+    "durability": "Durabilité",
+    "durability_desc": "Des créations conçues pour traverser le temps.",
+    "trust": "Confiance",
+    "trust_desc": "Produits authentiques, paiement sécurisé, service garanti.",
+    "community": "Communauté",
+    "community_desc": "Plus de 50 artisans partenaires soutenus directement."
+  },
+  "artisans": {
+    "title": "Nos artisans",
+    "heading": "Derrière chaque",
+    "highlight": "création",
+    "subtitle": "Des talents exceptionnels qui perpétuent des savoir-faire uniques"
+  },
+  "testimonials": {
+    "title": "Témoignages",
+    "heading": "Ils nous font",
+    "highlight": "confiance."
+  },
+  "blog": {
+    "title": "Blog & Actualités",
+    "heading": "Dernières",
+    "highlight": "actualités",
+    "subtitle": "Restez informé des tendances et de l'actualité de l'artisanat africain"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "Une question ?",
+    "highlight": "Écrivez-nous",
+    "subtitle": "Nous sommes à votre écoute pour répondre à toutes vos questions",
+    "name": "Nom complet",
+    "email": "Email",
+    "message": "Message",
+    "send": "Envoyer",
+    "address": "Adresse",
+    "phone": "Téléphone",
+    "hours": "Horaires"
+  },
+  "cta": {
+    "title": "Prêt à découvrir nos collections ?",
+    "subtitle": "Rejoignez des milliers de clients satisfaits qui ont choisi l'élégance artisanale africaine.",
+    "button": "Visiter la boutique"
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletter_desc": "Restez informé de nos nouvelles collections.",
+    "subscribe": "S'abonner",
+    "brand": "Vitrine de l'excellence artisanale béninoise. Chaque pièce est faite main avec passion.",
+    "navigation": "Navigation",
+    "services": "Services",
+    "contact": "Contact",
+    "rights": "Tous droits réservés",
+    "made_with": "Fait avec",
+    "benin": "au Bénin",
+    "legal": "Mentions légales",
+    "privacy": "Confidentialité",
+    "terms": "CGV"
   }
 }

@@ -1,127 +1,127 @@
 {
-  "nav": {
-    "home": "Home",
-    "shop": "Shop",
-    "services": "Services",
-    "trainings": "Trainings",
-    "events": "Fairs",
-    "contact": "Contact",
+  "header": {
+    "delivery": "48h Delivery",
+    "payment": "Secure payment",
+    "search": "Search for a product...",
+    "categories": "Categories",
+    "offers": "Offers",
     "login": "Login",
-    "logout": "Logout",
-    "admin": "Admin",
-    "cart": "Cart",
-    "profile": "My Profile",
-    "orders": "My Orders",
-    "about": "About"
+    "register": "Sign up"
   },
   "hero": {
-    "title": "AFI Collection",
-    "subtitle": "Artisan Elegance",
-    "description": "Discover unique creations, handmade with passion by talented artisans.",
-    "button": "Discover the shop",
-    "trainingTitle": "Trainings",
-    "trainingSubtitle": "Learn the techniques",
-    "trainingDescription": "Practical training with our expert artisans.",
-    "trainingButton": "View trainings",
-    "trainingBadge": "Practical learning",
-    "craftTitle": "Dyeing & Macrame",
-    "craftSubtitle": "Colors and traditions",
-    "craftDescription": "Unique handmade creations with natural materials.",
-    "craftBadge": "Authentic craftsmanship",
-    "badge": "Unique collections",
-    "freeDelivery": "Free delivery",
-    "securePayment": "Secure payment",
-    "support": "Support 7/7"
-  },
-  "footer": {
-    "brandDesc": "Artisan elegance at the service of tradition and innovation.",
-    "quickLinks": "Quick links",
-    "services": "Our services",
-    "contact": "Contact",
-    "followUs": "Follow us",
-    "rights": "All rights reserved",
-    "shop": "Shop",
-    "trainings": "Trainings",
-    "help": "Help"
-  },
-  "products": {
-    "title": "Our Products",
-    "subtitle": "Featured products",
-    "addToCart": "Add to cart",
-    "viewDetails": "View details",
-    "inStock": "In stock",
-    "outOfStock": "Out of stock",
-    "price": "Price",
-    "quantity": "Quantity",
-    "seeAll": "See all products",
-    "featured": "Featured products",
-    "new": "New",
-    "promo": "Promotion",
-    "save": "Save"
-  },
-  "cart": {
-    "empty": "Your cart is empty",
-    "total": "Total",
-    "checkout": "Proceed to checkout",
-    "remove": "Remove",
-    "update": "Update",
-    "continue": "Continue shopping"
-  },
-  "checkout": {
-    "title": "Checkout",
-    "deliveryInfo": "Delivery information",
-    "paymentMethod": "Payment method",
-    "confirm": "Confirm order",
-    "name": "Full name",
-    "email": "Email",
-    "address": "Address",
-    "city": "City",
-    "country": "Country",
-    "phone": "Phone"
-  },
-  "contact": {
-    "title": "Contact us",
-    "subtitle": "We are here to help",
-    "name": "Full name",
-    "email": "Email",
-    "subject": "Subject",
-    "message": "Message",
-    "send": "Send",
-    "success": "Message sent!",
-    "info": "We will reply as soon as possible"
+    "title": "The Artisanat",
+    "highlight": "Beninese.",
+    "description": "Unique creations, woven and handcrafted by exceptional artisans.",
+    "button_shop": "Explore the shop",
+    "button_training": "Our trainings"
   },
   "about": {
     "title": "About us",
-    "subtitle": "Discover our story",
-    "ourStory": "Our story",
-    "mission": "Our mission",
-    "values": "Our values",
-    "founder": "Our founder"
+    "heading": "African craftsmanship",
+    "highlight": "at its best.",
+    "description": "AFI Collection is a showcase of Beninese artisan excellence — macrame, fabric dyeing, decoration, agrifood. Each piece tells the story of a passionate artisan who perpetuates techniques passed down from generation to generation.",
+    "badge_quality": "Premium Quality",
+    "badge_delivery": "National Delivery",
+    "badge_artisans": "50+ Artisans",
+    "badge_payment": "Secure Payment",
+    "button": "Learn more"
   },
   "services": {
-    "title": "Our Services",
-    "subtitle": "Discover our artisanal services",
-    "search": "Search for a service...",
-    "categories": "Service categories",
-    "expertise": "Our areas of expertise"
+    "title": "Our services",
+    "heading": "Exceptional",
+    "highlight": "know-how.",
+    "macrame": "Macrame & Knitting",
+    "macrame_desc": "Handmade artisan creations with finesse and originality.",
+    "teinture": "Fabric Dyeing",
+    "teinture_desc": "Transforming fabrics into traditional works of art.",
+    "decoration": "Artisan Decoration",
+    "decoration_desc": "A unique and authentic touch for your spaces.",
+    "agro": "Agrifood",
+    "agro_desc": "Promoting local natural products from Benin.",
+    "learn_more": "Learn more"
   },
-  "trainings": {
-    "title": "Our Trainings",
-    "subtitle": "Learn African craftsmanship",
-    "duration": "Duration",
-    "location": "Location",
-    "online": "Online",
-    "places": "places available",
-    "certified": "Certified",
-    "signup": "Sign up",
-    "details": "View details"
+  "collections": {
+    "title": "Collections",
+    "heading": "Explore our",
+    "highlight": "universes.",
+    "sacs": "Bags & Accessories",
+    "tissus": "Fabrics & Wraps",
+    "bijoux": "Jewelry & Ornaments",
+    "art": "Art & Sculptures",
+    "view_all": "View all",
+    "discover": "Discover"
   },
-  "events": {
-    "title": "Fairs & Events",
-    "subtitle": "Find us at trade shows",
-    "upcoming": "Upcoming",
-    "past": "Past",
-    "stand": "Stand",
-    "joinUs": "Why join us?"
+  "products": {
+    "title": "Our products",
+    "heading": "Popular",
+    "highlight": "pieces.",
+    "view_all": "View all"
+  },
+  "why_choose": {
+    "title": "Why us",
+    "heading": "Why choose",
+    "highlight": "AFI Collection.",
+    "authentic": "Authenticity",
+    "authentic_desc": "100% handmade products, made in Benin.",
+    "diversity": "Diversity",
+    "diversity_desc": "A wide range celebrating local know-how.",
+    "quality": "Quality",
+    "quality_desc": "Noble materials and know-how passed down through generations.",
+    "durability": "Durability",
+    "durability_desc": "Creations designed to last.",
+    "trust": "Trust",
+    "trust_desc": "Authentic products, secure payment, guaranteed service.",
+    "community": "Community",
+    "community_desc": "Over 50 partner artisans directly supported."
+  },
+  "artisans": {
+    "title": "Our artisans",
+    "heading": "Behind every",
+    "highlight": "creation",
+    "subtitle": "Exceptional talents who perpetuate unique skills"
+  },
+  "testimonials": {
+    "title": "Testimonials",
+    "heading": "They trust",
+    "highlight": "us."
+  },
+  "blog": {
+    "title": "Blog & News",
+    "heading": "Latest",
+    "highlight": "news",
+    "subtitle": "Stay informed about trends and news in African craftsmanship"
+  },
+  "contact": {
+    "title": "Contact",
+    "heading": "A question?",
+    "highlight": "Write to us",
+    "subtitle": "We are here to answer all your questions",
+    "name": "Full name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send",
+    "address": "Address",
+    "phone": "Phone",
+    "hours": "Opening hours"
+  },
+  "cta": {
+    "title": "Ready to discover our collections?",
+    "subtitle": "Join thousands of satisfied customers who have chosen African artisan elegance.",
+    "button": "Visit the shop"
+  },
+  "footer": {
+    "newsletter": "Newsletter",
+    "newsletter_desc": "Stay informed about our new collections.",
+    "subscribe": "Subscribe",
+    "brand": "Showcase of Beninese artisan excellence. Each piece is handmade with passion.",
+    "navigation": "Navigation",
+    "services": "Services",
+    "contact": "Contact",
+    "rights": "All rights reserved",
+    "made_with": "Made with",
+    "benin": "in Benin",
+    "legal": "Legal notices",
+    "privacy": "Privacy policy",
+    "terms": "Terms"
   }
 }

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { FiStar, FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const testimonials = [
   {
@@ -27,10 +28,11 @@ const testimonials = [
 ];
 
 export function TestimonialsSection() {
+  const { t } = useTranslation();
   const [active, setActive] = useState(0);
   const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
   const next = () => setActive((a) => (a + 1) % testimonials.length);
-  const t = testimonials[active];
+  const tItem = testimonials[active];
 
   return (
     <section className="py-24 bg-[#f5f8f5]">
@@ -43,12 +45,12 @@ export function TestimonialsSection() {
             transition={{ duration: 0.5 }}
           >
             <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
-              Témoignages
+              {t('testimonials.title')}
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight leading-[1.05] mt-3">
-              Ils nous font
+              {t('testimonials.heading')}
               <br />
-              <span className="text-[#1a6b3c]">confiance.</span>
+              <span className="text-[#1a6b3c]">{t('testimonials.highlight')}</span>
             </h2>
           </motion.div>
 
@@ -72,7 +74,7 @@ export function TestimonialsSection() {
 
         <AnimatePresence mode="wait">
           <motion.div
-            key={t.id}
+            key={tItem.id}
             className="max-w-3xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -80,21 +82,20 @@ export function TestimonialsSection() {
             transition={{ duration: 0.4 }}
           >
             <div className="flex gap-1 mb-6">
-              {Array.from({ length: t.rating }).map((_, i) => (
+              {Array.from({ length: tItem.rating }).map((_, i) => (
                 <FiStar key={i} className="w-5 h-5 text-[#1a6b3c] fill-current" />
               ))}
             </div>
 
             <p className="text-2xl md:text-3xl font-medium text-gray-700 leading-snug mb-8">
-              « {t.text} »
+              « {tItem.text} »
             </p>
 
             <div>
-              <p className="font-bold text-gray-900 text-lg">{t.name}</p>
-              <p className="text-sm text-gray-500">{t.city}</p>
+              <p className="font-bold text-gray-900 text-lg">{tItem.name}</p>
+              <p className="text-sm text-gray-500">{tItem.city}</p>
             </div>
 
-            {/* Indicateurs */}
             <div className="flex justify-center gap-2 mt-8">
               {testimonials.map((_, i) => (
                 <button
