@@ -1,4 +1,4 @@
-import { FiMapPin, FiClock, FiAward, FiUser } from 'react-icons/fi';
+import { FiMapPin, FiClock } from 'react-icons/fi';
 
 const artisans = [
   {
@@ -77,7 +77,6 @@ const FemaleSilhouette = () => (
     <circle cx="100" cy="55" r="38" />
     <ellipse cx="100" cy="150" rx="45" ry="55" />
     <rect x="55" y="95" width="90" height="12" rx="5" />
-    {/* Cheveux */}
     <path d="M60 55 Q80 20 100 18 Q120 20 140 55" stroke="currentColor" strokeWidth="4" fill="none" />
     <path d="M62 48 Q90 15 100 15 Q110 15 138 48" stroke="currentColor" strokeWidth="4" fill="none" />
   </svg>
