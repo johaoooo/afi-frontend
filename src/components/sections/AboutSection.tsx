@@ -9,22 +9,12 @@ const badges = [
   { icon: FiShield, label: 'Paiement Sécurisé' },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 32 },
-  show: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, delay: i * 0.1, ease: 'easeOut' },
-  }),
-};
-
 export function AboutSection() {
   return (
     <section className="py-24 bg-[#f5f8f5] overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-          {/* Image */}
           <motion.div
             className="relative"
             initial={{ opacity: 0, x: -40 }}
@@ -45,7 +35,6 @@ export function AboutSection() {
               />
             </div>
 
-            {/* Badge flottant */}
             <motion.div
               className="absolute -bottom-6 -right-4 md:-right-8 bg-white rounded-2xl shadow-2xl px-5 py-4 border border-green-100"
               initial={{ opacity: 0, scale: 0.8 }}
@@ -57,11 +46,9 @@ export function AboutSection() {
               <p className="text-sm font-semibold text-gray-700 mt-0.5">Authentique & fait main</p>
             </motion.div>
 
-            {/* Trait décoratif vert */}
             <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-[#1a6b3c] rounded-tl-3xl" />
           </motion.div>
 
-          {/* Texte */}
           <div className="space-y-6">
             <motion.span
               className="inline-block text-[#1a6b3c] text-xs font-bold tracking-widest uppercase"
@@ -102,11 +89,10 @@ export function AboutSection() {
                 <motion.div
                   key={item.label}
                   className="flex items-center gap-3 p-3 rounded-xl bg-white border border-green-100 hover:border-[#1a6b3c]/30 transition-all duration-300"
-                  custom={i}
-                  variants={fadeUp}
-                  initial="hidden"
-                  whileInView="show"
+                  initial={{ opacity: 0, y: 32 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1, ease: 'easeOut' }}
                 >
                   <div className="w-8 h-8 rounded-lg bg-[#1a6b3c]/10 flex items-center justify-center shrink-0">
                     <item.icon className="w-4 h-4 text-[#1a6b3c]" />
