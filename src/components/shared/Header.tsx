@@ -64,34 +64,35 @@ export function Header() {
 
   return (
     <>
-      {/* Bandeau supérieur */}
-      <div className="bg-[#1a6b3c] text-white text-xs py-1.5 px-4">
+      {/* Bandeau supérieur - texte plus petit sur mobile */}
+      <div className="bg-[#1a6b3c] text-white py-1.5 px-2 sm:px-4">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex-1 flex items-center justify-center">
-            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
-              <span className="flex items-center gap-1.5">
-                <FiTruck className="w-3.5 h-3.5 text-green-300" />
-                <span className="text-white/90">{t('header.delivery')}</span>
-              </span>
+          {/* Texte - version mobile compacte */}
+          <div className="flex-1 flex items-center justify-center md:justify-center overflow-hidden">
+            <div className="flex items-center gap-1 text-[10px] xs:text-xs sm:text-xs whitespace-nowrap">
+              <FiTruck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-300 flex-shrink-0" />
+              <span className="hidden xs:inline">Livraison 48h</span>
+              <span className="xs:hidden">48h</span>
               <span className="text-white/30">·</span>
-              <span className="text-white/90">Dakar</span>
+              <span>Dakar</span>
               <span className="text-white/30">·</span>
-              <span className="text-white/90">Abidjan</span>
+              <span>Abidjan</span>
               <span className="text-white/30">·</span>
-              <span className="text-white/90">Cotonou</span>
+              <span>Cotonou</span>
               <span className="text-white/30">·</span>
-              <span className="text-white/90">Congo</span>
+              <span>Congo</span>
               <span className="text-white/30">·</span>
-              <span className="flex items-center gap-1.5">
-                <FiShield className="w-3.5 h-3.5 text-green-300" />
-                <span className="text-white/90">{t('header.payment')}</span>
-              </span>
+              <FiShield className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-green-300 flex-shrink-0" />
+              <span className="hidden xs:inline">Paiement sécurisé</span>
+              <span className="xs:hidden">Sécurisé</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 shrink-0 ml-4">
+
+          {/* Sélecteur langue */}
+          <div className="flex items-center gap-1 sm:gap-2 shrink-0 ml-2">
             <button
               onClick={() => changeLanguage('fr')}
-              className={`text-xs font-medium transition-colors ${
+              className={`text-[10px] sm:text-xs font-medium transition-colors ${
                 currentLanguage === 'fr' ? 'text-white' : 'text-white/60 hover:text-white'
               }`}
             >
@@ -100,7 +101,7 @@ export function Header() {
             <span className="text-white/30">|</span>
             <button
               onClick={() => changeLanguage('en')}
-              className={`text-xs font-medium transition-colors ${
+              className={`text-[10px] sm:text-xs font-medium transition-colors ${
                 currentLanguage === 'en' ? 'text-white' : 'text-white/60 hover:text-white'
               }`}
             >
@@ -122,7 +123,7 @@ export function Header() {
               <img
                 src="/images/afiii.png"
                 alt="AFI Collection"
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-12 md:h-20 w-auto object-contain"
               />
             </Link>
 
