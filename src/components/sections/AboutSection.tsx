@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiAward, FiUsers, FiShield, FiGlobe, FiArrowRight, FiHeart, FiClock, FiTruck } from 'react-icons/fi';
+import { FiAward, FiUsers, FiShield, FiGlobe, FiArrowRight, FiHeart, FiClock } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const badges = [

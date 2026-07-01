@@ -50,7 +50,7 @@ export function ArtisansSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {artisans.map((artisan, index) => (
+          {artisans.map((artisan) => (
             <div 
               key={artisan.id} 
               className="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-green-100"
