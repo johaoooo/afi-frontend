@@ -24,7 +24,6 @@ export default function ModePage() {
 
   return (
     <div className="bg-[#f5f8f5] min-h-screen">
-      {/* Hero simplifié */}
       <div className="bg-[#1a6b3c] py-8">
         <div className="container mx-auto px-6 md:px-12">
           <Link to="/boutique" className="inline-flex items-center gap-2 text-white/70 hover:text-white transition-colors text-sm mb-3">
@@ -37,7 +36,6 @@ export default function ModePage() {
       </div>
 
       <div className="container mx-auto px-6 md:px-12 py-8">
-        {/* Filtres */}
         <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border border-green-100 mb-8 flex flex-wrap items-center gap-4">
           <div className="flex items-center gap-2">
             <FiFilter className="w-4 h-4 text-gray-400" />
@@ -71,7 +69,6 @@ export default function ModePage() {
           </div>
         </div>
 
-        {/* Grille produits */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProducts.map((product, i) => (
             <motion.div
@@ -81,11 +78,11 @@ export default function ModePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <div className="aspect-square bg-gray-100 overflow-hidden relative">
+              <div className="aspect-square bg-gray-100 overflow-hidden relative flex items-center justify-center p-4">
                 <img
                   src={product.image}
                   alt={product.nom}
-                  className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                  className="w-full h-full object-contain hover:scale-105 transition duration-500"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x400/1a6b3c/ffffff?text=AFI';
                   }}

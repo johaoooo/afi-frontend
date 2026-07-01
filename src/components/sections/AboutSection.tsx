@@ -31,7 +31,7 @@ export function AboutSection() {
           >
             <div className="rounded-3xl overflow-hidden aspect-[4/5] shadow-xl">
               <img
-                src="/images/about/artisanat.jpg"
+                src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1781005605/WhatsApp_Image_2026-06-04_at_09.55.33_1_e5jtjs.jpg"
                 alt="Artisane béninoise au travail"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                 loading="lazy"
@@ -109,7 +109,6 @@ export function AboutSection() {
               ))}
             </div>
 
-            {/* Statistiques */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
               {stats.map((stat, index) => (
                 <div key={index} className="text-center">

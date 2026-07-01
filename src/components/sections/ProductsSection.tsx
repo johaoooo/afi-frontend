@@ -80,11 +80,11 @@ export function ProductsSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <div className="aspect-square bg-gray-50 overflow-hidden relative">
+              <div className="aspect-square bg-gray-50 overflow-hidden relative flex items-center justify-center p-4">
                 <img
                   src={product.image}
                   alt={product.nom}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-600"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-600"
                   loading="lazy"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =

@@ -66,11 +66,11 @@ export default function MacramePage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
             >
-              <div className="aspect-square bg-gray-100 overflow-hidden relative">
+              <div className="aspect-square bg-gray-100 overflow-hidden relative flex items-center justify-center p-4">
                 <img
                   src={product.image}
                   alt={product.nom}
-                  className="w-full h-full object-cover hover:scale-105 transition duration-500"
+                  className="w-full h-full object-contain hover:scale-105 transition duration-500"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x400/1a6b3c/ffffff?text=AFI';
                   }}

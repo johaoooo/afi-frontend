@@ -1,12 +1,42 @@
 import { motion } from 'framer-motion';
 
 const partners = [
-  { id: 1, name: 'Partner 1', logo: '/images/partners/partner1.png' },
-  { id: 2, name: 'Partner 2', logo: '/images/partners/partner2.png' },
-  { id: 3, name: 'Partner 3', logo: '/images/partners/partner3.png' },
-  { id: 4, name: 'Partner 4', logo: '/images/partners/partner4.png' },
-  { id: 5, name: 'Partner 5', logo: '/images/partners/partner5.png' },
-  { id: 6, name: 'Partner 6', logo: '/images/partners/partner6.png' },
+  {
+    id: 1,
+    name: 'GRAAD',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782579417/WhatsApp_Image_2026-06-27_at_17.56.06_wnsfvn.jpg',
+    description: 'Grande Rencontre des Artisans d\'Afrique et de la Diaspora'
+  },
+  {
+    id: 2,
+    name: 'ODEVOD',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782577860/WhatsApp_Image_2026-06-27_at_17.21.27_ecgftx.jpg',
+    description: 'Organisation pour le Développement de l\'Artisanat Africain'
+  },
+  {
+    id: 3,
+    name: 'AMAF',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782577834/AMAF_mcq0dz.jpg',
+    description: 'Artisanat et Métiers d\'Afrique'
+  },
+  {
+    id: 4,
+    name: 'FIMA/PN',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782573391/fm_kvfpmv.jpg',
+    description: 'Foire Internationale de Madingo-Kayes/Pointe-Noire'
+  },
+  {
+    id: 5,
+    name: 'Partenaire 5',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782577850/WhatsApp_Image_2026-06-02_at_18.05.42_1_dbgi7t.jpg',
+    description: 'Partenaire'
+  },
+  {
+    id: 6,
+    name: 'Partenaire 6',
+    logo: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782577624/images_geckie.png',
+    description: 'Partenaire'
+  },
 ];
 
 export function PartnersSection() {
@@ -41,10 +71,17 @@ export function PartnersSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.08 }}
             >
-              <div className="w-full h-16 flex items-center justify-center">
-                <div className="w-full h-12 bg-gray-200 rounded-lg flex items-center justify-center text-gray-400 text-xs font-medium">
-                  {partner.name}
-                </div>
+              <div className="w-full h-20 flex items-center justify-center">
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className="max-w-full max-h-full object-contain"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = 
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(partner.name)}&background=1a6b3c&color=fff&size=100`;
+                  }}
+                />
               </div>
             </motion.div>
           ))}

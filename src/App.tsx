@@ -5,15 +5,17 @@ import { AuthLayout } from './layouts/AuthLayout';
 import { HeroCarousel } from './components/sections/HeroCarousel';
 import { AboutSection } from './components/sections/AboutSection';
 import { ServicesSection } from './components/sections/ServicesSection';
+import { FeaturesBlocks } from './components/sections/FeaturesBlocks';
 import { CollectionsSection } from './components/sections/CollectionsSection';
+import { UniversSection } from './components/sections/UniversSection';
 import { ProductsSection } from './components/sections/ProductsSection';
 import { WhyChooseUsSection } from './components/sections/WhyChooseUsSection';
 import { PartnersSection } from './components/sections/PartnersSection';
 import { ArtisansSection } from './components/sections/ArtisansSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
 import { BlogSection } from './components/sections/BlogSection';
-import { CTASection } from './components/sections/CTASection';
 import { ContactSection } from './components/sections/ContactSection';
+import { CTASection } from './components/sections/CTASection';
 import BoutiquePage from './pages/boutique';
 import ServicesPage from './pages/services';
 import FormationsPage from './pages/formations';
@@ -33,7 +35,9 @@ function HomePage() {
       <HeroCarousel />
       <AboutSection />
       <ServicesSection />
+      <FeaturesBlocks />
       <CollectionsSection />
+      <UniversSection />
       <ProductsSection />
       <WhyChooseUsSection />
       <PartnersSection />
