@@ -74,18 +74,8 @@ export default function ContactPage() {
     { icon: FiLinkedin, label: 'LinkedIn', href: '#', color: '#0a66c2' }
   ];
 
-  const fadeUp = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, delay: i * 0.1, ease: 'easeOut' }
-    })
-  };
-
   return (
     <div className="bg-[#f5f8f5] min-h-screen">
-      {/* Section supérieure avec dégradé */}
       <div className="relative bg-[#1a6b3c] overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-white/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-white/5 rounded-full blur-3xl" />
@@ -111,7 +101,6 @@ export default function ContactPage() {
 
       <div className="container mx-auto px-6 md:px-12 -mt-8 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-          {/* Colonne gauche - Formulaire (3/5) */}
           <motion.div
             className="lg:col-span-3"
             initial={{ opacity: 0, y: 20 }}
@@ -217,14 +206,12 @@ export default function ContactPage() {
             </div>
           </motion.div>
 
-          {/* Colonne droite - Informations (2/5) */}
           <motion.div
             className="lg:col-span-2 space-y-6"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            {/* Coordonnées */}
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-6 border border-green-100">
               <h3 className="font-black text-gray-800 text-lg mb-4 flex items-center gap-2">
                 <FiMessageSquare className="w-5 h-5 text-[#1a6b3c]" />
@@ -254,7 +241,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Carte */}
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden border border-green-100">
               <div className="h-48 bg-gray-200 relative">
                 <img
@@ -270,7 +256,6 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Réseaux sociaux */}
             <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-6 border border-green-100">
               <h3 className="font-black text-gray-800 text-lg mb-4">Suivez-nous</h3>
               <div className="flex gap-3">

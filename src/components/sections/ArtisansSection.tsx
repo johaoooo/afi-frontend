@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { FiMapPin, FiClock, FiAward } from 'react-icons/fi';
 
 const artisans = [
@@ -9,7 +8,7 @@ const artisans = [
     image: '/images/team/aminata.jpg',
     location: 'Ouagadougou, Burkina Faso',
     experience: '15 ans',
-    description: 'Artisane tisserande depuis 15 ans, elle perpétue les techniques ancestrales du Burkina Faso. Ses créations sont reconnues pour leur qualité et leur authenticité.',
+    description: 'Artisane tisserande depuis 15 ans, elle perpétue les techniques ancestrales du Burkina Faso.',
     achievements: 'Prix de l\'Artisanat Africain 2024'
   },
   {
@@ -19,7 +18,7 @@ const artisans = [
     image: '/images/team/kouadio.jpg',
     location: 'Abidjan, Côte d\'Ivoire',
     experience: '20 ans',
-    description: 'Maître sculpteur ivoirien, ses œuvres sont exposées dans plusieurs galeries internationales. Il travaille le bois d\'ébène et le teck avec une précision exceptionnelle.',
+    description: 'Maître sculpteur ivoirien, ses œuvres sont exposées dans plusieurs galeries internationales.',
     achievements: 'Exposition à Paris, Dakar, New York'
   },
   {
@@ -29,51 +28,69 @@ const artisans = [
     image: '/images/team/fatou.jpg',
     location: 'Dakar, Sénégal',
     experience: '12 ans',
-    description: 'Créatrice de bijoux en perles et métaux précieux, inspirée par les traditions sénégalaises. Chaque pièce est unique et raconte une histoire.',
+    description: 'Créatrice de bijoux en perles et métaux précieux, inspirée par les traditions sénégalaises.',
     achievements: 'Collaboration avec des marques internationales'
   }
 ];
 
 export function ArtisansSection() {
   return (
-    <section className="py-20" style={{ backgroundColor: '#1a6b3c' }}>
-      <div className="container mx-auto px-4">
+    <section className="py-24 bg-[#f5f8f5]">
+      <div className="container mx-auto px-6 md:px-12">
         <div className="text-center mb-12">
-          <span className="text-green-300 font-semibold text-sm uppercase tracking-wider">Nos artisans</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-white mt-2 mb-3">
-            Derrière chaque création, un artisan
+          <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
+            Nos artisans
+          </span>
+          <h2 className="text-4xl md:text-5xl font-black text-gray-800 tracking-tight leading-[1.05] mt-3">
+            Derrière chaque <span className="text-[#1a6b3c]">création</span>, un artisan
           </h2>
-          <p className="text-green-100 max-w-2xl mx-auto">
+          <p className="text-gray-500 max-w-2xl mx-auto mt-2">
             Des talents exceptionnels qui perpétuent des savoir-faire uniques à travers l'Afrique
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {artisans.map((artisan) => (
-            <div key={artisan.id} className="bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition">
-              <div className="aspect-[4/3] bg-gray-200 relative">
+            <div 
+              key={artisan.id} 
+              className="group bg-white rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-500 hover:-translate-y-2 border border-green-100"
+            >
+              <div className="relative h-72 overflow-hidden">
                 <img 
                   src={artisan.image} 
                   alt={artisan.name}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x300/1a6b3c/ffffff?text=Artisan';
+                    (e.target as HTMLImageElement).src = 
+                      `https://ui-avatars.com/api/?name=${encodeURIComponent(artisan.name)}&background=1a6b3c&color=fff&size=300`;
                   }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-                  <h3 className="text-white font-bold text-lg">{artisan.name}</h3>
-                  <p className="text-green-300 text-sm">{artisan.specialty}</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                
+                <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs font-bold text-[#1a6b3c] flex items-center gap-1.5 shadow-lg">
+                  <FiClock className="w-3 h-3" />
+                  {artisan.experience}
                 </div>
               </div>
-              <div className="p-5">
-                <div className="flex flex-wrap gap-3 text-sm text-gray-600 mb-3">
-                  <span className="flex items-center gap-1"><FiMapPin className="w-3 h-3" /> {artisan.location}</span>
-                  <span className="flex items-center gap-1"><FiClock className="w-3 h-3" /> {artisan.experience}</span>
+
+              <div className="p-6">
+                <h3 className="font-bold text-xl text-gray-800 group-hover:text-[#1a6b3c] transition-colors">
+                  {artisan.name}
+                </h3>
+                <p className="text-[#1a6b3c] font-medium text-sm">{artisan.specialty}</p>
+                
+                <div className="flex items-center gap-1.5 text-gray-500 text-xs mt-2">
+                  <FiMapPin className="w-3 h-3" />
+                  <span>{artisan.location}</span>
                 </div>
-                <p className="text-gray-700 text-sm leading-relaxed">{artisan.description}</p>
-                <div className="mt-3 flex items-center gap-2 text-xs font-medium" style={{ color: '#1a6b3c' }}>
-                  <FiAward className="w-4 h-4" />
-                  <span>{artisan.achievements}</span>
+
+                <p className="text-gray-600 text-sm mt-3 leading-relaxed">{artisan.description}</p>
+
+                <div className="mt-4 pt-4 border-t border-green-100 flex items-center gap-2">
+                  <div className="w-6 h-6 rounded-full bg-[#1a6b3c]/10 flex items-center justify-center flex-shrink-0">
+                    <FiAward className="w-3 h-3 text-[#1a6b3c]" />
+                  </div>
+                  <span className="text-xs text-gray-600">{artisan.achievements}</span>
                 </div>
               </div>
             </div>

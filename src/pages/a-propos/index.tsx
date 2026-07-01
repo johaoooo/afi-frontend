@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiAward, FiUsers, FiHeart, FiGlobe, FiArrowRight, FiShield, FiClock, FiCheckCircle, FiTruck, FiStar } from 'react-icons/fi';
+import { FiAward, FiUsers, FiHeart, FiGlobe, FiArrowRight, FiShield, FiCheckCircle, FiTruck, FiStar } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 import { AboutHero } from '../../components/sections/AboutHero';
 
@@ -75,7 +75,6 @@ export default function AboutPage() {
       <AboutHero />
 
       <div className="container mx-auto px-6 md:px-12 -mt-8 relative z-20">
-        {/* Notre histoire - Carte principale */}
         <motion.div
           className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 border border-green-100 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -140,7 +139,6 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Notre mission - Carte verte */}
         <motion.div
           className="mb-16 bg-[#1a6b3c] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}
@@ -177,7 +175,6 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Nos valeurs */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
@@ -209,7 +206,6 @@ export default function AboutPage() {
           </div>
         </div>
 
-        {/* Notre engagement */}
         <motion.div
           className="mb-16 bg-white/90 backdrop-blur-sm rounded-3xl p-8 md:p-10 border border-green-100 shadow-xl"
           initial={{ opacity: 0, y: 20 }}
@@ -263,7 +259,6 @@ export default function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Appel à l'action */}
         <motion.div
           className="p-8 md:p-12 rounded-3xl text-center bg-[#1a6b3c] relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}

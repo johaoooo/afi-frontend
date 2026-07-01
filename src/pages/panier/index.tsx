@@ -1,9 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FiTrash2, FiPlus, FiMinus, FiShoppingBag, FiArrowLeft, FiHeart, FiTruck, FiShield, FiClock } from 'react-icons/fi';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 
-// Données temporaires du panier
 const initialCartItems = [
   {
     id: 1,
@@ -59,7 +58,6 @@ export default function PanierPage() {
   return (
     <div className="bg-[#f5f8f5] min-h-screen py-12">
       <div className="container mx-auto px-6 md:px-12">
-        {/* En-tête */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
             <Link to="/" className="text-gray-500 hover:text-[#1a6b3c] transition">
@@ -95,7 +93,6 @@ export default function PanierPage() {
           </motion.div>
         ) : (
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Liste des articles */}
             <div className="lg:col-span-2 space-y-4">
               {cartItems.map((item, index) => (
                 <motion.div
@@ -104,7 +101,6 @@ export default function PanierPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
-                  layout
                 >
                   <img
                     src={item.image}
@@ -154,23 +150,8 @@ export default function PanierPage() {
                   </div>
                 </motion.div>
               ))}
-
-              {/* Suggestions */}
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 border border-green-100">
-                <h3 className="font-semibold text-gray-800 mb-3">Vous pourriez aussi aimer</h3>
-                <div className="flex gap-4 overflow-x-auto pb-2">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="min-w-[120px] bg-white rounded-xl p-3 text-center flex-shrink-0 border border-green-50">
-                      <div className="w-full h-20 bg-green-50 rounded-lg mb-2"></div>
-                      <p className="text-xs font-medium text-gray-700">Produit {i}</p>
-                      <p className="text-xs font-bold text-[#1a6b3c]">15 000 FCFA</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
             </div>
 
-            {/* Résumé */}
             <div>
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-sm border border-green-100 sticky top-24">
                 <h2 className="font-bold text-xl text-gray-800 mb-6">Résumé de la commande</h2>
@@ -193,7 +174,6 @@ export default function PanierPage() {
                     </div>
                   )}
                   
-                  {/* Code promo */}
                   <div className="pt-3">
                     <div className="flex gap-2">
                       <input
