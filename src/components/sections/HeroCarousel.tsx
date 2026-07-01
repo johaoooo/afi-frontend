@@ -38,7 +38,6 @@ export function HeroCarousel() {
     if (e.key === 'ArrowRight') next();
   };
 
-  const slide = slides[current];
   const statLabels = {
     clients: t('hero.clients', 'Clients satisfaits'),
     products: t('hero.products', 'Produits uniques'),
@@ -79,9 +78,9 @@ export function HeroCarousel() {
       <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1a6b3c] z-30" />
 
-      <div className="absolute inset-0 z-20 flex items-center">
-        <div className="container mx-auto px-6 md:px-12 w-full">
-          <div className="max-w-2xl">
+      <div className="absolute inset-0 z-20 flex items-center justify-center">
+        <div className="container mx-auto px-6 md:px-12 w-full text-center">
+          <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-2xl">
               {t('hero.title')}
               <br />
@@ -90,11 +89,11 @@ export function HeroCarousel() {
               </span>
             </h1>
 
-            <p className="text-white/95 text-base md:text-lg mt-4 max-w-md leading-relaxed drop-shadow-xl">
+            <p className="text-white/95 text-base md:text-lg mt-4 max-w-2xl mx-auto leading-relaxed drop-shadow-xl">
               {t('hero.description')}
             </p>
 
-            <div className="flex flex-wrap gap-4 mt-8">
+            <div className="flex flex-wrap gap-4 mt-8 justify-center">
               <Link
                 to="/boutique"
                 className="inline-flex items-center gap-2 bg-[#1a6b3c] hover:bg-[#14532d] text-white font-bold px-7 py-3.5 rounded-full transition-colors duration-300 text-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
