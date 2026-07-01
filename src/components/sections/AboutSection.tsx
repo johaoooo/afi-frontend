@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FiAward, FiUsers, FiShield, FiGlobe, FiArrowRight } from 'react-icons/fi';
+import { FiAward, FiUsers, FiShield, FiGlobe, FiArrowRight, FiHeart, FiClock, FiTruck } from 'react-icons/fi';
 import { motion } from 'framer-motion';
 
 const badges = [
@@ -9,9 +9,16 @@ const badges = [
   { icon: FiShield, label: 'Paiement Sécurisé' },
 ];
 
+const stats = [
+  { value: '50+', label: 'Artisans', icon: FiUsers },
+  { value: '500+', label: 'Clients', icon: FiHeart },
+  { value: '150+', label: 'Produits', icon: FiAward },
+  { value: '98%', label: 'Satisfaction', icon: FiClock },
+];
+
 export function AboutSection() {
   return (
-    <section className="py-24 bg-[#f5f8f5] overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -51,7 +58,7 @@ export function AboutSection() {
 
           <div className="space-y-6">
             <motion.span
-              className="inline-block text-[#1a6b3c] text-xs font-bold tracking-widest uppercase"
+              className="inline-block text-[#1a6b3c] text-xs font-bold tracking-widest uppercase border-l-2 border-[#1a6b3c] pl-3"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -88,7 +95,7 @@ export function AboutSection() {
               {badges.map((item, i) => (
                 <motion.div
                   key={item.label}
-                  className="flex items-center gap-3 p-3 rounded-xl bg-white border border-green-100 hover:border-[#1a6b3c]/30 transition-all duration-300"
+                  className="flex items-center gap-3 p-3 rounded-xl bg-gray-50 hover:bg-[#1a6b3c]/5 transition-all duration-300"
                   initial={{ opacity: 0, y: 32 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -99,6 +106,16 @@ export function AboutSection() {
                   </div>
                   <span className="text-sm font-semibold text-gray-700">{item.label}</span>
                 </motion.div>
+              ))}
+            </div>
+
+            {/* Statistiques */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-4">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <p className="text-2xl font-black text-[#1a6b3c]">{stat.value}</p>
+                  <p className="text-xs text-gray-500">{stat.label}</p>
+                </div>
               ))}
             </div>
 

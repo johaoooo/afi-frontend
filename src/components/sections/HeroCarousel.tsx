@@ -93,8 +93,14 @@ export function HeroCarousel() {
         </div>
       ))}
 
-      {/* Overlay */}
-      <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/75 via-black/35 to-transparent" />
+      {/* VOILE UNIFORME PLUS FORT */}
+      <div className="absolute inset-0 z-[15] bg-black/35" />
+
+      {/* Dégradé directionnel plus marqué */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
+
+      {/* Fondu bas plus marqué */}
+      <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
       {/* Liseré vert */}
       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1a6b3c] z-30" />
@@ -103,13 +109,15 @@ export function HeroCarousel() {
       <div className="absolute inset-0 z-20 flex items-center">
         <div className="container mx-auto px-6 md:px-12 w-full">
           <div className="max-w-2xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.05] tracking-tight drop-shadow-2xl">
               {slide.title}
               <br />
-              <span className="text-[#4ade80]">{slide.highlight}</span>
+              <span className="text-[#4ade80] drop-shadow-2xl">
+                {slide.highlight}
+              </span>
             </h1>
 
-            <p className="text-white/70 text-base md:text-lg mt-4 max-w-md leading-relaxed">
+            <p className="text-white/95 text-base md:text-lg mt-4 max-w-md leading-relaxed drop-shadow-xl">
               {slide.description}
             </p>
 
@@ -150,14 +158,14 @@ export function HeroCarousel() {
       <button
         onClick={prev}
         aria-label="Slide précédente"
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c]"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 border border-white/20 flex items-center justify-center transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c]"
       >
         <FiChevronLeft className="w-5 h-5 text-white" aria-hidden="true" />
       </button>
       <button
         onClick={next}
         aria-label="Slide suivante"
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/10 hover:bg-white/25 border border-white/20 flex items-center justify-center transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c]"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-white/20 hover:bg-white/30 border border-white/20 flex items-center justify-center transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c]"
       >
         <FiChevronRight className="w-5 h-5 text-white" aria-hidden="true" />
       </button>

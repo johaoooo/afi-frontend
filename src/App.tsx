@@ -13,11 +13,11 @@ import { ArtisansSection } from './components/sections/ArtisansSection';
 import { TestimonialsSection } from './components/sections/TestimonialsSection';
 import { BlogSection } from './components/sections/BlogSection';
 import { CTASection } from './components/sections/CTASection';
+import { ContactSection } from './components/sections/ContactSection';
 import BoutiquePage from './pages/boutique';
 import ServicesPage from './pages/services';
 import FormationsPage from './pages/formations';
 import AboutPage from './pages/a-propos';
-import ContactPage from './pages/contact';
 import PanierPage from './pages/panier';
 import ConnexionPage from './pages/auth/connexion';
 import InscriptionPage from './pages/auth/inscription';
@@ -40,6 +40,7 @@ function HomePage() {
       <ArtisansSection />
       <TestimonialsSection />
       <BlogSection />
+      <ContactSection />
       <CTASection />
     </>
   );
@@ -50,7 +51,6 @@ function App() {
     <Router>
       <Toaster position="top-center" />
       <Routes>
-        {/* Routes avec MainLayout */}
         <Route element={<MainLayout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/boutique" element={<BoutiquePage />} />
@@ -61,11 +61,9 @@ function App() {
           <Route path="/services" element={<ServicesPage />} />
           <Route path="/formations" element={<FormationsPage />} />
           <Route path="/a-propos" element={<AboutPage />} />
-          <Route path="/contact" element={<ContactPage />} />
           <Route path="/panier" element={<PanierPage />} />
         </Route>
         
-        {/* Routes sans header avec AuthLayout */}
         <Route element={<AuthLayout />}>
           <Route path="/connexion" element={<ConnexionPage />} />
           <Route path="/inscription" element={<InscriptionPage />} />
