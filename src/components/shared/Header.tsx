@@ -42,7 +42,6 @@ export function Header() {
     setIsOffersOpen(false);
   }, [location.pathname]);
 
-  // Fermer les dropdowns en cliquant à l'extérieur
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (categoriesRef.current && !categoriesRef.current.contains(event.target as Node)) {
@@ -58,23 +57,32 @@ export function Header() {
 
   return (
     <>
-      {/* Bandeau supérieur - Blanc sur vert */}
+      {/* Bandeau supérieur - Centré avec FR|EN à droite */}
       <div className="bg-[#1a6b3c] text-white text-xs py-1.5 px-4">
         <div className="container mx-auto flex items-center justify-between">
-          <div className="flex flex-wrap items-center gap-4">
-            <span className="flex items-center gap-1.5">
-              <FiTruck className="w-3.5 h-3.5 text-green-300" />
-              <span className="text-white/90">Livraison 48h</span>
-            </span>
-            <span className="hidden sm:inline text-white/30">·</span>
-            <span className="hidden sm:inline text-white/90">Dakar · Abidjan · Cotonou</span>
-            <span className="hidden md:inline text-white/30">·</span>
-            <span className="flex items-center gap-1.5">
-              <FiShield className="w-3.5 h-3.5 text-green-300" />
-              <span className="text-white/90">Paiement sécurisé</span>
-            </span>
+          <div className="flex-1 flex items-center justify-center">
+            <div className="flex flex-wrap items-center justify-center gap-3 md:gap-5">
+              <span className="flex items-center gap-1.5">
+                <FiTruck className="w-3.5 h-3.5 text-green-300" />
+                <span className="text-white/90">Livraison 48h</span>
+              </span>
+              <span className="text-white/30">·</span>
+              <span className="text-white/90">Dakar</span>
+              <span className="text-white/30">·</span>
+              <span className="text-white/90">Abidjan</span>
+              <span className="text-white/30">·</span>
+              <span className="text-white/90">Cotonou</span>
+              <span className="text-white/30">·</span>
+              <span className="text-white/90">Congo</span>
+              <span className="text-white/30">·</span>
+              <span className="flex items-center gap-1.5">
+                <FiShield className="w-3.5 h-3.5 text-green-300" />
+                <span className="text-white/90">Paiement sécurisé</span>
+              </span>
+            </div>
           </div>
-          <div className="flex items-center gap-3">
+
+          <div className="flex items-center gap-2 shrink-0 ml-4">
             <button
               onClick={() => setLanguage('fr')}
               className={`text-xs font-medium transition-colors ${
@@ -96,7 +104,6 @@ export function Header() {
         </div>
       </div>
 
-      {/* Header principal */}
       <header
         className={`sticky top-0 z-50 bg-white transition-shadow duration-300 ${
           isScrolled ? 'shadow-md' : 'border-b border-gray-100'
@@ -104,16 +111,15 @@ export function Header() {
       >
         <div className="container mx-auto px-4 md:px-8">
           <div className="flex items-center justify-between gap-4 py-2.5">
-            {/* Logo */}
+            {/* Logo plus grand */}
             <Link to="/" className="shrink-0 focus:outline-none">
               <img
                 src="/images/afiii.png"
                 alt="AFI Collection"
-                className="h-12 md:h-14 w-auto object-contain"
+                className="h-16 md:h-20 w-auto object-contain"
               />
             </Link>
 
-            {/* Barre de recherche */}
             <div className="flex-1 max-w-sm mx-4 hidden md:block">
               <div className="relative">
                 <input
@@ -127,9 +133,7 @@ export function Header() {
               </div>
             </div>
 
-            {/* Navigation + Actions sur une ligne */}
             <div className="flex items-center gap-4">
-              {/* Menu Catégories */}
               <div className="relative hidden md:block" ref={categoriesRef}>
                 <button
                   onClick={() => setIsCategoriesOpen(!isCategoriesOpen)}
@@ -157,7 +161,6 @@ export function Header() {
                 )}
               </div>
 
-              {/* Menu Offres */}
               <div className="relative hidden md:block" ref={offersRef}>
                 <button
                   onClick={() => setIsOffersOpen(!isOffersOpen)}
@@ -185,7 +188,6 @@ export function Header() {
                 )}
               </div>
 
-              {/* Panier */}
               <Link
                 to="/panier"
                 className="relative p-2 text-gray-600 hover:text-[#1a6b3c] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c] rounded-full"
@@ -199,7 +201,6 @@ export function Header() {
                 )}
               </Link>
 
-              {/* Auth desktop */}
               <div className="hidden md:flex items-center gap-2">
                 <Link
                   to="/connexion"
@@ -215,7 +216,6 @@ export function Header() {
                 </Link>
               </div>
 
-              {/* Burger mobile */}
               <button
                 className="md:hidden p-2 text-gray-600 hover:text-[#1a6b3c] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c] rounded-full"
                 onClick={() => setIsMenuOpen((v) => !v)}
@@ -227,14 +227,12 @@ export function Header() {
           </div>
         </div>
 
-        {/* Menu mobile */}
         <div
           className={`md:hidden overflow-hidden transition-all duration-400 ease-in-out ${
             isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
           }`}
         >
           <nav className="border-t border-gray-100 px-6 py-5 space-y-1 bg-white">
-            {/* Search mobile */}
             <div className="relative mb-4">
               <input
                 type="text"
@@ -246,7 +244,6 @@ export function Header() {
               </button>
             </div>
 
-            {/* Catégories sur mobile */}
             <div className="py-2 border-b border-gray-100">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Catégories</p>
               {categories.map(({ to, label }) => (
@@ -260,7 +257,6 @@ export function Header() {
               ))}
             </div>
 
-            {/* Offres sur mobile */}
             <div className="py-2 border-b border-gray-100">
               <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Offres</p>
               {offers.map(({ to, label }) => (

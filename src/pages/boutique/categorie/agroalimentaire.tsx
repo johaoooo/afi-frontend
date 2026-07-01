@@ -1,26 +1,21 @@
 import { Link } from 'react-router-dom';
-import { FiArrowLeft, FiShoppingBag, FiStar, FiFilter } from 'react-icons/fi';
+import { FiArrowLeft, FiShoppingBag, FiStar } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
 
 const products = [
-  { id: 1, nom: 'Chips de sésame', prix: 2500, image: '/images/sa1.jpeg', note: '4.7', avis: 20, artisan: 'AFI Agro', categorie: 'Sésame' },
-  { id: 2, nom: 'Épices de sésame', prix: 3500, image: '/images/sa2.jpeg', note: '4.5', avis: 14, artisan: 'AFI Agro', categorie: 'Sésame' },
-  { id: 3, nom: 'Farine de sésame', prix: 4000, image: '/images/sa3.jpeg', note: '4.6', avis: 16, artisan: 'AFI Agro', categorie: 'Sésame' },
-  { id: 4, nom: 'Farine de soja', prix: 3500, image: '/images/sa4.jpeg', note: '4.4', avis: 10, artisan: 'AFI Agro', categorie: 'Soja' },
-  { id: 5, nom: 'Épices de soja', prix: 3000, image: '/images/sac.png', note: '4.3', avis: 8, artisan: 'AFI Agro', categorie: 'Soja' },
-  { id: 6, nom: 'Sésame transformé', prix: 5000, image: '/images/pagne.png', note: '4.8', avis: 12, artisan: 'AFI Agro', categorie: 'Sésame' },
+  { 
+    id: 4, 
+    nom: 'Farine de soja', 
+    prix: 3500, 
+    note: '4.4', 
+    avis: 10, 
+    artisan: 'AFI Agro', 
+    categorie: 'Soja',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907635/so_h3t6no.jpg'
+  },
 ];
 
-const categories = ['Tous', 'Sésame', 'Soja'];
-
 export default function AgroalimentairePage() {
-  const [selectedCategory, setSelectedCategory] = useState('Tous');
-
-  const filteredProducts = selectedCategory === 'Tous' 
-    ? products 
-    : products.filter(p => p.categorie === selectedCategory);
-
   return (
     <div className="bg-[#f5f8f5] min-h-screen">
       <div className="bg-[#1a6b3c] py-8">
@@ -30,35 +25,13 @@ export default function AgroalimentairePage() {
             Retour à la boutique
           </Link>
           <h1 className="text-3xl md:text-4xl font-black text-white">Agroalimentaire</h1>
-          <p className="text-green-200 text-sm mt-1">Produits naturels transformés à base de sésame et de soja</p>
+          <p className="text-green-200 text-sm mt-1">Farine de soja artisanale du Bénin</p>
         </div>
       </div>
 
       <div className="container mx-auto px-6 md:px-12 py-8">
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-4 border border-green-100 mb-8 flex flex-wrap items-center gap-4">
-          <div className="flex items-center gap-2">
-            <FiFilter className="w-4 h-4 text-gray-400" />
-            <span className="text-sm font-medium text-gray-600">Filtrer :</span>
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-full text-xs font-medium transition ${
-                  selectedCategory === cat
-                    ? 'bg-[#1a6b3c] text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </div>
-
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProducts.map((product, i) => (
+          {products.map((product, i) => (
             <motion.div
               key={product.id}
               className="bg-white/90 backdrop-blur-sm rounded-2xl overflow-hidden shadow hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border border-green-100"
@@ -70,9 +43,10 @@ export default function AgroalimentairePage() {
                 <img
                   src={product.image}
                   alt={product.nom}
-                  className="w-full h-full object-contain hover:scale-105 transition duration-500"
+                  className="w-full h-full object-cover hover:scale-105 transition duration-500"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://via.placeholder.com/400x400/1a6b3c/ffffff?text=AFI';
+                    (e.target as HTMLImageElement).src =
+                      'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400';
                   }}
                 />
                 <div className="absolute top-3 left-3 flex items-center gap-1 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-xs font-medium">

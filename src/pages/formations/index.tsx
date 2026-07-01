@@ -8,7 +8,7 @@ const formations = [
     id: 'macrame',
     name: 'Macramé et Tricotage',
     description: 'Apprenez les techniques de macramé et de tricotage pour créer des objets décoratifs et accessoires uniques.',
-    image: '/images/formations/macrame.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441677/WhatsApp_Image_2026-05-03_at_13.08.20_m5mbxc.jpg',
     duree: '3 mois',
     niveau: 'Débutant à avancé',
     places: 12,
@@ -26,7 +26,7 @@ const formations = [
     id: 'teinture',
     name: 'Teinture de Pagne',
     description: 'Maîtrisez l\'art de la teinture artisanale pour transformer les tissus en œuvres d\'art traditionnelles.',
-    image: '/images/formations/teinture.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782717374/WhatsApp_Image_2026-06-29_at_08.14.08_afi42z.jpg',
     duree: '2 mois',
     niveau: 'Tous niveaux',
     places: 15,
@@ -44,7 +44,7 @@ const formations = [
     id: 'decoration',
     name: 'Décoration Artisanale',
     description: 'Développez votre créativité pour apporter une touche unique et authentique à vos espaces.',
-    image: '/images/formations/decoration.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907157/meuble_gopyp6.jpg',
     duree: '2 mois',
     niveau: 'Débutant',
     places: 10,
@@ -62,7 +62,7 @@ const formations = [
     id: 'agroalimentaire',
     name: 'Agroalimentaire',
     description: 'Apprenez à valoriser les produits naturels locaux à travers une transformation de qualité.',
-    image: '/images/formations/agroalimentaire.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907638/soja_thw2zy.jpg',
     duree: '2 mois',
     niveau: 'Tous niveaux',
     places: 15,
@@ -91,7 +91,6 @@ export default function FormationsPage() {
       <FormationsHero />
 
       <div className="container mx-auto px-6 md:px-12 -mt-8 relative z-20">
-        {/* Carte CFP Dorcas */}
         <motion.div
           className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 border border-green-100 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -128,11 +127,11 @@ export default function FormationsPage() {
               </div>
             </div>
             <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-xl">
+              <div className="rounded-2xl overflow-hidden shadow-xl h-72 bg-gray-100 flex items-center justify-center p-4">
                 <img
-                  src="/images/formations/dorcas-centre.jpg"
+                  src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441633/WhatsApp_Image_2026-05-03_at_13.13.55_xrgmtq.jpg"
                   alt="CFP Dorcas - Centre de formation"
-                  className="w-full h-72 object-cover hover:scale-105 transition duration-700"
+                  className="w-full h-full object-contain hover:scale-105 transition duration-700"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src =
                       'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600';
@@ -147,7 +146,6 @@ export default function FormationsPage() {
           </div>
         </motion.div>
 
-        {/* Statistiques */}
         <motion.div
           className="mb-16 grid grid-cols-2 md:grid-cols-4 gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -173,7 +171,6 @@ export default function FormationsPage() {
           ))}
         </motion.div>
 
-        {/* Liste des formations */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
@@ -197,7 +194,6 @@ export default function FormationsPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                  {/* Image */}
                   <div className="md:col-span-1 h-64 md:h-auto relative overflow-hidden">
                     <img
                       src={formation.image}
@@ -210,14 +206,12 @@ export default function FormationsPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent md:to-transparent" />
                     
-                    {/* Badge durée */}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-[#1a6b3c] flex items-center gap-1">
                       <FiClock className="w-3 h-3" />
                       {formation.duree}
                     </div>
                   </div>
 
-                  {/* Contenu */}
                   <div className="md:col-span-2 p-6 md:p-8">
                     <h2 className="text-2xl md:text-3xl font-black text-gray-800 mb-2">
                       {formation.name}
@@ -263,7 +257,6 @@ export default function FormationsPage() {
           </div>
         </div>
 
-        {/* Appel à l'action */}
         <motion.div
           className="p-8 md:p-12 rounded-3xl text-center bg-[#1a6b3c] relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}

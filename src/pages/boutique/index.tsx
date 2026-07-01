@@ -9,7 +9,7 @@ const categories = [
     name: 'Mode & Accessoires',
     description: 'Sacs, chaussures et accessoires artisanaux façonnés à la main.',
     count: 7,
-    image: '/images/sac.png',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1780563924/sand_gzb8ki.jpg',
     icon: FiShoppingBag
   },
   {
@@ -17,7 +17,7 @@ const categories = [
     name: 'Macramé & Tricotage',
     description: 'Sacs, rideaux et décorations en macramé, tricotés avec soin.',
     count: 6,
-    image: '/images/pagne.png',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907386/tiss_msfbhc.jpg',
     icon: FiShoppingBag
   },
   {
@@ -25,7 +25,7 @@ const categories = [
     name: 'Décoration Artisanale',
     description: 'Objets uniques pour embellir et personnaliser vos espaces.',
     count: 5,
-    image: '/images/sa1.jpeg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907157/meuble_gopyp6.jpg',
     icon: FiShoppingBag
   },
   {
@@ -33,7 +33,7 @@ const categories = [
     name: 'Agroalimentaire',
     description: 'Produits naturels transformés à base de sésame et de soja.',
     count: 8,
-    image: '/images/sa2.jpeg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907636/soj_rys07t.jpg',
     icon: FiShoppingBag
   },
 ];
@@ -50,7 +50,6 @@ export default function BoutiquePage() {
       <ShopHero />
 
       <div className="container mx-auto px-6 md:px-12 -mt-8 relative z-20">
-        {/* En-tête de section */}
         <motion.div
           className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 border border-green-100 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -78,7 +77,6 @@ export default function BoutiquePage() {
           </div>
         </motion.div>
 
-        {/* Grille catégories */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
           {categories.map((cat, i) => (
             <motion.div
@@ -92,7 +90,6 @@ export default function BoutiquePage() {
                 to={`/boutique/${cat.id}`}
                 className="group relative flex overflow-hidden rounded-3xl bg-gray-100 aspect-[16/9] shadow-lg hover:shadow-2xl transition-all duration-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#1a6b3c]"
               >
-                {/* Image */}
                 <img
                   src={cat.image}
                   alt={cat.name}
@@ -103,14 +100,9 @@ export default function BoutiquePage() {
                       'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800';
                   }}
                 />
-
-                {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-
-                {/* Liseré vert en bas */}
                 <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#1a6b3c] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-500" />
 
-                {/* Contenu */}
                 <div className="relative z-10 flex flex-col justify-end p-6 md:p-8 w-full">
                   <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs font-bold tracking-widest uppercase text-white/50">

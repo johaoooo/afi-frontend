@@ -58,7 +58,7 @@ export function AboutSection() {
 
           <div className="space-y-6">
             <motion.span
-              className="inline-block text-[#1a6b3c] text-xs font-bold tracking-widest uppercase border-l-2 border-[#1a6b3c] pl-3"
+              className="inline-block text-[#1a6b3c] text-xs font-bold tracking-widest uppercase"
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}

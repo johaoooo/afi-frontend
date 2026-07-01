@@ -8,7 +8,7 @@ const services = [
     id: 'macrame',
     name: 'Macramé et Tricotage',
     description: 'Nous réalisons des créations artisanales faites à la main avec finesse et originalité.',
-    image: '/images/services/macrame.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1780563925/sli1_j3e686.jpg',
     duree: '3-5 jours',
     niveau: 'Sur mesure',
     details: [
@@ -25,7 +25,7 @@ const services = [
     id: 'teinture',
     name: 'Teinture de Pagne',
     description: 'Nous transformons les tissus simples en véritables œuvres d\'art traditionnelles.',
-    image: '/images/services/teinture.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782719675/tttt_tx2vi0.jpg',
     duree: '2-4 jours',
     niveau: 'Sur mesure',
     details: [
@@ -40,7 +40,7 @@ const services = [
     id: 'decoration',
     name: 'Décoration Artisanale',
     description: 'Nous apportons une touche unique et authentique à vos espaces.',
-    image: '/images/services/decoration.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907157/meuble_gopyp6.jpg',
     duree: '2-3 jours',
     niveau: 'Sur mesure',
     details: [
@@ -55,7 +55,7 @@ const services = [
     id: 'agroalimentaire',
     name: 'Agroalimentaire',
     description: 'Nous valorisons les produits naturels locaux à travers une transformation de qualité.',
-    image: '/images/services/agroalimentaire.jpg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907636/soj_rys07t.jpg',
     duree: '1-3 jours',
     niveau: 'Sur mesure',
     details: [
@@ -79,7 +79,6 @@ export default function ServicesPage() {
       <ServicesHero />
 
       <div className="container mx-auto px-6 md:px-12 -mt-8 relative z-20">
-        {/* Notre expertise */}
         <motion.div
           className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-10 border border-green-100 mb-16"
           initial={{ opacity: 0, y: 20 }}
@@ -118,7 +117,7 @@ export default function ServicesPage() {
             <div className="relative">
               <div className="rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="/images/services/expertise.jpg"
+                  src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1779441624/WhatsApp_Image_2026-05-03_at_13.13.52_r2z1sf.jpg"
                   alt="Expertise AFI Collection"
                   className="w-full h-72 object-cover hover:scale-105 transition duration-700"
                   onError={(e) => {
@@ -135,7 +134,6 @@ export default function ServicesPage() {
           </div>
         </motion.div>
 
-        {/* Statistiques */}
         <motion.div
           className="mb-16 grid grid-cols-2 md:grid-cols-4 gap-4"
           initial={{ opacity: 0, y: 20 }}
@@ -161,7 +159,6 @@ export default function ServicesPage() {
           ))}
         </motion.div>
 
-        {/* Liste des services */}
         <div className="mb-16">
           <div className="text-center mb-10">
             <span className="text-[#1a6b3c] text-xs font-bold tracking-widest uppercase">
@@ -185,7 +182,6 @@ export default function ServicesPage() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-0">
-                  {/* Image */}
                   <div className="md:col-span-1 h-64 md:h-auto relative overflow-hidden">
                     <img
                       src={service.image}
@@ -198,14 +194,12 @@ export default function ServicesPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent md:bg-gradient-to-r md:from-black/30 md:via-transparent md:to-transparent" />
                     
-                    {/* Badge durée */}
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-bold text-[#1a6b3c] flex items-center gap-1">
                       <FiClock className="w-3 h-3" />
                       {service.duree}
                     </div>
                   </div>
 
-                  {/* Contenu */}
                   <div className="md:col-span-2 p-6 md:p-8">
                     <h2 className="text-2xl md:text-3xl font-black text-gray-800 mb-2">
                       {service.name}
@@ -247,7 +241,6 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        {/* Notre engagement */}
         <motion.div
           className="p-8 md:p-12 rounded-3xl text-center bg-[#1a6b3c] relative overflow-hidden"
           initial={{ opacity: 0, y: 20 }}

@@ -13,23 +13,16 @@ const collections = [
   {
     id: 2,
     name: 'Tissus & Pagnes',
-    image: '/images/pagne.png',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782717379/WhatsApp_Image_2026-06-26_at_17.21.21_b51wtr.jpg',
     count: '8 pièces',
     link: '/boutique/mode',
   },
   {
     id: 3,
     name: 'Bijoux & Ornements',
-    image: '/images/sa1.jpeg',
+    image: 'https://res.cloudinary.com/dzxesa3wi/image/upload/v1782908539/tric_ehoj1b.jpg',
     count: '15 pièces',
     link: '/boutique/mode',
-  },
-  {
-    id: 4,
-    name: 'Art & Sculptures',
-    image: '/images/sa2.jpeg',
-    count: '6 pièces',
-    link: '/boutique/decoration',
   },
 ];
 
@@ -62,7 +55,7 @@ export function CollectionsSection() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-5">
           {collections.map((col, i) => (
             <motion.div
               key={col.id}

@@ -4,7 +4,7 @@ export function FormationsHero() {
   return (
     <div className="relative overflow-hidden bg-black" style={{ minHeight: 320 }}>
       <img
-        src="/images/formations-hero-bg.jpg"
+        src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1782717374/WhatsApp_Image_2026-06-29_at_08.08.43_jc7ddz.jpg"
         alt="Formations AFI Collection"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"

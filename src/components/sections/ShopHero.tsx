@@ -11,7 +11,7 @@ export function ShopHero() {
   return (
     <div className="relative overflow-hidden bg-black" style={{ minHeight: 320 }}>
       <img
-        src="/images/shop-hero-bg.jpg"
+        src="https://res.cloudinary.com/dzxesa3wi/image/upload/v1782907637/tissa_q55ztd.jpg"
         alt="Boutique AFI Collection"
         className="absolute inset-0 w-full h-full object-cover"
         loading="eager"

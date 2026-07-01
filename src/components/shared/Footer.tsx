@@ -68,7 +68,7 @@ export function Footer() {
               <img
                 src="/images/afiii.png"
                 alt="AFI Collection"
-                className="h-12 w-auto object-contain brightness-0 invert"
+                className="h-12 w-auto object-contain"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
