@@ -1,11 +1,8 @@
 import { Link } from 'react-router-dom';
 import { FiArrowRight } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { useTranslation } from 'react-i18next';
 
 export function AboutSection() {
-  const { t } = useTranslation();
-
   return (
     <section className="py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-6 md:px-12">

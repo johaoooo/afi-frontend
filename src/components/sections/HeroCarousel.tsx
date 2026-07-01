@@ -140,7 +140,7 @@ export function HeroCarousel() {
       <section className="bg-white border-b border-green-100">
         <div className="container mx-auto px-6 md:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 py-8 md:py-12">
-            {stats.map((stat, index) => (
+            {stats.map((stat) => (
               <div 
                 key={stat.key}
                 className="group text-center transition-all duration-300 hover:-translate-y-1"
