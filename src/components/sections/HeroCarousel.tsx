@@ -36,7 +36,7 @@ const stats = [
   { value: '98%', label: 'Satisfaction client' },
 ];
 
-const SLIDE_DURATION = 6000;
+const SLIDE_DURATION = 5000;
 const FALLBACK = 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600';
 
 export function HeroCarousel() {
@@ -44,18 +44,19 @@ export function HeroCarousel() {
   const [imgErrors, setImgErrors] = useState<Record<number, boolean>>({});
   const total = slides.length;
 
-  const prefersReducedMotion =
-    typeof window !== 'undefined' &&
-    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const next = useCallback(() => {
+    setCurrent((c) => (c + 1) % total);
+  }, [total]);
 
-  const next = useCallback(() => setCurrent((c) => (c + 1) % total), [total]);
-  const prev = useCallback(() => setCurrent((c) => (c - 1 + total) % total), [total]);
+  const prev = useCallback(() => {
+    setCurrent((c) => (c - 1 + total) % total);
+  }, [total]);
 
+  // Auto-play - toujours actif
   useEffect(() => {
-    if (prefersReducedMotion) return;
     const timer = setInterval(next, SLIDE_DURATION);
     return () => clearInterval(timer);
-  }, [next, prefersReducedMotion]);
+  }, [next]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'ArrowLeft') prev();
@@ -93,13 +94,13 @@ export function HeroCarousel() {
         </div>
       ))}
 
-      {/* VOILE UNIFORME PLUS FORT */}
+      {/* Voile uniforme */}
       <div className="absolute inset-0 z-[15] bg-black/35" />
 
-      {/* Dégradé directionnel plus marqué */}
+      {/* Dégradé directionnel */}
       <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/80 via-black/40 to-black/10" />
 
-      {/* Fondu bas plus marqué */}
+      {/* Fondu bas */}
       <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
 
       {/* Liseré vert */}
